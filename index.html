@@ -3,120 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mubashir Hasan | AI Automation & Systems Architect</title>
+    <title>Mubashir Hasan | AI Automation Architect</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
-            background-color: #0a0a0a;
+            background-color: #050505;
             color: #ffffff;
             font-family: 'Inter', sans-serif;
         }
         .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .glass-card:hover {
             border-color: #FFD700;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.15);
         }
-        .gold-gradient {
-            background: linear-gradient(90deg, #FFD700, #B8860B);
+        .gold-text {
+            background: linear-gradient(135deg, #FFD700 0%, #B8860B 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .btn-gold {
-            background: linear-gradient(90deg, #FFD700, #B8860B);
-            color: black;
-            font-weight: bold;
-            transition: opacity 0.3s;
+        .btn-action {
+            background: linear-gradient(135deg, #FFD700 0%, #B8860B 100%);
+            color: #000;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
         }
-        .btn-gold:hover {
-            opacity: 0.9;
+        .status-dot {
+            height: 8px;
+            width: 8px;
+            background-color: #10b981;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 6px;
+            box-shadow: 0 0 8px #10b981;
         }
     </style>
 </head>
-<body class="p-4 md:p-10">
+<body class="py-12 px-6">
 
-    <header class="max-w-6xl mx-auto text-center mb-20">
-        <h1 class="text-5xl md:text-7xl font-extrabold mb-4">Mubashir <span class="gold-gradient">Hasan</span></h1>
-        <p class="text-xl md:text-2xl text-gray-400 mb-6">AI Automation & Systems Architect</p>
-        <p class="max-w-2xl mx-auto text-gray-500">
-            Transforming Complexity into Efficiency. Main founders aur startups ke liye custom AI agents, automated workflows, aur smart dashboards build karta hoon jo business ko scale karne mein madad karte hain.
+    <header class="max-w-5xl mx-auto text-center mb-24">
+        <h1 class="text-6xl md:text-8xl font-black mb-6">Mubashir <span class="gold-text">Hasan</span></h1>
+        <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+            AI Automation & Systems Architect. Complex workflows ko efficiency mein badalna mera kaam hai.
         </p>
     </header>
 
-    <main class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        
-        <div class="glass-card p-6 flex flex-col justify-between">
-            <div>
-                <img src="https://via.placeholder.com/400x200/111/FFD700?text=SmartShaadi.online" class="rounded-lg mb-4 w-full" alt="SmartShaadi">
-                <h3 class="text-2xl font-bold mb-2">SmartShaadi AI</h3>
-                <p class="text-gray-400 text-sm mb-4">India's first AI-powered wedding planning ecosystem with budget calculators and SEO automation.</p>
+    <main class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+        <div class="glass-card p-8 flex flex-col">
+            <div class="mb-6">
+                <div class="flex items-center mb-3">
+                    <span class="status-dot"></span>
+                    <span class="text-xs text-gray-500 uppercase tracking-widest">Live System</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-3">SmartShaadi.ai</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">AI-powered wedding planning ecosystem. Automation se events simplify karta hai.</p>
             </div>
-            <a href="https://smartshaadi.online" target="_blank" class="btn-gold py-2 px-4 rounded text-center">Open Project</a>
+            <a href="https://smartshaadi.online" target="_blank" class="btn-action mt-auto py-3 px-6 rounded-full text-center hover:scale-105 transition-transform">Open Platform</a>
         </div>
 
-        <div class="glass-card p-6 flex flex-col justify-between">
-            <div>
-                <img src="https://via.placeholder.com/400x200/111/FFD700?text=CloudKitchenOS" class="rounded-lg mb-4 w-full" alt="CloudKitchenOS">
-                <h3 class="text-2xl font-bold mb-2">CloudKitchenOS</h3>
-                <p class="text-gray-400 text-sm mb-4">Full-stack SaaS for micro-kitchen operations, featuring feasibility calculators and order tracking.</p>
+        <div class="glass-card p-8 flex flex-col">
+            <div class="mb-6">
+                <div class="flex items-center mb-3">
+                    <span class="status-dot"></span>
+                    <span class="text-xs text-gray-500 uppercase tracking-widest">AI Agent</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-3">AI Receptionist</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Smart receptionist system jo client queries aur bookings handle karta hai bina human help ke.</p>
             </div>
-            <a href="https://cloudkitchenos.vercel.app" target="_blank" class="btn-gold py-2 px-4 rounded text-center">Open Project</a>
+            <a href="https://ai-receptionist-sandy-six.vercel.app" target="_blank" class="btn-action mt-auto py-3 px-6 rounded-full text-center hover:scale-105 transition-transform">Open Project</a>
         </div>
 
-        <div class="glass-card p-6 flex flex-col justify-between">
-            <div>
-                <img src="https://via.placeholder.com/400x200/111/FFD700?text=CricSense+AI" class="rounded-lg mb-4 w-full" alt="CricSense AI">
-                <h3 class="text-2xl font-bold mb-2">CricSense AI</h3>
-                <p class="text-gray-400 text-sm mb-4">AI-driven cricket analytics dashboard with real-time match predictions and arbitrage logic.</p>
+        <div class="glass-card p-8 flex flex-col">
+            <div class="mb-6">
+                <div class="flex items-center mb-3">
+                    <span class="status-dot"></span>
+                    <span class="text-xs text-gray-500 uppercase tracking-widest">Healthcare Tech</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-3">Unique Hospital</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Healthcare management solution jo patient operations ko digital aur smooth banata hai.</p>
             </div>
-            <a href="#" target="_blank" class="btn-gold py-2 px-4 rounded text-center">Open Project</a>
+            <a href="https://unique-hospital-three.vercel.app" target="_blank" class="btn-action mt-auto py-3 px-6 rounded-full text-center hover:scale-105 transition-transform">Open Project</a>
         </div>
 
-        <div class="glass-card p-6 flex flex-col justify-between">
-            <div>
-                <img src="https://via.placeholder.com/400x200/111/FFD700?text=HennaLens+AI" class="rounded-lg mb-4 w-full" alt="HennaLens AI">
-                <h3 class="text-2xl font-bold mb-2">HennaLens AI</h3>
-                <p class="text-gray-400 text-sm mb-4">World’s first AI Mehndi Artist application generating traditional designs using custom models.</p>
+        <div class="glass-card p-8 flex flex-col">
+            <div class="mb-6">
+                <div class="flex items-center mb-3">
+                    <span class="status-dot"></span>
+                    <span class="text-xs text-gray-500 uppercase tracking-widest">Enterprise Solution</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-3">Capital Medical</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Inventory aur distribution workflow management for large-scale medical agencies.</p>
             </div>
-            <a href="#" target="_blank" class="btn-gold py-2 px-4 rounded text-center">Open Project</a>
+            <a href="https://capital-medical-agency.vercel.app" target="_blank" class="btn-action mt-auto py-3 px-6 rounded-full text-center hover:scale-105 transition-transform">Open Project</a>
         </div>
 
-        <div class="glass-card p-6 flex flex-col justify-between">
-            <div>
-                <img src="https://via.placeholder.com/400x200/111/FFD700?text=Vibeos+Automation" class="rounded-lg mb-4 w-full" alt="Vibeos">
-                <h3 class="text-2xl font-bold mb-2">Vibeos / Vibe Mirror</h3>
-                <p class="text-gray-400 text-sm mb-4">Social media automation tools that streamline content delivery and community management.</p>
+        <div class="glass-card p-8 flex flex-col">
+            <div class="mb-6">
+                <div class="flex items-center mb-3">
+                    <span class="status-dot"></span>
+                    <span class="text-xs text-gray-500 uppercase tracking-widest">SaaS</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-3">CloudKitchenOS</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Micro-kitchen operational management systems with financial feasibility tools.</p>
             </div>
-            <a href="https://vibeos-teal.vercel.app" target="_blank" class="btn-gold py-2 px-4 rounded text-center">Open Project</a>
+            <a href="https://cloudkitchenos.vercel.app" target="_blank" class="btn-action mt-auto py-3 px-6 rounded-full text-center hover:scale-105 transition-transform">Open Project</a>
         </div>
 
-        <div class="glass-card p-6 flex flex-col justify-between">
-            <div>
-                <img src="https://via.placeholder.com/400x200/111/FFD700?text=Custom+Workflows" class="rounded-lg mb-4 w-full" alt="Workflows">
-                <h3 class="text-2xl font-bold mb-2">Custom AI Workflows</h3>
-                <p class="text-gray-400 text-sm mb-4">Complex API integrations using n8n and LLMs to automate high-volume business processes.</p>
+        <div class="glass-card p-8 flex flex-col">
+            <div class="mb-6">
+                <div class="flex items-center mb-3">
+                    <span class="status-dot"></span>
+                    <span class="text-xs text-gray-500 uppercase tracking-widest">Food Tech</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-3">The Biryani Box</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Digital menu aur order workflow optimize karne ke liye custom built system.</p>
             </div>
-            <a href="https://github.com" target="_blank" class="btn-gold py-2 px-4 rounded text-center">View Specs</a>
+            <a href="https://the-biryani-box-elite.vercel.app" target="_blank" class="btn-action mt-auto py-3 px-6 rounded-full text-center hover:scale-105 transition-transform">Open Project</a>
         </div>
 
     </main>
 
-    <footer class="max-w-6xl mx-auto mt-20 py-10 border-t border-gray-800 text-center">
-        <p class="mb-6 text-gray-400 font-medium text-lg italic">"Transforming Complexity into Efficiency through AI & Automation."</p>
-        <div class="flex justify-center gap-8 mb-8">
-            <a href="https://instagram.com" class="text-3xl text-gray-400 hover:text-pink-500"><i class="fab fa-instagram"></i></a>
-            <a href="https://linkedin.com" class="text-3xl text-gray-400 hover:text-blue-500"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com" class="text-3xl text-gray-400 hover:text-white"><i class="fab fa-github"></i></a>
-            <a href="mailto:your-email@example.com" class="text-3xl text-gray-400 hover:text-yellow-500"><i class="fas fa-envelope"></i></a>
+    <footer class="max-w-5xl mx-auto mt-32 py-12 border-t border-gray-900">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <h4 class="text-xl font-bold gold-text mb-2">Build with Precision.</h4>
+                <p class="text-gray-500 text-sm">Automating the future, one workflow at a time.</p>
+            </div>
+            <div class="flex gap-6">
+                <a href="https://github.com/muahshi" class="text-gray-400 hover:text-white text-2xl transition-colors"><i class="fab fa-github"></i></a>
+                <a href="#" class="text-gray-400 hover:text-blue-400 text-2xl transition-colors"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="text-gray-400 hover:text-pink-500 text-2xl transition-colors"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:muahshi7759@axl" class="text-gray-400 hover:text-yellow-500 text-2xl transition-colors"><i class="fas fa-envelope"></i></a>
+            </div>
         </div>
-        <p class="text-gray-600">&copy; 2026 Mubashir Hasan. All rights reserved.</p>
+        <div class="text-center mt-12 text-gray-700 text-xs tracking-widest uppercase">
+            &copy; 2026 Mubashir Hasan | Systems Architect
+        </div>
     </footer>
 
 </body>
