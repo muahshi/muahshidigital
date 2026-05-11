@@ -3,88 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muahshi Digital | AI Automation & Systems Architect</title>
+    <title>Mubashir Hasan | AI Automation & Systems Architect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --primary: #38bdf8; --bg: #0f172a; --card: #1e293b; --text: #f1f5f9; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding: 0; }
-        
-        /* Hero Section */
-        header { padding: 80px 20px; text-align: center; }
-        h1 { font-size: 3rem; color: var(--primary); margin-bottom: 10px; }
-        .hero-sub { font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
-        
-        /* Animated Graph Section */
-        .chart-container { max-width: 800px; margin: 50px auto; padding: 20px; background: var(--card); border-radius: 15px; }
-        .graph-wrapper { display: flex; justify-content: space-around; align-items: flex-end; height: 300px; margin-top: 30px; }
-        .bar { width: 60px; background: var(--primary); transition: height 1.5s ease-in-out; position: relative; border-radius: 5px 5px 0 0; }
-        .bar-label { position: absolute; bottom: -30px; width: 100%; text-align: center; font-size: 0.9rem; }
-        
-        /* Case Study Section */
-        .section { padding: 60px 20px; max-width: 900px; margin: 0 auto; }
-        .card { background: var(--card); padding: 30px; border-radius: 15px; margin-top: 20px; border-left: 5px solid var(--primary); }
-        
-        /* Footer */
-        footer { text-align: center; padding: 40px; background: #020617; margin-top: 50px; }
-        .socials a { color: var(--primary); margin: 0 15px; text-decoration: none; font-weight: bold; }
-        
-        button { padding: 15px 30px; background: var(--primary); border: none; border-radius: 8px; color: #000; font-weight: bold; cursor: pointer; margin-top: 20px; }
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            border-color: #FFD700;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.1);
+        }
+        .gold-gradient {
+            background: linear-gradient(90deg, #FFD700, #B8860B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-gold {
+            background: linear-gradient(90deg, #FFD700, #B8860B);
+            color: black;
+            font-weight: bold;
+            transition: opacity 0.3s;
+        }
+        .btn-gold:hover {
+            opacity: 0.9;
+        }
     </style>
 </head>
-<body>
+<body class="p-4 md:p-10">
 
-    <header>
-        <h1>Muahshi Digital</h1>
-        <p class="hero-sub">Transforming Complexity into Efficiency. AI Agents, Workflow Automation & Systems Architect.</p>
-        <button onclick="window.location.href='mailto:your-email@example.com'">Book a Strategy Call</button>
+    <header class="max-w-6xl mx-auto text-center mb-20">
+        <h1 class="text-5xl md:text-7xl font-extrabold mb-4">Mubashir <span class="gold-gradient">Hasan</span></h1>
+        <p class="text-xl md:text-2xl text-gray-400 mb-6">AI Automation & Systems Architect</p>
+        <p class="max-w-2xl mx-auto text-gray-500">
+            Transforming Complexity into Efficiency. Main founders aur startups ke liye custom AI agents, automated workflows, aur smart dashboards build karta hoon jo business ko scale karne mein madad karte hain.
+        </p>
     </header>
 
-    <div class="chart-container">
-        <h3>Efficiency Shift: Before vs. After Automation</h3>
-        <div class="graph-wrapper">
-            <div class="bar" style="height: 40%; background: #64748b;"><div class="bar-label">Manual (Chaos)</div></div>
-            <div class="bar" style="height: 95%;"><div class="bar-label">Automated (Scale)</div></div>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Case Study: Bhopal Retail Transformation</h2>
-        <div class="card">
-            <h3>The Bhopal Shop Challenge</h3>
-            <p><strong>The Situation:</strong> A local electronics shop in Bhopal was losing 40% of leads due to slow response times on Google and WhatsApp.</p>
-            <p><strong>The Fix:</strong> We implemented an AI-Automated CRM. Every "Near Me" search inquiry was automatically routed to a structured lead sheet with an instant WhatsApp acknowledgement.</p>
-            <p><strong>The Result:</strong> 3x increase in lead conversion rate and 15 hours of manual work saved per week.</p>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Day vs. Night: Your Business Workflow</h2>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-            <div class="card">
-                <h4>Traditional (Nightmare)</h4>
-                <ul>
-                    <li>Manual Data Entry</li>
-                    <li>Missed Client Calls</li>
-                    <li>Disconnected Apps</li>
-                </ul>
+    <main class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <div class="glass-card p-6 flex flex-col justify-between">
+            <div>
+                <img src="https://via.placeholder.com/400x200/111/FFD700?text=SmartShaadi.online" class="rounded-lg mb-4 w-full" alt="SmartShaadi">
+                <h3 class="text-2xl font-bold mb-2">SmartShaadi AI</h3>
+                <p class="text-gray-400 text-sm mb-4">India's first AI-powered wedding planning ecosystem with budget calculators and SEO automation.</p>
             </div>
-            <div class="card" style="border-left-color: #22c55e;">
-                <h4>Muahshi Digital (Daylight)</h4>
-                <ul>
-                    <li>AI Agent Processing</li>
-                    <li>Instant Engagement</li>
-                    <li>Seamless Integrations</li>
-                </ul>
-            </div>
+            <a href="https://smartshaadi.online" target="_blank" class="btn-gold py-2 px-4 rounded text-center">Open Project</a>
         </div>
-    </div>
 
-    <footer>
-        <div class="socials">
-            <a href="#">LinkedIn</a> | <a href="#">WhatsApp</a> | <a href="#">Instagram</a> | <a href="#">GitHub</a>
+        <div class="glass-card p-6 flex flex-col justify-between">
+            <div>
+                <img src="https://via.placeholder.com/400x200/111/FFD700?text=CloudKitchenOS" class="rounded-lg mb-4 w-full" alt="CloudKitchenOS">
+                <h3 class="text-2xl font-bold mb-2">CloudKitchenOS</h3>
+                <p class="text-gray-400 text-sm mb-4">Full-stack SaaS for micro-kitchen operations, featuring feasibility calculators and order tracking.</p>
+            </div>
+            <a href="https://cloudkitchenos.vercel.app" target="_blank" class="btn-gold py-2 px-4 rounded text-center">Open Project</a>
         </div>
-        <p style="margin-top:20px; opacity: 0.6;">© 2026 Muahshi Digital. Built for Efficiency.</p>
+
+        <div class="glass-card p-6 flex flex-col justify-between">
+            <div>
+                <img src="https://via.placeholder.com/400x200/111/FFD700?text=CricSense+AI" class="rounded-lg mb-4 w-full" alt="CricSense AI">
+                <h3 class="text-2xl font-bold mb-2">CricSense AI</h3>
+                <p class="text-gray-400 text-sm mb-4">AI-driven cricket analytics dashboard with real-time match predictions and arbitrage logic.</p>
+            </div>
+            <a href="#" target="_blank" class="btn-gold py-2 px-4 rounded text-center">Open Project</a>
+        </div>
+
+        <div class="glass-card p-6 flex flex-col justify-between">
+            <div>
+                <img src="https://via.placeholder.com/400x200/111/FFD700?text=HennaLens+AI" class="rounded-lg mb-4 w-full" alt="HennaLens AI">
+                <h3 class="text-2xl font-bold mb-2">HennaLens AI</h3>
+                <p class="text-gray-400 text-sm mb-4">World’s first AI Mehndi Artist application generating traditional designs using custom models.</p>
+            </div>
+            <a href="#" target="_blank" class="btn-gold py-2 px-4 rounded text-center">Open Project</a>
+        </div>
+
+        <div class="glass-card p-6 flex flex-col justify-between">
+            <div>
+                <img src="https://via.placeholder.com/400x200/111/FFD700?text=Vibeos+Automation" class="rounded-lg mb-4 w-full" alt="Vibeos">
+                <h3 class="text-2xl font-bold mb-2">Vibeos / Vibe Mirror</h3>
+                <p class="text-gray-400 text-sm mb-4">Social media automation tools that streamline content delivery and community management.</p>
+            </div>
+            <a href="https://vibeos-teal.vercel.app" target="_blank" class="btn-gold py-2 px-4 rounded text-center">Open Project</a>
+        </div>
+
+        <div class="glass-card p-6 flex flex-col justify-between">
+            <div>
+                <img src="https://via.placeholder.com/400x200/111/FFD700?text=Custom+Workflows" class="rounded-lg mb-4 w-full" alt="Workflows">
+                <h3 class="text-2xl font-bold mb-2">Custom AI Workflows</h3>
+                <p class="text-gray-400 text-sm mb-4">Complex API integrations using n8n and LLMs to automate high-volume business processes.</p>
+            </div>
+            <a href="https://github.com" target="_blank" class="btn-gold py-2 px-4 rounded text-center">View Specs</a>
+        </div>
+
+    </main>
+
+    <footer class="max-w-6xl mx-auto mt-20 py-10 border-t border-gray-800 text-center">
+        <p class="mb-6 text-gray-400 font-medium text-lg italic">"Transforming Complexity into Efficiency through AI & Automation."</p>
+        <div class="flex justify-center gap-8 mb-8">
+            <a href="https://instagram.com" class="text-3xl text-gray-400 hover:text-pink-500"><i class="fab fa-instagram"></i></a>
+            <a href="https://linkedin.com" class="text-3xl text-gray-400 hover:text-blue-500"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com" class="text-3xl text-gray-400 hover:text-white"><i class="fab fa-github"></i></a>
+            <a href="mailto:your-email@example.com" class="text-3xl text-gray-400 hover:text-yellow-500"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p class="text-gray-600">&copy; 2026 Mubashir Hasan. All rights reserved.</p>
     </footer>
 
 </body>
 </html>
-
