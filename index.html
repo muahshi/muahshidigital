@@ -16,16 +16,10 @@
             scroll-behavior: smooth;
         }
 
-        .hero-glow {
-            position: absolute;
-            top: -10%;
-            right: -5%;
-            width: 500px;
-            height: 500px;
-            background: rgba(255, 215, 0, 0.03);
-            filter: blur(120px);
-            border-radius: 50%;
-            z-index: -1;
+        .gold-gradient {
+            background: linear-gradient(90deg, #FFD700, #FDB931);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .bento-card {
@@ -38,15 +32,8 @@
 
         .bento-card:hover {
             border-color: #FFD700;
-            background: rgba(255, 255, 255, 0.05);
-            box-shadow: 0 0 40px rgba(255, 215, 0, 0.1);
             transform: translateY(-8px);
-        }
-
-        .gold-gradient {
-            background: linear-gradient(90deg, #FFD700, #FDB931);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.1);
         }
 
         .btn-premium {
@@ -54,59 +41,26 @@
             color: #000;
             font-weight: 700;
             box-shadow: 0 8px 20px rgba(255, 215, 0, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .btn-premium:hover {
-            transform: scale(1.05);
-            box-shadow: 0 12px 25px rgba(255, 215, 0, 0.4);
-        }
-
-        .profile-container {
-            position: relative;
-            z-index: 10;
         }
 
         .profile-img {
             width: 100%;
-            max-width: 550px;
+            max-width: 500px;
             border-radius: 30px;
             border: 1px solid rgba(255, 215, 0, 0.3);
             box-shadow: 0 30px 60px rgba(0,0,0,0.7);
-            object-fit: cover;
-        }
-
-        .status-tag {
-            background: rgba(16, 185, 129, 0.1);
-            color: #10b981;
-            padding: 4px 12px;
-            border-radius: 100px;
-            font-size: 10px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
         }
     </style>
 </head>
 <body class="antialiased">
-    <div class="hero-glow"></div>
 
-    <nav class="max-w-7xl mx-auto px-8 py-10 flex justify-between items-center">
-        <div class="text-3xl font-black gold-gradient">MH.</div>
-        <div class="hidden md:flex gap-10 text-xs font-bold uppercase tracking-[0.2em] text-gray-500">
-            <a href="#projects" class="hover:text-white transition">Portfolio</a>
-            <a href="#contact" class="hover:text-white transition">Contact</a>
-        </div>
-    </nav>
-
-    <header class="max-w-7xl mx-auto px-8 pt-10 pb-32 grid md:grid-cols-2 gap-16 items-center">
-        <div class="profile-container order-2 md:order-1">
+    <header class="max-w-7xl mx-auto px-8 pt-20 pb-32 grid md:grid-cols-2 gap-16 items-center">
+        <div class="order-2 md:order-1">
             <img src="mubu_logo.webp" alt="Mubashir Hasan" class="profile-img" fetchpriority="high">
         </div>
         
         <div class="order-1 md:order-2">
-            <h1 class="text-6xl md:text-8xl font-bold leading-[0.9] mb-8">
+            <h1 class="text-6xl md:text-8xl font-bold leading-[0.9] mb-8 uppercase tracking-tighter">
                 Architecting <br> <span class="gold-gradient">The Future.</span>
             </h1>
             <p class="text-gray-400 text-xl mb-10 leading-relaxed max-w-lg">
@@ -119,16 +73,32 @@
         </div>
     </header>
 
+    <section class="max-w-7xl mx-auto px-8 py-20 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bento-card p-10 border-b-2 border-yellow-500">
+            <i class="fas fa-microchip text-4xl text-yellow-500 mb-6"></i>
+            <h3 class="text-2xl font-bold mb-4">AI Automation</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Building custom AI agents using n8n, OpenAI, and Claude to automate repetitive business tasks.</p>
+        </div>
+        <div class="bento-card p-10 border-b-2 border-yellow-500">
+            <i class="fab fa-amazon text-4xl text-yellow-500 mb-6"></i>
+            <h3 class="text-2xl font-bold mb-4">Amazon FBA</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Expert in Amazon USA operations since 2022, managing high-volume international e-commerce.</p>
+        </div>
+        <div class="bento-card p-10 border-b-2 border-yellow-500">
+            <i class="fas fa-graduation-cap text-4xl text-yellow-500 mb-6"></i>
+            <h3 class="text-2xl font-bold mb-4">MBA Strategy</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Combining business logic with technical architecture for maximum operational efficiency.</p>
+        </div>
+    </section>
+
     <section id="projects" class="max-w-7xl mx-auto px-8 py-20">
-        <h2 class="text-5xl font-bold mb-20 tracking-tighter">SELECTED <span class="gold-gradient">WORKS</span></h2>
+        <h2 class="text-5xl font-bold mb-20 tracking-tighter uppercase">Selected <span class="gold-gradient">Works</span></h2>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
             <div class="bento-card p-10 md:col-span-2 flex flex-col justify-between border-t-2 border-yellow-500">
                 <div>
-                    <div class="status-tag mb-4 inline-block">Active System</div>
                     <h3 class="text-4xl font-bold mb-4">Vibe Mirror AI</h3>
-                    <p class="text-gray-400 text-lg mb-8 leading-relaxed">Advanced AI-driven visual feedback and content analysis system built for modern creators and digital workflows.</p>
+                    <p class="text-gray-400 text-lg mb-8 leading-relaxed">Advanced AI-driven visual feedback and content analysis system.</p>
                 </div>
                 <a href="https://vibe-mirror-ai.vercel.app/" target="_blank" class="btn-premium px-8 py-4 rounded-xl text-center self-start">Open Project</a>
             </div>
@@ -136,7 +106,7 @@
             <div class="bento-card p-10 flex flex-col justify-between">
                 <div>
                     <h3 class="text-2xl font-bold mb-4 text-yellow-500">SmartShaadi.ai</h3>
-                    <p class="text-gray-400 leading-relaxed mb-6">India's first AI-powered wedding planning ecosystem with automated SEO and budget management.</p>
+                    <p class="text-gray-400 leading-relaxed mb-6">AI Wedding Planner ecosystem with automated SEO strategies.</p>
                 </div>
                 <a href="https://smartshaadi.online" target="_blank" class="text-sm font-bold tracking-widest uppercase hover:text-white transition">Visit Platform →</a>
             </div>
@@ -144,55 +114,47 @@
             <div class="bento-card p-10 flex flex-col justify-between">
                 <div>
                     <h3 class="text-2xl font-bold mb-4">AI Receptionist</h3>
-                    <p class="text-gray-400 leading-relaxed mb-6">24/7 Intelligent booking agent that handles client queries and scheduling autonomously.</p>
+                    <p class="text-gray-400 leading-relaxed mb-6">Autonomous booking agent handling 24/7 client inquiries.</p>
                 </div>
-                <a href="https://ai-receptionist-sandy-six.vercel.app" target="_blank" class="text-sm font-bold tracking-widest uppercase text-yellow-500 hover:text-white transition">Open Live Agent →</a>
+                <a href="https://ai-receptionist-sandy-six.vercel.app" target="_blank" class="text-sm font-bold tracking-widest uppercase text-yellow-500">Open Live Agent →</a>
             </div>
 
             <div class="bento-card p-10 md:col-span-2 flex items-center justify-between">
                 <div>
                     <h3 class="text-2xl font-bold mb-4 text-yellow-500">Unique Hospital</h3>
-                    <p class="text-gray-400 leading-relaxed max-w-md">Comprehensive healthcare management system architecture for hospital operations and patient data.</p>
+                    <p class="text-gray-400 leading-relaxed max-w-md">Healthcare operations and patient management system.</p>
                 </div>
-                <a href="https://unique-hospital-bice.vercel.app" target="_blank" class="bg-white/5 p-6 rounded-full hover:bg-yellow-500 hover:text-black transition-all">
-                    <i class="fas fa-arrow-right text-2xl"></i>
-                </a>
+                <a href="https://unique-hospital-bice.vercel.app" target="_blank" class="bg-white/5 p-6 rounded-full hover:bg-yellow-500 transition-all"><i class="fas fa-arrow-right text-2xl"></i></a>
             </div>
 
-            <div class="bento-card p-10">
+            <div class="bento-card p-10 flex flex-col justify-between">
                 <h3 class="text-2xl font-bold mb-4">Capital Medical</h3>
-                <p class="text-gray-400 mb-8">Supply chain and inventory automation for medical distribution agencies.</p>
-                <a href="https://capital-medical-agency.vercel.app" target="_blank" class="btn-premium block text-center py-3 rounded-lg text-xs">Open Dashboard</a>
+                <p class="text-gray-400 mb-6 text-sm">Inventory and supply chain automation.</p>
+                <a href="https://capital-medical-agency.vercel.app" target="_blank" class="btn-premium block text-center py-3 rounded-lg text-xs">Dashboard</a>
             </div>
 
-            <div class="bento-card p-10">
+            <div class="bento-card p-10 flex flex-col justify-between">
                 <h3 class="text-2xl font-bold mb-4 text-yellow-500">CricSense AI</h3>
-                <p class="text-gray-400 mb-8">Data-driven cricket analytics bot for real-time match insights and predictions.</p>
-                <a href="https://my-cricket-bot.vercel.app/" target="_blank" class="bg-white/10 block text-center py-3 rounded-lg text-xs hover:bg-white/20">Launch Bot</a>
+                <p class="text-gray-400 mb-6 text-sm">Real-time cricket analytics bot for automated match insights.</p>
+                <a href="https://my-cricket-bot.vercel.app/" target="_blank" class="bg-white/10 block text-center py-3 rounded-lg text-xs">Launch Bot</a>
             </div>
 
-            <div class="bento-card p-10">
+            <div class="bento-card p-10 flex flex-col justify-between">
                 <h3 class="text-2xl font-bold mb-4">FavApp</h3>
-                <p class="text-gray-400 mb-8">A centralized dashboard for high-performance custom application management.</p>
-                <a href="https://favapp-three.vercel.app" target="_blank" class="text-xs font-bold tracking-[0.2em] uppercase hover:text-yellow-500 transition">Visit App</a>
+                <p class="text-gray-400 mb-6 text-sm">Custom application management hub.</p>
+                <a href="https://favapp-three.vercel.app" target="_blank" class="text-xs font-bold tracking-[0.2em] uppercase">Visit App</a>
             </div>
-
         </div>
     </section>
 
     <footer id="contact" class="max-w-7xl mx-auto px-8 py-32 border-t border-white/5 text-center">
-        <h2 class="text-5xl font-bold mb-6 italic uppercase tracking-tighter">Let's <span class="gold-gradient">Automate.</span></h2>
-        <p class="text-gray-500 text-xl mb-16">Building the next generation of efficient systems.</p>
-        
+        <h2 class="text-5xl font-bold mb-6 italic uppercase tracking-tighter">Let's <span class="gold-gradient">Connect.</span></h2>
         <div class="flex justify-center gap-12 mb-24">
             <a href="https://instagram.com" class="text-4xl text-gray-600 hover:text-pink-500 transition-all hover:scale-125"><i class="fab fa-instagram"></i></a>
             <a href="https://github.com/muahshi" class="text-4xl text-gray-600 hover:text-white transition-all hover:scale-125"><i class="fab fa-github"></i></a>
             <a href="mailto:muahshi7759@axl" class="text-4xl text-gray-600 hover:text-yellow-500 transition-all hover:scale-125"><i class="fas fa-envelope"></i></a>
         </div>
-
-        <p class="text-gray-700 text-[10px] tracking-[0.5em] font-black uppercase tracking-widest">
-            &copy; 2026 Mubashir Hasan | Systems Architect | Bhopal, India
-        </p>
+        <p class="text-gray-700 text-[10px] tracking-[0.5em] font-black uppercase tracking-widest">&copy; 2026 Mubashir Hasan | Bhopal, India</p>
     </footer>
 
 </body>
