@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Hub | Muahshi Digital</title>
+    <meta name="description" content="Explore specialized AI Agents for business automation, lead capture, and SEO.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Syncopate:wght@700&display=swap');
+        
+        :root {
+            --gold: #FFD700;
+            --dark-gold: #B8860B;
+            --glass: rgba(255, 255, 255, 0.02);
+        }
+
+        body {
+            background: #030303;
+            color: #f3f4f6;
+            font-family: 'Space Grotesk', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .syncopate { font-family: 'Syncopate', sans-serif; }
+
+        .gold-gradient {
+            background: linear-gradient(90deg, var(--gold), #FDB931, var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .agent-card {
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border-radius: 30px;
+            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+
+        .agent-card:hover {
+            border-color: rgba(255, 215, 0, 0.3);
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.04);
+            box-shadow: 0 30px 60px -12px rgba(0,0,0,0.5);
+        }
+
+        .status-badge {
+            background: rgba(34, 197, 94, 0.1);
+            color: #22c55e;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .orb {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.05) 0%, transparent 70%);
+            z-index: -1;
+            filter: blur(80px);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="orb" style="top: -100px; right: -100px;"></div>
+    <div class="orb" style="bottom: -100px; left: -100px;"></div>
+
+    <nav class="fixed top-0 w-full z-50 bg-black/50 backdrop-blur-xl border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-black syncopate tracking-tighter gold-gradient uppercase">MUAHSHI.</a>
+            <a href="index.html" class="text-[10px] font-bold tracking-[0.2em] text-gray-400 hover:text-white transition">← BACK TO HOME</a>
+        </div>
+    </nav>
+
+    <header class="max-w-7xl mx-auto px-8 pt-40 pb-20 text-center">
+        <h1 class="text-5xl md:text-7xl font-black syncopate tracking-tighter mb-6 uppercase">
+            AI Agent <span class="gold-gradient">Hub.</span>
+        </h1>
+        <p class="text-gray-500 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+            Deployment center for autonomous digital employees. Each agent is architected to handle specific business complexities 24/7.
+        </p>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-8 pb-32">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="agent-card p-10 flex flex-col justify-between h-full">
+                <div>
+                    <div class="flex justify-between items-start mb-8">
+                        <div class="w-14 h-14 bg-yellow-500/10 rounded-2xl flex items-center justify-center">
+                            <i class="fas fa-headset text-2xl text-yellow-500"></i>
+                        </div>
+                        <span class="status-badge">Live & Active</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 italic uppercase">AI Receptionist</h3>
+                    <p class="text-gray-500 mb-8 text-sm leading-relaxed">
+                        Automated lead capture and booking agent. Handles multi-language inquiries and syncs directly with CRM systems.
+                    </p>
+                </div>
+                <a href="https://ai-receptionist-sandy-six.vercel.app" target="_blank" class="w-full bg-white/5 hover:bg-yellow-500 hover:text-black py-4 rounded-xl text-center font-bold text-xs tracking-widest transition-all">DEPLOY AGENT</a>
+            </div>
+
+            <div class="agent-card p-10 flex flex-col justify-between h-full">
+                <div>
+                    <div class="flex justify-between items-start mb-8">
+                        <div class="w-14 h-14 bg-yellow-500/10 rounded-2xl flex items-center justify-center">
+                            <i class="fas fa-link text-2xl text-yellow-500"></i>
+                        </div>
+                        <span class="status-badge">Live</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 italic uppercase">SEO Backlink Agent</h3>
+                    <p class="text-gray-500 mb-8 text-sm leading-relaxed">
+                        Autonomous outreach agent designed to identify and secure high-authority backlinks for digital ecosystems.
+                    </p>
+                </div>
+                <a href="https://smartshaadi-backlink-agent.vercel.app" target="_blank" class="w-full bg-white/5 hover:bg-yellow-500 hover:text-black py-4 rounded-xl text-center font-bold text-xs tracking-widest transition-all">DEPLOY AGENT</a>
+            </div>
+
+            <div class="agent-card p-10 flex flex-col justify-between h-full">
+                <div>
+                    <div class="flex justify-between items-start mb-8">
+                        <div class="w-14 h-14 bg-yellow-500/10 rounded-2xl flex items-center justify-center">
+                            <i class="fas fa-eye text-2xl text-yellow-500"></i>
+                        </div>
+                        <span class="status-badge">Active</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 italic uppercase">Vibe Analyzer</h3>
+                    <p class="text-gray-500 mb-8 text-sm leading-relaxed">
+                        AI-powered visual feedback engine that optimizes digital aesthetics and user experience sentiment.
+                    </p>
+                </div>
+                <a href="https://vibe-mirror-ai.vercel.app/" target="_blank" class="w-full bg-white/5 hover:bg-yellow-500 hover:text-black py-4 rounded-xl text-center font-bold text-xs tracking-widest transition-all">DEPLOY AGENT</a>
+            </div>
+
+            <div class="agent-card p-10 flex flex-col justify-between h-full">
+                <div>
+                    <div class="flex justify-between items-start mb-8">
+                        <div class="w-14 h-14 bg-yellow-500/10 rounded-2xl flex items-center justify-center">
+                            <i class="fas fa-pills text-2xl text-yellow-500"></i>
+                        </div>
+                        <span class="status-badge">Deployment Ready</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 italic uppercase">Medical Supply Agent</h3>
+                    <p class="text-gray-500 mb-8 text-sm leading-relaxed">
+                        Manages pharmaceutical inventory levels and automates re-ordering processes for medical agencies.
+                    </p>
+                </div>
+                <a href="https://capital-medical-agency.vercel.app" target="_blank" class="w-full bg-white/5 hover:bg-yellow-500 hover:text-black py-4 rounded-xl text-center font-bold text-xs tracking-widest transition-all">DEPLOY AGENT</a>
+            </div>
+
+            <div class="agent-card p-10 flex flex-col justify-between h-full">
+                <div>
+                    <div class="flex justify-between items-start mb-8">
+                        <div class="w-14 h-14 bg-yellow-500/10 rounded-2xl flex items-center justify-center">
+                            <i class="fas fa-chart-line text-2xl text-yellow-500"></i>
+                        </div>
+                        <span class="status-badge">V2 Live</span>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 italic uppercase">CricSense AI</h3>
+                    <p class="text-gray-500 mb-8 text-sm leading-relaxed">
+                        Data-driven agent that analyzes match history and real-time APIs for outcome predictions and betting logic.
+                    </p>
+                </div>
+                <a href="https://my-cricket-bot.vercel.app/" target="_blank" class="w-full bg-white/5 hover:bg-yellow-500 hover:text-black py-4 rounded-xl text-center font-bold text-xs tracking-widest transition-all">DEPLOY AGENT</a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="max-w-7xl mx-auto px-8 py-20 border-t border-white/5 text-center">
+        <p class="text-[10px] font-black syncopate tracking-[0.5em] text-gray-700 uppercase">
+            Muahshi Digital | AI Infrastructure 2026
+        </p>
+    </footer>
+
+</body>
+</html>
+
