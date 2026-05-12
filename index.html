@@ -10,10 +10,11 @@
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
         
         body {
-            background: radial-gradient(circle at top right, #1a1a1a, #050505);
+            background: #050505;
             color: #e5e7eb;
             font-family: 'Space Grotesk', sans-serif;
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         .gold-gradient {
@@ -26,136 +27,216 @@
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(15px);
-            border-radius: 28px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 32px;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         .bento-card:hover {
-            border-color: #FFD700;
-            transform: translateY(-8px);
-            box-shadow: 0 0 40px rgba(255, 215, 0, 0.1);
+            border-color: rgba(255, 215, 0, 0.4);
+            transform: translateY(-10px) scale(1.01);
+            background: rgba(255, 255, 255, 0.04);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
         .btn-premium {
             background: linear-gradient(135deg, #FFD700 0%, #B8860B 100%);
             color: #000;
             font-weight: 700;
-            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.2);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.2);
+            transition: all 0.3s ease;
         }
 
         .profile-img {
             width: 100%;
-            max-width: 500px;
-            border-radius: 30px;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.7);
+            max-width: 550px;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.1));
+        }
+
+        /* Hero Text Animation */
+        .typewriter::after {
+            content: "|";
+            animation: blink 0.7s infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 0.5rem;
         }
     </style>
 </head>
 <body class="antialiased">
 
-    <header class="max-w-7xl mx-auto px-8 pt-20 pb-32 grid md:grid-cols-2 gap-16 items-center">
-        <div class="order-2 md:order-1">
-            <img src="mubu_logo.webp" alt="Mubashir Hasan" class="profile-img" fetchpriority="high">
+    <header class="max-w-7xl mx-auto px-8 pt-20 pb-24 grid md:grid-cols-2 gap-16 items-center">
+        <div class="order-2 md:order-1 relative">
+            <div class="absolute -top-10 -left-10 w-40 h-40 bg-yellow-500/10 blur-[80px]"></div>
+            <img src="mubu_logo.webp" alt="Mubashir Hasan" class="profile-img">
         </div>
         
         <div class="order-1 md:order-2">
-            <h1 class="text-6xl md:text-8xl font-bold leading-[0.9] mb-8 uppercase tracking-tighter">
-                Architecting <br> <span class="gold-gradient">The Future.</span>
+            <div class="inline-block px-4 py-1 border border-yellow-500/30 rounded-full text-[10px] uppercase tracking-[0.3em] mb-6 text-yellow-500 font-bold">
+                Available for Partnerships 2026
+            </div>
+            <h1 class="text-6xl md:text-8xl font-extrabold leading-[0.85] mb-8 uppercase tracking-tighter">
+                Systems <br> <span class="gold-gradient typewriter" id="typewriter">Architect.</span>
             </h1>
-            <p class="text-gray-400 text-xl mb-10 leading-relaxed max-w-lg">
-                I help founders and startups automate workflows using AI agents, custom dashboards, and low-code systems. Professional efficiency with a touch of innovation.
+            <p class="text-gray-400 text-xl mb-12 leading-relaxed max-w-lg">
+                MBA strategist & AI engineer merging business logic with high-performance automation. Based in Bhopal, operating globally.
             </p>
-            <div class="flex gap-6">
-                <a href="#projects" class="btn-premium px-10 py-5 rounded-2xl text-lg">View My Work</a>
-                <a href="mailto:muahshi7759@axl" class="bg-white/5 hover:bg-white/10 px-10 py-5 rounded-2xl border border-white/10 transition backdrop-blur-lg">Hire Me</a>
+            <div class="flex flex-wrap gap-6">
+                <a href="#projects" class="btn-premium px-10 py-5 rounded-2xl text-lg hover:scale-105 active:scale-95">Portfolio</a>
+                <a href="mailto:muahshi7759@axl" class="bg-white/5 hover:bg-white/10 px-10 py-5 rounded-2xl border border-white/10 transition backdrop-blur-lg font-bold">Hire Me</a>
             </div>
         </div>
     </header>
 
-    <section class="max-w-7xl mx-auto px-8 py-20 grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bento-card p-10 border-b-2 border-yellow-500">
-            <i class="fas fa-microchip text-4xl text-yellow-500 mb-6"></i>
-            <h3 class="text-2xl font-bold mb-4">AI Automation</h3>
-            <p class="text-gray-500 text-sm leading-relaxed">Building custom AI agents using n8n, OpenAI, and Claude to automate repetitive business tasks.</p>
-        </div>
-        <div class="bento-card p-10 border-b-2 border-yellow-500">
-            <i class="fab fa-amazon text-4xl text-yellow-500 mb-6"></i>
-            <h3 class="text-2xl font-bold mb-4">Amazon FBA</h3>
-            <p class="text-gray-500 text-sm leading-relaxed">Expert in Amazon USA operations since 2022, managing high-volume international e-commerce.</p>
-        </div>
-        <div class="bento-card p-10 border-b-2 border-yellow-500">
-            <i class="fas fa-graduation-cap text-4xl text-yellow-500 mb-6"></i>
-            <h3 class="text-2xl font-bold mb-4">MBA Strategy</h3>
-            <p class="text-gray-500 text-sm leading-relaxed">Combining business logic with technical architecture for maximum operational efficiency.</p>
+    <section class="max-w-7xl mx-auto px-8 py-16 mb-20 border-y border-white/5 bg-white/[0.01]">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+            <div>
+                <div class="stat-number gold-gradient">4+</div>
+                <div class="text-xs uppercase tracking-widest text-gray-500">Years Industry Exp.</div>
+            </div>
+            <div>
+                <div class="stat-number gold-gradient">150+</div>
+                <div class="text-xs uppercase tracking-widest text-gray-500">Workflows Automated</div>
+            </div>
+            <div>
+                <div class="stat-number gold-gradient">USA</div>
+                <div class="text-xs uppercase tracking-widest text-gray-500">Amazon Operations</div>
+            </div>
+            <div>
+                <div class="stat-number gold-gradient">100%</div>
+                <div class="text-xs uppercase tracking-widest text-gray-500">Remote Delivery</div>
+            </div>
         </div>
     </section>
 
-    <section id="projects" class="max-w-7xl mx-auto px-8 py-20">
-        <h2 class="text-5xl font-bold mb-20 tracking-tighter uppercase">Selected <span class="gold-gradient">Works</span></h2>
+    <section class="max-w-7xl mx-auto px-8 py-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bento-card p-12 relative overflow-hidden group">
+                <div class="absolute -right-4 -top-4 text-8xl opacity-[0.03] group-hover:opacity-[0.08] transition-all"><i class="fas fa-robot"></i></div>
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="w-8 h-[2px] bg-yellow-500"></span> AI Automation
+                </h3>
+                <p class="text-gray-500 leading-relaxed italic">Developing autonomous agents using n8n, Groq, and custom API integrations to eliminate manual churn.</p>
+            </div>
+            
+            <div class="bento-card p-12 relative overflow-hidden group border-t-4 border-yellow-500/50">
+                <div class="absolute -right-4 -top-4 text-8xl opacity-[0.03] group-hover:opacity-[0.08] transition-all"><i class="fab fa-amazon"></i></div>
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3 text-yellow-500">
+                    Amazon FBA
+                </h3>
+                <p class="text-gray-500 leading-relaxed italic">Scaling international e-commerce brands on Amazon USA since 2022. Expert in logistics & global reselling.</p>
+            </div>
+
+            <div class="bento-card p-12 relative overflow-hidden group">
+                <div class="absolute -right-4 -top-4 text-8xl opacity-[0.03] group-hover:opacity-[0.08] transition-all"><i class="fas fa-chart-line"></i></div>
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="w-8 h-[2px] bg-yellow-500"></span> MBA Strategy
+                </h3>
+                <p class="text-gray-500 leading-relaxed italic">Bridging the gap between code and ROI. We don't just build; we build to scale and optimize space.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="max-w-7xl mx-auto px-8 py-24">
+        <div class="flex justify-between items-end mb-20">
+            <div>
+                <h2 class="text-6xl font-black uppercase tracking-tighter leading-none">Portfolio</h2>
+                <p class="text-yellow-500 font-bold tracking-[0.3em] uppercase mt-4 text-[10px]">Case Studies & Products</p>
+            </div>
+        </div>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bento-card p-10 md:col-span-2 flex flex-col justify-between border-t-2 border-yellow-500">
+            <div class="bento-card p-12 md:col-span-2 flex flex-col justify-between border-l-8 border-yellow-500">
                 <div>
-                    <h3 class="text-4xl font-bold mb-4">Vibe Mirror AI</h3>
-                    <p class="text-gray-400 text-lg mb-8 leading-relaxed">Advanced AI-driven visual feedback and content analysis system.</p>
+                    <h3 class="text-5xl font-black mb-6">Vibe Mirror AI</h3>
+                    <p class="text-gray-400 text-xl mb-10 leading-relaxed max-w-xl">A sophisticated visual feedback engine that uses AI to analyze and optimize digital content vibes in real-time.</p>
                 </div>
-                <a href="https://vibe-mirror-ai.vercel.app/" target="_blank" class="btn-premium px-8 py-4 rounded-xl text-center self-start">Open Project</a>
+                <a href="https://vibe-mirror-ai.vercel.app/" target="_blank" class="btn-premium px-10 py-4 rounded-2xl text-center self-start">Launch Engine</a>
             </div>
 
-            <div class="bento-card p-10 flex flex-col justify-between">
+            <div class="bento-card p-12 flex flex-col justify-between bg-yellow-500/[0.02]">
                 <div>
-                    <h3 class="text-2xl font-bold mb-4 text-yellow-500">SmartShaadi.ai</h3>
-                    <p class="text-gray-400 leading-relaxed mb-6">AI Wedding Planner ecosystem with automated SEO strategies.</p>
+                    <h3 class="text-3xl font-bold mb-6 gold-gradient">SmartShaadi.ai</h3>
+                    <p class="text-gray-400 leading-relaxed mb-10">AI-driven wedding planning platform for the modern Indian market. SEO-optimized for Bhopal & beyond.</p>
                 </div>
-                <a href="https://smartshaadi.online" target="_blank" class="text-sm font-bold tracking-widest uppercase hover:text-white transition">Visit Platform →</a>
+                <a href="https://smartshaadi.online" target="_blank" class="font-bold tracking-widest uppercase hover:text-white transition text-xs">Explore Ecosystem →</a>
             </div>
 
-            <div class="bento-card p-10 flex flex-col justify-between">
+            <div class="bento-card p-12 flex flex-col justify-between">
                 <div>
-                    <h3 class="text-2xl font-bold mb-4">AI Receptionist</h3>
-                    <p class="text-gray-400 leading-relaxed mb-6">Autonomous booking agent handling 24/7 client inquiries.</p>
+                    <h3 class="text-3xl font-bold mb-6">AI Agent</h3>
+                    <p class="text-gray-400 leading-relaxed mb-10">Custom receptionist agent for 24/7 lead capture and booking management.</p>
                 </div>
-                <a href="https://ai-receptionist-sandy-six.vercel.app" target="_blank" class="text-sm font-bold tracking-widest uppercase text-yellow-500">Open Live Agent →</a>
+                <a href="https://ai-receptionist-sandy-six.vercel.app" target="_blank" class="text-yellow-500 font-bold uppercase tracking-widest text-xs">Deploy Agent →</a>
             </div>
 
-            <div class="bento-card p-10 md:col-span-2 flex items-center justify-between">
+            <div class="bento-card p-12 md:col-span-2 flex items-center justify-between">
                 <div>
-                    <h3 class="text-2xl font-bold mb-4 text-yellow-500">Unique Hospital</h3>
-                    <p class="text-gray-400 leading-relaxed max-w-md">Healthcare operations and patient management system.</p>
+                    <h3 class="text-3xl font-bold mb-4 gold-gradient">Unique Hospital</h3>
+                    <p class="text-gray-400 leading-relaxed max-w-md">Architecting digital health systems for optimized patient flow and hospital management.</p>
                 </div>
-                <a href="https://unique-hospital-bice.vercel.app" target="_blank" class="bg-white/5 p-6 rounded-full hover:bg-yellow-500 transition-all"><i class="fas fa-arrow-right text-2xl"></i></a>
+                <a href="https://unique-hospital-bice.vercel.app" target="_blank" class="bg-white/5 p-8 rounded-full hover:bg-yellow-500 hover:text-black transition-all">
+                    <i class="fas fa-arrow-right text-3xl"></i>
+                </a>
             </div>
 
-            <div class="bento-card p-10 flex flex-col justify-between">
+            <div class="bento-card p-12 flex flex-col justify-between">
                 <h3 class="text-2xl font-bold mb-4">Capital Medical</h3>
-                <p class="text-gray-400 mb-6 text-sm">Inventory and supply chain automation.</p>
-                <a href="https://capital-medical-agency.vercel.app" target="_blank" class="btn-premium block text-center py-3 rounded-lg text-xs">Dashboard</a>
+                <p class="text-gray-400 mb-10 text-sm">Automating medical agency supply chains with smart inventory tracking.</p>
+                <a href="https://capital-medical-agency.vercel.app" target="_blank" class="btn-premium block text-center py-4 rounded-xl text-xs uppercase tracking-widest">Dashboard</a>
             </div>
 
-            <div class="bento-card p-10 flex flex-col justify-between">
-                <h3 class="text-2xl font-bold mb-4 text-yellow-500">CricSense AI</h3>
-                <p class="text-gray-400 mb-6 text-sm">Real-time cricket analytics bot for automated match insights.</p>
-                <a href="https://my-cricket-bot.vercel.app/" target="_blank" class="bg-white/10 block text-center py-3 rounded-lg text-xs">Launch Bot</a>
+            <div class="bento-card p-12 flex flex-col justify-between border-t-2 border-yellow-500/20">
+                <h3 class="text-2xl font-bold mb-4 gold-gradient">CricSense AI</h3>
+                <p class="text-gray-400 mb-10 text-sm">Leveraging cricket data APIs for real-time match predictions and betting logic dashboards.</p>
+                <a href="https://my-cricket-bot.vercel.app/" target="_blank" class="bg-white/5 border border-white/10 block text-center py-4 rounded-xl text-xs font-bold hover:bg-white/20 transition">Open Bot</a>
             </div>
 
-            <div class="bento-card p-10 flex flex-col justify-between">
-                <h3 class="text-2xl font-bold mb-4">FavApp</h3>
-                <p class="text-gray-400 mb-6 text-sm">Custom application management hub.</p>
-                <a href="https://favapp-three.vercel.app" target="_blank" class="text-xs font-bold tracking-[0.2em] uppercase">Visit App</a>
+            <div class="bento-card p-12 flex flex-col justify-between">
+                <h3 class="text-2xl font-bold mb-4">FavApp Hub</h3>
+                <p class="text-gray-400 mb-10 text-sm">A centralized command center for high-performance automation scripts.</p>
+                <a href="https://favapp-three.vercel.app" target="_blank" class="text-xs font-bold tracking-[0.3em] uppercase text-gray-500 hover:text-white transition">Visit Hub</a>
             </div>
         </div>
     </section>
 
     <footer id="contact" class="max-w-7xl mx-auto px-8 py-32 border-t border-white/5 text-center">
-        <h2 class="text-5xl font-bold mb-6 italic uppercase tracking-tighter">Let's <span class="gold-gradient">Connect.</span></h2>
-        <div class="flex justify-center gap-12 mb-24">
+        <h2 class="text-6xl font-black mb-6 italic uppercase tracking-tighter">Let's <span class="gold-gradient">Connect.</span></h2>
+        <div class="flex justify-center gap-16 mb-24">
             <a href="https://instagram.com" class="text-4xl text-gray-600 hover:text-pink-500 transition-all hover:scale-125"><i class="fab fa-instagram"></i></a>
             <a href="https://github.com/muahshi" class="text-4xl text-gray-600 hover:text-white transition-all hover:scale-125"><i class="fab fa-github"></i></a>
             <a href="mailto:muahshi7759@axl" class="text-4xl text-gray-600 hover:text-yellow-500 transition-all hover:scale-125"><i class="fas fa-envelope"></i></a>
         </div>
-        <p class="text-gray-700 text-[10px] tracking-[0.5em] font-black uppercase tracking-widest">&copy; 2026 Mubashir Hasan | Bhopal, India</p>
+        <div class="text-gray-800 text-[10px] tracking-[0.8em] font-black uppercase">
+            Mubashir Hasan | AI Automation & Systems Architect | Bhopal, India
+        </div>
     </footer>
+
+    <script>
+        // Simple Typewriter Effect
+        const text = document.getElementById('typewriter');
+        const phrases = ['Architect.', 'Engineer.', 'Strategist.'];
+        let i = 0; let j = 0; let current = ''; let isDeleting = false;
+
+        function type() {
+            current = phrases[i];
+            if (isDeleting) {
+                text.textContent = current.substring(0, j--);
+                if (j < 0) { isDeleting = false; i = (i + 1) % phrases.length; j = 0; }
+            } else {
+                text.textContent = current.substring(0, j++);
+                if (j > current.length) { isDeleting = true; setTimeout(type, 2000); return; }
+            }
+            setTimeout(type, isDeleting ? 100 : 200);
+        }
+        type();
+    </script>
 
 </body>
 </html>
