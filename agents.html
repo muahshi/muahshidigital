@@ -7,53 +7,98 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Syncopate:wght@700&display=swap');
         body { background: #030303; color: #f3f4f6; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
         .syncopate { font-family: 'Syncopate', sans-serif; }
         .gold-gradient { background: linear-gradient(90deg, #FFD700, #FDB931, #FFD700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .bento-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(20px); border-radius: 30px; transition: 0.4s; }
-        .bento-card:hover { border-color: #FFD700; transform: translateY(-10px); }
+        .bento-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(20px); border-radius: 40px; transition: all 0.4s ease; }
+        .bento-card:hover { border-color: rgba(255, 215, 0, 0.3); transform: translateY(-5px); }
         .btn-premium { background: linear-gradient(135deg, #FFD700 0%, #B8860B 100%); color: #000; font-weight: 700; }
     </style>
 </head>
 <body class="antialiased">
 
-    <nav class="fixed top-0 w-full z-50 p-6">
-        <a href="index.html" class="text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-white transition">← Back to Portfolio</a>
+    <!-- Nav -->
+    <nav class="fixed top-0 w-full z-50 p-8 flex justify-between items-center bg-black/50 backdrop-blur-md">
+        <a href="index.html" class="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-500 hover:text-white transition">← Portfolio</a>
+        <div class="text-xl font-black syncopate gold-gradient">AGENT.HUB</div>
+        <a href="mailto:muahshi7759@axl" class="text-[10px] font-bold border border-yellow-500/20 px-6 py-2 rounded-full hover:bg-yellow-500 hover:text-black transition uppercase tracking-widest">Hire Me</a>
     </nav>
 
-    <header class="max-w-7xl mx-auto px-6 pt-32 pb-20 text-center">
-        <h1 class="text-6xl md:text-8xl font-black syncopate gold-gradient uppercase mb-6" data-aos="zoom-in">Agent Hub.</h1>
-        <p class="text-gray-400 text-xl max-w-2xl mx-auto font-light">Deploying autonomous AI agents to transform business workflows 24/7.</p>
+    <!-- Hero -->
+    <header class="max-w-7xl mx-auto px-8 pt-48 pb-20">
+        <div data-aos="fade-up">
+            <h1 class="text-5xl md:text-8xl font-black syncopate uppercase leading-none mb-10">Autonomous <br><span class="gold-gradient">Workers.</span></h1>
+            <p class="text-gray-400 text-xl md:text-2xl font-light leading-relaxed max-w-3xl">Architecting specialized AI agents that execute complex business processes, from lead capture to automated SEO and pharmaceutical logistics.</p>
+        </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 pb-32">
-        <!-- Agent 1 -->
-        <div class="bento-card p-12" data-aos="fade-right">
-            <div class="flex justify-between items-start mb-10">
-                <i class="fas fa-robot text-4xl text-yellow-500"></i>
-                <span class="text-[10px] font-bold uppercase tracking-widest bg-yellow-500/10 text-yellow-500 px-4 py-2 rounded-full">Active Now</span>
+    <!-- Agent Grid -->
+    <section class="max-w-7xl mx-auto px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- AI Receptionist -->
+            <div class="bento-card p-10 flex flex-col justify-between border-l-4 border-yellow-500" data-aos="fade-up">
+                <div>
+                    <div class="flex justify-between mb-8">
+                        <i class="fas fa-headset text-2xl text-yellow-500"></i>
+                        <span class="text-[9px] bg-yellow-500/10 text-yellow-500 px-3 py-1 rounded-full uppercase font-bold">24/7 Live</span>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4 italic uppercase">AI Receptionist</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-8">Automated lead qualification and receptionist system handling inbound queries via smart logic branches.</p>
+                </div>
+                <a href="https://ai-receptionist-sandy-six.vercel.app" target="_blank" class="text-center bg-white/5 py-4 rounded-2xl hover:bg-yellow-500 hover:text-black transition-all font-bold text-[10px] uppercase tracking-widest">Deploy Agent →</a>
             </div>
-            <h3 class="text-4xl font-black syncopate mb-6">Receptionist AI</h3>
-            <p class="text-gray-400 text-lg mb-10 leading-relaxed">Smart lead capture agent that qualifies prospects, answers FAQs, and books meetings while you sleep.</p>
-            <button class="btn-premium px-10 py-5 rounded-2xl w-full text-xs uppercase tracking-widest">Deploy Demo</button>
-        </div>
 
-        <!-- Agent 2 -->
-        <div class="bento-card p-12 border-t-4 border-yellow-500" data-aos="fade-left">
-            <div class="flex justify-between items-start mb-10">
-                <i class="fas fa-chart-line text-4xl text-yellow-500"></i>
-                <span class="text-[10px] font-bold uppercase tracking-widest bg-white/5 text-gray-500 px-4 py-2 rounded-full">Beta Access</span>
+            <!-- Capital Medical Agency -->
+            <div class="bento-card p-10 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                <div>
+                    <div class="flex justify-between mb-8">
+                        <i class="fas fa-pills text-2xl text-yellow-500"></i>
+                        <span class="text-[9px] bg-blue-500/10 text-blue-500 px-3 py-1 rounded-full uppercase font-bold">Enterprise</span>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4 italic uppercase">Capital Medical Agency</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-8">Strategic pharmaceutical distribution and agency management system with automated inventory logic.</p>
+                </div>
+                <a href="https://capital-medical-agency-khaki.vercel.app" target="_blank" class="text-center bg-white/5 py-4 rounded-2xl hover:bg-yellow-500 hover:text-black transition-all font-bold text-[10px] uppercase tracking-widest">View System →</a>
             </div>
-            <h3 class="text-4xl font-black syncopate mb-6">Data Agent</h3>
-            <p class="text-gray-400 text-lg mb-10 leading-relaxed">Autonomous analyst that syncs n8n workflows with Supabase for real-time business dashboards.</p>
-            <button class="bg-white/5 text-white border border-white/10 px-10 py-5 rounded-2xl w-full text-xs uppercase tracking-widest">Join Waitlist</button>
+
+            <!-- SmartShaadi SEO Agent -->
+            <div class="bento-card p-10 flex flex-col justify-between border-t-2 border-yellow-500/30" data-aos="fade-up">
+                <div>
+                    <div class="flex justify-between mb-8">
+                        <i class="fas fa-link text-2xl text-yellow-500"></i>
+                        <span class="text-[9px] bg-green-500/10 text-green-500 px-3 py-1 rounded-full uppercase font-bold">SEO Automation</span>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4 italic uppercase">Backlink Agent</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-8">Specialized SmartShaadi agent that autonomously handles backlink strategy and local SEO optimization for Bhopal.</p>
+                </div>
+                <a href="https://smartshaadi-backlink-agent.vercel.app" target="_blank" class="text-center bg-white/5 py-4 rounded-2xl hover:bg-yellow-500 hover:text-black transition-all font-bold text-[10px] uppercase tracking-widest">Analyze Links →</a>
+            </div>
+
+            <!-- SmartShaadi Blog Writer -->
+            <div class="bento-card p-10 flex flex-col justify-between border-b-4 border-yellow-500" data-aos="fade-up" data-aos-delay="100">
+                <div>
+                    <div class="flex justify-between mb-8">
+                        <i class="fas fa-pen-nib text-2xl text-yellow-500"></i>
+                        <span class="text-[9px] bg-purple-500/10 text-purple-500 px-3 py-1 rounded-full uppercase font-bold">Content Agent</span>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4 italic uppercase">Auto-Blog Writer</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-8">Autonomous content engine generating high-detail blogs with internal linking and Bhopal-specific case studies.</p>
+                </div>
+                <a href="https://smartshaadi.online" target="_blank" class="btn-premium py-4 rounded-2xl text-center font-bold text-[10px] uppercase tracking-widest shadow-lg shadow-yellow-500/10">View Live Blog</a>
+            </div>
+
         </div>
-    </main>
+    </section>
+
+    <!-- Footer -->
+    <footer class="max-w-7xl mx-auto px-8 py-20 text-center">
+        <p class="text-[10px] tracking-[0.5em] text-gray-700 font-bold uppercase">© 2026 MUAHSHI DIGITAL LLP | Bhopal, India</p>
+    </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>AOS.init();</script>
+    <script>AOS.init({ duration: 1000, once: true });</script>
 </body>
 </html>
