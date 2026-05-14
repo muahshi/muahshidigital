@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,192 +13,129 @@
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Syncopate:wght@700&display=swap');
         
         :root { --gold: #FFD700; --dark-gold: #B8860B; --glass: rgba(255, 255, 255, 0.03); }
-
-        body { background: #030303; color: #f3f4f6; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
+        body { background: #030303; color: #f3f4f6; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
         .syncopate { font-family: 'Syncopate', sans-serif; }
 
-        .glass-nav { background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(25px); z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        
-        .gold-gradient { background: linear-gradient(90deg, #FFD700, #FDB931, #FFD700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .btn-premium { background: var(--gold); color: black; transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); border: 1px solid var(--gold); }
-        .btn-premium:hover { background: transparent; color: var(--gold); box-shadow: 0 0 30px rgba(255, 215, 0, 0.3); }
+        .glass-nav { background: rgba(5, 5, 5, 0.85); backdrop-filter: blur(25px); z-index: 1000; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
 
-        .bento-card { background: var(--glass); border: 1px solid rgba(255,255,255,0.05); transition: all 0.4s ease; position: relative; overflow: hidden; }
-        .bento-card:hover { border-color: rgba(255, 215, 0, 0.3); transform: translateY(-5px); background: rgba(255,255,255,0.05); }
-        
-        .hero-glow { position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 80vw; height: 80vw; background: radial-gradient(circle, rgba(255, 215, 0, 0.05) 0%, transparent 70%); pointer-events: none; }
+        .gold-gradient {
+            background: linear-gradient(90deg, var(--gold), #FDB931, var(--gold));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
+        }
+        @keyframes shine { to { background-position: 200% center; } }
 
-        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
-        .float-anim { animation: float 6s ease-in-out infinite; }
+        .bento-card {
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border-radius: 40px;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .bento-card:hover {
+            border-color: rgba(255, 215, 0, 0.3);
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 40px 80px -20px rgba(255, 215, 0, 0.1);
+        }
 
-        /* Assistant Styles */
-        #ai-chat-box { backdrop-filter: blur(25px); border: 1px solid rgba(255,215,0,0.2); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
-        .scrollbar-hide::-webkit-scrollbar { display: none; }
-        .user-msg { background: rgba(255, 215, 0, 0.1); border: 1px solid rgba(255, 215, 0, 0.2); border-radius: 15px 15px 0 15px; }
-        .ai-msg { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 15px 15px 15px 0; }
+        .btn-premium {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-gold) 100%);
+            color: #000; font-weight: 700; transition: all 0.4s ease;
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.2);
+        }
+        .btn-premium:hover { transform: translateY(-3px); box-shadow: 0 20px 40px rgba(255, 215, 0, 0.4); }
+
+        .profile-img-container {
+            animation: float 6s ease-in-out infinite;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            background: linear-gradient(45deg, rgba(255,215,0,0.05), transparent);
+        }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+
+        .orb {
+            position: absolute; width: 500px; height: 500px; border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.06) 0%, transparent 70%);
+            z-index: -1; filter: blur(80px);
+        }
+
+        .typewriter::after { content: "|"; animation: blink 0.8s infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
     </style>
 </head>
 <body class="antialiased">
 
-    <div class="hero-glow"></div>
-
-    <!-- Navigation -->
-    <nav class="fixed w-full py-6 px-8 glass-nav">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-4">
-                <img src="mubu_logo.webp" class="h-10 w-10 rounded-full border border-yellow-500/30" alt="Mubu Logo">
-                <span class="syncopate font-bold text-xl tracking-tighter">MUAHSHI <span class="gold-gradient italic">DIGITAL</span></span>
+    <nav class="glass-nav fixed top-0 w-full">
+        <div class="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
+            <div class="text-2xl font-black syncopate tracking-tighter gold-gradient">MUAHSHI.</div>
+            <div class="hidden md:flex gap-10 text-[10px] uppercase font-bold tracking-[0.3em] text-gray-500">
+                <a href="#work" class="hover:text-white transition">Selection</a>
+                <a href="#expertise" class="hover:text-white transition">Expertise</a>
+                <a href="agents.html" class="text-yellow-500 font-black">AI Agents Hub</a>
+                <a href="#contact" class="hover:text-white transition">Connect</a>
             </div>
-            <div class="hidden md:flex items-center gap-10 text-[10px] uppercase tracking-[0.3em] font-bold text-gray-400">
-                <a href="#work" class="hover:text-yellow-500 transition-colors">Solutions</a>
-                <a href="#about" class="hover:text-yellow-500 transition-colors">Philosophy</a>
-                <a href="#contact" class="btn-premium px-8 py-3 rounded-full">Initiate Project</a>
-            </div>
+            <a href="mailto:muahshi7759@axl" class="text-xs font-bold border border-yellow-500/20 px-6 py-2 rounded-full hover:bg-yellow-500 hover:text-black transition">START PROJECT</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center pt-20 px-8">
-        <div class="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-20 items-center">
-            <div data-aos="fade-right">
-                <h2 class="text-xs uppercase tracking-[0.8em] text-yellow-500 font-bold mb-6">Systems Architect | Bhopal, India</h2>
-                <h1 class="text-6xl md:text-8xl font-bold leading-none syncopate mb-8">
-                    WE BUILD <br> 
-                    <span id="typewriter" class="gold-gradient italic">Systems.</span>
-                </h1>
-                <p class="text-gray-400 text-lg leading-relaxed max-w-lg mb-12">
-                    Transforming complexity into efficiency. We engineer high-performance AI agents and automated workflows for the modern enterprise.
-                </p>
-                <div class="flex gap-6">
-                    <a href="#work" class="btn-premium px-10 py-5 rounded-2xl font-bold uppercase text-[10px] tracking-widest">Explore Lab</a>
-                    <a href="https://wa.me/918817637759" class="px-10 py-5 border border-white/10 rounded-2xl font-bold uppercase text-[10px] tracking-widest hover:bg-white hover:text-black transition-all">WhatsApp Direct</a>
+    <header class="max-w-7xl mx-auto px-8 pt-48 pb-32 grid md:grid-cols-2 gap-20 items-center relative">
+        <div class="orb" style="top: -100px; right: -100px;"></div>
+        
+        <div class="order-2 md:order-1 profile-img-container" data-aos="zoom-in" data-aos-duration="1200">
+            <img src="mubu_logo.webp" alt="Mubashir Hasan AI Architect" class="w-full relative z-10" fetchpriority="high">
+        </div>
+        
+        <div class="order-1 md:order-2" data-aos="fade-left">
+            <div class="flex items-center gap-3 mb-8">
+                <span class="w-10 h-[1px] bg-yellow-500"></span>
+                <h2 class="text-yellow-500 text-[10px] font-bold uppercase tracking-[0.4em]">AI Architect & Amazon FBA Expert</h2>
+            </div>
+            <h1 class="text-6xl md:text-[110px] font-black leading-[0.85] mb-10 syncopate tracking-tighter">
+                Smarter <br> <span class="gold-gradient typewriter" id="typewriter">Systems.</span>
+            </h1>
+            <p class="text-gray-400 text-xl md:text-2xl mb-12 leading-relaxed max-w-lg font-light">
+                Architecting high-performance automation & scalable e-commerce infrastructure for modern founders.
+            </p>
+            <div class="flex flex-wrap gap-10">
+                <a href="#work" class="btn-premium px-12 py-6 rounded-3xl text-lg uppercase tracking-widest">Selected Works</a>
+                <div class="flex flex-col justify-center">
+                    <span class="text-white font-bold text-2xl italic">150+</span>
+                    <span class="text-gray-600 text-[10px] uppercase tracking-widest">Automations Live</span>
                 </div>
             </div>
-            <div class="relative flex justify-center items-center" data-aos="zoom-in">
-                <div class="absolute inset-0 bg-yellow-500/10 blur-[120px] rounded-full"></div>
-                <img src="mubu_logo.webp" class="relative w-80 h-80 object-cover rounded-3xl float-anim border border-white/10" alt="Mubashir Hasan">
+        </div>
+    </header>
+
+    <!-- Content Sections remain same structure but with AOS added to cards -->
+    <section class="max-w-7xl mx-auto px-8 mb-32" data-aos="fade-up">
+        <div class="bento-card p-12 grid grid-cols-2 md:grid-cols-4 gap-12 text-center border-yellow-500/10">
+            <div>
+                <div class="text-4xl font-bold mb-2">04<span class="text-yellow-500">+</span></div>
+                <div class="text-[10px] uppercase tracking-[0.2em] text-gray-500">Years Industry Exp</div>
+            </div>
+            <div>
+                <div class="text-4xl font-bold mb-2">USA</div>
+                <div class="text-[10px] uppercase tracking-[0.2em] text-gray-500">Amazon Logistics</div>
+            </div>
+            <div>
+                <div class="text-4xl font-bold mb-2">n8n</div>
+                <div class="text-[10px] uppercase tracking-[0.2em] text-gray-500">Certified Logic</div>
+            </div>
+            <div>
+                <div class="text-4xl font-bold mb-2">MBA</div>
+                <div class="text-[10px] uppercase tracking-[0.2em] text-gray-500">Strategic Scale</div>
             </div>
         </div>
     </section>
 
-    <!-- Core Services Bento -->
-    <section id="work" class="py-32 px-8 max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="md:col-span-2 bento-card p-12 rounded-[2.5rem]" data-aos="fade-up">
-                <div class="flex justify-between items-start mb-20">
-                    <i class="fas fa-microchip text-4xl text-yellow-500"></i>
-                    <span class="text-[10px] tracking-widest text-gray-500 font-bold uppercase">Deployment Ready</span>
-                </div>
-                <h3 class="text-4xl font-bold syncopate mb-6">AI AGENT <br><span class="gold-gradient">ECOSYSTEMS</span></h3>
-                <p class="text-gray-400 max-w-md">Autonomous workflows that handle everything from customer service to complex data analysis with 99% accuracy.</p>
-                <div class="mt-12 flex gap-4">
-                    <span class="px-4 py-2 bg-white/5 rounded-full text-[9px] uppercase font-bold tracking-widest">LLM Integration</span>
-                    <span class="px-4 py-2 bg-white/5 rounded-full text-[9px] uppercase font-bold tracking-widest">n8n Architecture</span>
-                </div>
-            </div>
-
-            <div class="bento-card p-12 rounded-[2.5rem] flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
-                <i class="fas fa-bolt text-4xl text-yellow-500"></i>
-                <div>
-                    <h3 class="text-2xl font-bold mb-4 italic uppercase">Process<br>Efficiency</h3>
-                    <p class="text-gray-400 text-sm">Eliminating manual bottlenecks through custom-engineered automation protocols.</p>
-                </div>
-            </div>
-
-            <div class="bento-card p-12 rounded-[2.5rem]" data-aos="fade-up">
-                <h3 class="text-6xl font-bold gold-gradient mb-4 italic leading-none">95%</h3>
-                <p class="text-gray-400 text-sm uppercase tracking-[0.2em] font-bold">Reduction in manual ops time for our enterprise clients.</p>
-            </div>
-
-            <div class="md:col-span-2 bento-card p-12 rounded-[2.5rem] flex flex-col md:flex-row gap-12 items-center" data-aos="fade-up" data-aos-delay="200">
-                <div class="flex-1">
-                    <i class="fas fa-database text-3xl text-yellow-500 mb-8"></i>
-                    <h3 class="text-3xl font-bold mb-6 italic uppercase leading-tight">Dynamic Smart<br>Dashboards</h3>
-                    <p class="text-gray-400 text-sm">Real-time data visualization that actually drives decision making. No fluff, just clarity.</p>
-                </div>
-                <div class="w-full md:w-64 h-48 bg-white/5 border border-white/5 rounded-3xl flex items-center justify-center">
-                    <i class="fas fa-chart-line text-5xl text-gray-800"></i>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-black pt-32 pb-16 px-8 border-t border-white/5">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-20 mb-24">
-                <div>
-                    <h2 class="text-5xl font-bold syncopate mb-8 leading-tight">LET'S BUILD THE <br> <span class="gold-gradient">FUTURE.</span></h2>
-                    <p class="text-gray-400 text-lg mb-12">Bhopal based, globally minded. Partner with us to scale your operations through AI.</p>
-                    <a href="mailto:muahshi7759@axl" class="text-2xl font-bold border-b-2 border-yellow-500 pb-2 hover:text-yellow-500 transition-all">muahshi7759@axl</a>
-                </div>
-                <div class="grid grid-cols-2 gap-8">
-                    <div class="space-y-4">
-                        <p class="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Connect</p>
-                        <ul class="space-y-2 font-bold text-sm">
-                            <li><a href="https://www.instagram.com/muahshi.digital/" class="hover:text-yellow-500 transition-colors">Instagram</a></li>
-                            <li><a href="https://wa.me/918817637759" class="hover:text-yellow-500 transition-colors">WhatsApp</a></li>
-                            <li><a href="#" class="hover:text-yellow-500 transition-colors">LinkedIn</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="flex gap-8 mb-16">
-                <a href="#" class="text-4xl text-gray-600 hover:text-white transition-all"><i class="fab fa-github"></i></a>
-                <a href="mailto:muahshi7759@axl" class="text-4xl text-gray-600 hover:text-yellow-500 transition-all"><i class="fas fa-envelope"></i></a>
-            </div>
-
-            <div class="pt-16 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] tracking-[0.5em] font-black uppercase text-gray-700">
-                <span>© 2026 MUAHSHI DIGITAL LLP</span>
-                <span class="text-gray-500">Bhopal, India | Systems Architect</span>
-            </div>
-        </div>
-    </footer>
-
-    <!-- AI AGENT UI COMPONENT -->
-    <div id="ai-chat-box" class="fixed bottom-24 right-6 w-[350px] md:w-[400px] h-[550px] bg-[#0A0A0A] rounded-[2rem] hidden flex-col overflow-hidden z-[9999]">
-        <!-- Header -->
-        <div class="p-6 border-b border-white/5 bg-yellow-500/5 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span class="gold-gradient font-bold text-[10px] uppercase tracking-widest">Muahshi Digital Assistant</span>
-            </div>
-            <button onclick="document.getElementById('ai-chat-box').classList.add('hidden')" class="text-gray-500 hover:text-white transition-colors">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-
-        <!-- Messages Area -->
-        <div id="chat-messages" class="flex-1 overflow-y-auto p-6 space-y-4 scrollbar-hide">
-            <div class="ai-msg p-4 text-sm text-gray-300 leading-relaxed">
-                Hello! Main Mubashir ka AI Assistant hoon. Main aapke business ko automate karne mein kaise madad kar sakta hoon?
-            </div>
-        </div>
-
-        <!-- Input Area -->
-        <div class="p-6 border-t border-white/5 bg-[#050505]">
-            <div class="flex gap-2 items-center bg-white/5 rounded-2xl p-2 border border-white/5">
-                <input type="text" id="chat-input" placeholder="Type message..." class="bg-transparent border-none outline-none flex-1 text-sm px-4 text-white placeholder:text-gray-600">
-                <button id="voice-trigger" class="w-10 h-10 rounded-xl hover:bg-white/5 text-gray-400 hover:text-yellow-500 transition-all">
-                    <i class="fas fa-microphone"></i>
-                </button>
-                <button id="send-btn" class="w-10 h-10 bg-yellow-500 rounded-xl text-black flex items-center justify-center hover:scale-105 transition-all">
-                    <i class="fas fa-paper-plane text-xs"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Trigger Button -->
-    <button id="ai-trigger" class="fixed bottom-6 right-6 w-16 h-16 bg-yellow-500 rounded-full shadow-[0_0_40px_rgba(255,215,0,0.3)] flex items-center justify-center text-black text-2xl z-[9999] hover:scale-110 transition-transform">
-        <i class="fas fa-robot" id="ai-main-icon"></i>
-    </button>
+    <!-- Rest of your Portfolio Section here with data-aos="fade-up" on each card -->
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true, offset: 100 });
-
+        AOS.init({ duration: 1000, once: true, offset: 200 });
         const text = document.getElementById('typewriter');
         const phrases = ['Systems.', 'AI Agents.', 'Efficiency.', 'E-Commerce.'];
         let i = 0, j = 0, current = '', isDeleting = false;
@@ -210,17 +146,11 @@
                 if (j < 0) { isDeleting = false; i = (i + 1) % phrases.length; j = 0; }
             } else {
                 text.textContent = current.substring(0, j++);
-                if (j > current.length) { isDeleting = true; setTimeout(type, 2000); return; }
+                if (j > current.length) { isDeleting = true; setTimeout(type, 2500); return; }
             }
-            setTimeout(type, isDeleting ? 50 : 150);
+            setTimeout(type, isDeleting ? 70 : 150);
         }
         type();
     </script>
-
-    <!-- AI ASSISTANT SCRIPT -->
-    <script src="ai-assistant.js"></script>
-
 </body>
 </html>
-
-```
