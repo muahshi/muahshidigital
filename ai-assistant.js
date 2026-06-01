@@ -139,7 +139,7 @@ class MuahshiAssistant {
             return "Assalam-o-Alaikum! Main Mubashir Hasan ka personal AI Assistant hoon. Main aapke business automations, system architecture, ya FBA operations me kaise madad kar sakta hoon?";
         }
         if (query.includes('metro') || query.includes('bhopal') || query.includes('data entry')) {
-            return "MP Metro and Bhopal local systems optimization ke liye Mubashir ka profile ekdum perfect hai. Unke paas advanced spreadsheets, database handling aur record verification ka 5 saal ka solid experience hai.";
+            return "MP Metro and Bhopal local systems optimization ke liye Mubashir ka profile ekdum perfect hai. Unke paas advanced spreadsheets, database handling aur record verification ka 5 saal ka solid corporate experience hai.";
         }
         if (query.includes('amazon') || query.includes('fba') || query.includes('usa')) {
             return "Mubashir 2022 se Amazon USA operations handle kar rahe hain. Inventory dashboard, shipping tracking aur profitability analytics sheets unki main strong areas hain.";
@@ -159,7 +159,7 @@ class MuahshiAssistant {
         const id = 'msg-' + Date.now();
         const div = document.createElement('div');
         div.id = id;
-        div.className = role === 'user' ? 'user-msg p-4 text-[13px] ml-auto max-w-[85%] text-white' : 'ai-msg p-4 text-[13px] mr-auto max-w-[85%] text-gray-300';
+        div.className = role === 'user' ? 'user-msg p-4 text-[13px] ml-auto max-w-[85%] text-white text-right' : 'ai-msg p-4 text-[13px] mr-auto max-w-[85%] text-gray-300 text-left';
         div.innerText = text;
         container.appendChild(div);
         container.scrollTop = container.scrollHeight;
