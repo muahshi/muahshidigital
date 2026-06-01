@@ -32,7 +32,6 @@
             color: #f3f4f6;
             font-family: 'Space Grotesk', sans-serif;
             scroll-behavior: smooth;
-            overflow-x: hidden;
         }
 
         .syncopate { font-family: 'Syncopate', sans-serif; }
@@ -81,8 +80,6 @@
             border-radius: 40px;
             border: 1px solid rgba(255, 215, 0, 0.2);
             transition: all 0.5s ease;
-            width: 100%;
-            height: auto;
         }
 
         .orb {
@@ -98,18 +95,19 @@
         .typewriter::after { content: "|"; animation: blink 0.8s infinite; }
         @keyframes blink { 50% { opacity: 0; } }
 
-        /* Modern AI Chat Box Styles */
+        /* Modern AI Chat Box Styles with default display:none layout */
         #ai-chat-box { 
             backdrop-filter: blur(30px); 
             border: 1px solid rgba(255,215,0,0.15); 
             box-shadow: 0 30px 60px rgba(0,0,0,0.8);
             z-index: 9999;
             border-radius: 30px;
+            display: none; /* Force default hidden state on load */
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .ai-msg { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px 20px 20px 5px; }
-        .user-msg { background: rgba(255,215,0,0.08); border: 1px solid rgba(255,215,0,0.2); border-radius: 20px 20px 5px 20px; text-align: right; }
+        .user-msg { background: rgba(255,215,0,0.08); border: 1px solid rgba(255,215,0,0.2); border-radius: 20px 20px 5px 20px; }
     </style>
 </head>
 <body class="antialiased">
@@ -235,7 +233,7 @@
         </div>
     </section>
 
-    <!-- Footer / Contact -->
+    <!-- Footer -->
     <footer id="contact" class="max-w-7xl mx-auto px-8 pt-32 pb-20" data-aos="fade-up">
         <div class="bento-card p-20 text-center relative overflow-hidden border-yellow-500/20">
             <h2 class="text-6xl md:text-8xl font-black mb-10 syncopate tracking-tighter uppercase leading-none">
@@ -255,8 +253,8 @@
         </div>
     </footer>
 
-    <!-- AI CHAT COMPONENT (Default Hidden to prevent startup overflow) -->
-    <div id="ai-chat-box" class="fixed bottom-28 right-6 w-[350px] md:w-[400px] h-[550px] bg-[#0A0A0A] hidden flex-col overflow-hidden">
+    <!-- AI CHAT CONTAINER (Default closed via inline CSS display:none to guarantee no pre-render conflicts) -->
+    <div id="ai-chat-box" class="fixed bottom-28 right-6 w-[350px] md:w-[400px] h-[550px] bg-[#0A0A0A] flex-col overflow-hidden" style="display: none;">
         <!-- Header -->
         <div class="p-6 border-b border-white/5 bg-yellow-500/5 flex justify-between items-center">
             <div class="flex items-center gap-3">
@@ -285,12 +283,11 @@
         </div>
     </div>
 
-    <!-- Floating Assistant Trigger -->
+    <!-- Floating Trigger -->
     <button id="ai-trigger" class="fixed bottom-8 right-8 w-16 h-16 bg-yellow-500 rounded-full shadow-[0_10px_30px_rgba(255,215,0,0.3)] flex items-center justify-center text-black text-2xl z-[10001] hover:scale-110 transition-transform active:scale-95">
         <i class="fas fa-comment-dots" id="ai-main-icon"></i>
     </button>
 
-    <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true, offset: 100 });
