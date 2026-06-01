@@ -8,12 +8,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Syncopate:wght@700&display=swap');
-        body { background: #030303; color: #f3f4f6; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syncopate:wght@700&display=swap');
+        body { background: #0A0A09; color: #f3f4f6; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
         .syncopate { font-family: 'Syncopate', sans-serif; }
         .gold-gradient { background: linear-gradient(90deg, #FFD700, #FDB931, #FFD700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .bento-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(20px); border-radius: 40px; transition: all 0.4s ease; }
         .bento-card:hover { border-color: rgba(255, 215, 0, 0.3); transform: translateY(-5px); }
+        .agent-step { border-left: 2px solid rgba(255, 215, 0, 0.2); padding-left: 2rem; position: relative; }
+        .agent-step::before { content: ''; position: absolute; left: -6px; top: 0; width: 10px; height: 10px; background: #FFD700; border-radius: 50%; box-shadow: 0 0 15px #FFD700; }
         .btn-premium { background: linear-gradient(135deg, #FFD700 0%, #B8860B 100%); color: #000; font-weight: 700; }
     </style>
 </head>
@@ -21,7 +23,7 @@
 
     <!-- Nav -->
     <nav class="fixed top-0 w-full z-50 p-8 flex justify-between items-center bg-black/50 backdrop-blur-md">
-        <a href="index.html" class="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-500 hover:text-white transition">← Portfolio</a>
+        <a href="index.html" class="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-500 hover:text-white transition">← Return</a>
         <div class="text-xl font-black syncopate gold-gradient">AGENT.HUB</div>
         <a href="mailto:muahshi7759@axl" class="text-[10px] font-bold border border-yellow-500/20 px-6 py-2 rounded-full hover:bg-yellow-500 hover:text-black transition uppercase tracking-widest">Hire Me</a>
     </nav>
