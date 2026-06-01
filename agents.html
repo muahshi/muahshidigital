@@ -1,101 +1,244 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Agent Hub | Muahshi Digital</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: '#0A0A09',
+                        luxuryGold: '#C9A84C',
+                        charcoal: '#141413',
+                        glass: 'rgba(255, 255, 255, 0.02)',
+                    },
+                    fontFamily: {
+                        space: ['"Space Grotesk"', 'sans-serif'],
+                        syncopate: ['"Syncopate"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Syncopate:wght@700&display=swap');
-        body { background: #030303; color: #f3f4f6; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
-        .syncopate { font-family: 'Syncopate', sans-serif; }
-        .gold-gradient { background: linear-gradient(90deg, #FFD700, #FDB931, #FFD700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .bento-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(20px); border-radius: 40px; transition: all 0.4s ease; }
-        .bento-card:hover { border-color: rgba(255, 215, 0, 0.3); transform: translateY(-5px); }
-        .btn-premium { background: linear-gradient(135deg, #FFD700 0%, #B8860B 100%); color: #000; font-weight: 700; }
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syncopate:wght=700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            background-color: #0A0A09;
+            color: #E6E6E5;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .font-syncopate { font-family: 'Syncopate', sans-serif; }
+        .font-space { font-family: 'Space Grotesk', sans-serif; }
+
+        .gold-text-gradient {
+            background: linear-gradient(135deg, #FFF5D1 0%, #C9A84C 50%, #8A6E24 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-border-glow {
+            border: 1px solid rgba(201, 168, 76, 0.12);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(12px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .gold-border-glow:hover {
+            border: 1px solid rgba(201, 168, 76, 0.4);
+            box-shadow: 0 0 30px rgba(201, 168, 76, 0.15);
+            transform: translateY(-6px);
+        }
+
+        .premium-btn {
+            background: linear-gradient(135deg, #C9A84C 0%, #A38436 100%);
+            color: #000;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+        .premium-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(201, 168, 76, 0.3);
+            filter: brightness(1.1);
+        }
+
+        .ambient-glow {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(201, 168, 76, 0.06) 0%, transparent 70%);
+            filter: blur(90px);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #0A0A09; }
+        ::-webkit-scrollbar-thumb { background: #1C1C1B; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #C9A84C; }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased selection:bg-[#C9A84C] selection:text-black">
 
-    <!-- Nav -->
-    <nav class="fixed top-0 w-full z-50 p-8 flex justify-between items-center bg-black/50 backdrop-blur-md">
-        <a href="index.html" class="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-500 hover:text-white transition">← Portfolio</a>
-        <div class="text-xl font-black syncopate gold-gradient">AGENT.HUB</div>
-        <a href="mailto:muahshi7759@axl" class="text-[10px] font-bold border border-yellow-500/20 px-6 py-2 rounded-full hover:bg-yellow-500 hover:text-black transition uppercase tracking-widest">Hire Me</a>
+    <!-- Glowing backdrop shadows -->
+    <div class="ambient-glow w-[600px] h-[600px] -top-40 -right-20"></div>
+    <div class="ambient-glow w-[500px] h-[500px] bottom-10 left-10"></div>
+
+    <!-- Navigation Header -->
+    <nav class="fixed top-0 w-full z-50 bg-[#0A0A09]/85 backdrop-blur-md border-b border-white/[0.03] px-6 py-5">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-400 hover:text-[#C9A84C] transition duration-300 flex items-center gap-2">
+                <i class="fas fa-arrow-left-long"></i> Portfolio
+            </a>
+            <div class="text-lg font-black font-syncopate gold-text-gradient tracking-tight">AGENT.HUB</div>
+            <a href="mailto:muahshi.mubi@gmail.com" class="text-[10px] font-bold border border-[#C9A84C]/30 hover:border-[#C9A84C] px-5 py-2 rounded-lg text-white hover:bg-[#C9A84C]/5 transition duration-300 uppercase tracking-widest">
+                Hire Me
+            </a>
+        </div>
     </nav>
 
-    <!-- Hero -->
-    <header class="max-w-7xl mx-auto px-8 pt-48 pb-20">
-        <div data-aos="fade-up">
-            <h1 class="text-5xl md:text-8xl font-black syncopate uppercase leading-none mb-10">Autonomous <br><span class="gold-gradient">Workers.</span></h1>
-            <p class="text-gray-400 text-xl md:text-2xl font-light leading-relaxed max-w-3xl">Architecting specialized AI agents that execute complex business processes, from lead capture to automated SEO and pharmaceutical logistics.</p>
-        </div>
-    </header>
+    <!-- Main Content Grid -->
+    <main class="max-w-7xl mx-auto px-6 pt-36 pb-24 relative z-10">
+        
+        <!-- Premium Section Hero Header -->
+        <header class="mb-20" data-aos="fade-up">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="w-8 h-[1px] bg-[#C9A84C]/50"></span>
+                <span class="text-[#C9A84C] text-[10px] font-bold uppercase tracking-[0.3em]">Operational Automations</span>
+            </div>
+            <h1 class="text-4xl md:text-7xl font-black font-syncopate uppercase leading-[0.9] tracking-tight text-white mb-6">
+                Autonomous <br><span class="gold-text-gradient">Workers.</span>
+            </h1>
+            <p class="text-[#A1A1A0] text-sm md:text-lg font-light leading-relaxed max-w-3xl">
+                Architecting specialized AI agents that execute complex business processes. From real-time conversational lead capture to automated local SEO, and medical logistics inventory systems.
+            </p>
+        </header>
 
-    <!-- Agent Grid -->
-    <section class="max-w-7xl mx-auto px-8 py-12">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Grid of Bento Cards -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
             
             <!-- AI Receptionist -->
-            <div class="bento-card p-10 flex flex-col justify-between border-l-4 border-yellow-500" data-aos="fade-up">
-                <div>
-                    <div class="flex justify-between mb-8">
-                        <i class="fas fa-headset text-2xl text-yellow-500"></i>
-                        <span class="text-[9px] bg-yellow-500/10 text-yellow-500 px-3 py-1 rounded-full uppercase font-bold">24/7 Live</span>
+            <div class="gold-border-glow bg-white/[0.01] p-10 rounded-3xl flex flex-col justify-between relative group" data-aos="fade-up">
+                <div class="space-y-6">
+                    <div class="flex justify-between items-center">
+                        <div class="w-12 h-12 rounded-xl bg-[#C9A84C]/10 flex items-center justify-center text-[#C9A84C] text-xl">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <span class="text-[9px] bg-[#C9A84C]/15 text-[#C9A84C] px-3 py-1 rounded-full uppercase tracking-widest font-bold">24/7 Live Agent</span>
                     </div>
-                    <h3 class="text-3xl font-bold mb-4 italic uppercase">AI Receptionist</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed mb-8">Automated lead qualification and receptionist system handling inbound queries via smart logic branches.</p>
+                    <div>
+                        <h3 class="text-2xl font-bold text-white group-hover:text-[#C9A84C] transition duration-300 font-syncopate uppercase text-xs">AI Receptionist</h3>
+                        <p class="text-gray-400 text-xs mt-3 leading-relaxed font-light">
+                            Automated conversational lead qualification agent handling incoming user queries via smart programmatic logic. Completely bypasses wait times with zero latency.
+                        </p>
+                    </div>
                 </div>
-                <a href="https://ai-receptionist-sandy-six.vercel.app" target="_blank" class="text-center bg-white/5 py-4 rounded-2xl hover:bg-yellow-500 hover:text-black transition-all font-bold text-[10px] uppercase tracking-widest">Deploy Agent →</a>
+                <div class="pt-8">
+                    <a href="https://ai-receptionist-sandy-six.vercel.app" target="_blank" class="w-full text-center block bg-white/[0.03] border border-white/5 hover:border-[#C9A84C]/30 text-white font-bold py-4 rounded-xl text-[10px] uppercase tracking-wider transition-all duration-300 group-hover:bg-[#C9A84C] group-hover:text-black">
+                        Deploy Agent <i class="fas fa-arrow-up-right-from-square ml-1"></i>
+                    </a>
+                </div>
             </div>
 
             <!-- Capital Medical Agency -->
-            <div class="bento-card p-10 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
-                <div>
-                    <div class="flex justify-between mb-8">
-                        <i class="fas fa-pills text-2xl text-yellow-500"></i>
-                        <span class="text-[9px] bg-blue-500/10 text-blue-500 px-3 py-1 rounded-full uppercase font-bold">Enterprise</span>
+            <div class="gold-border-glow bg-white/[0.01] p-10 rounded-3xl flex flex-col justify-between relative group" data-aos="fade-up" data-aos-delay="100">
+                <div class="space-y-6">
+                    <div class="flex justify-between items-center">
+                        <div class="w-12 h-12 rounded-xl bg-[#C9A84C]/10 flex items-center justify-center text-[#C9A84C] text-xl">
+                            <i class="fas fa-pills"></i>
+                        </div>
+                        <span class="text-[9px] bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full uppercase tracking-widest font-bold">Enterprise Logic</span>
                     </div>
-                    <h3 class="text-3xl font-bold mb-4 italic uppercase">Capital Medical Agency</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed mb-8">Strategic pharmaceutical distribution and agency management system with automated inventory logic.</p>
+                    <div>
+                        <h3 class="text-2xl font-bold text-white group-hover:text-[#C9A84C] transition duration-300 font-syncopate uppercase text-xs">Capital Medical</h3>
+                        <p class="text-gray-400 text-xs mt-3 leading-relaxed font-light">
+                            Strategic pharmaceutical distribution and logistics control hub with advanced calculations, optimized inventory tracking parameters, and record reconciliation.
+                        </p>
+                    </div>
                 </div>
-                <a href="https://capital-medical-agency-khaki.vercel.app" target="_blank" class="text-center bg-white/5 py-4 rounded-2xl hover:bg-yellow-500 hover:text-black transition-all font-bold text-[10px] uppercase tracking-widest">View System →</a>
+                <div class="pt-8">
+                    <a href="https://capital-medical-agency-khaki.vercel.app" target="_blank" class="w-full text-center block bg-white/[0.03] border border-white/5 hover:border-[#C9A84C]/30 text-white font-bold py-4 rounded-xl text-[10px] uppercase tracking-wider transition-all duration-300 group-hover:bg-[#C9A84C] group-hover:text-black">
+                        View System <i class="fas fa-arrow-up-right-from-square ml-1"></i>
+                    </a>
+                </div>
             </div>
 
             <!-- SmartShaadi SEO Agent -->
-            <div class="bento-card p-10 flex flex-col justify-between border-t-2 border-yellow-500/30" data-aos="fade-up">
-                <div>
-                    <div class="flex justify-between mb-8">
-                        <i class="fas fa-link text-2xl text-yellow-500"></i>
-                        <span class="text-[9px] bg-green-500/10 text-green-500 px-3 py-1 rounded-full uppercase font-bold">SEO Automation</span>
+            <div class="gold-border-glow bg-white/[0.01] p-10 rounded-3xl flex flex-col justify-between relative group" data-aos="fade-up">
+                <div class="space-y-6">
+                    <div class="flex justify-between items-center">
+                        <div class="w-12 h-12 rounded-xl bg-[#C9A84C]/10 flex items-center justify-center text-[#C9A84C] text-xl">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <span class="text-[9px] bg-green-500/10 text-green-400 px-3 py-1 rounded-full uppercase tracking-widest font-bold">SEO Optimizer</span>
                     </div>
-                    <h3 class="text-3xl font-bold mb-4 italic uppercase">Backlink Agent</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed mb-8">Specialized SmartShaadi agent that autonomously handles backlink strategy and local SEO optimization for Bhopal.</p>
+                    <div>
+                        <h3 class="text-2xl font-bold text-white group-hover:text-[#C9A84C] transition duration-300 font-syncopate uppercase text-xs">Backlink Agent</h3>
+                        <p class="text-gray-400 text-xs mt-3 leading-relaxed font-light">
+                            Specialized crawler agent configured for SmartShaadi platform. Operates search authority index mapping, keywords structures, and Bhopal local wedding market backlink strategy.
+                        </p>
+                    </div>
                 </div>
-                <a href="https://smartshaadi-backlink-agent.vercel.app" target="_blank" class="text-center bg-white/5 py-4 rounded-2xl hover:bg-yellow-500 hover:text-black transition-all font-bold text-[10px] uppercase tracking-widest">Analyze Links →</a>
+                <div class="pt-8">
+                    <a href="https://smartshaadi-backlink-agent.vercel.app" target="_blank" class="w-full text-center block bg-white/[0.03] border border-white/5 hover:border-[#C9A84C]/30 text-white font-bold py-4 rounded-xl text-[10px] uppercase tracking-wider transition-all duration-300 group-hover:bg-[#C9A84C] group-hover:text-black">
+                        Analyze Links <i class="fas fa-arrow-up-right-from-square ml-1"></i>
+                    </a>
+                </div>
             </div>
 
             <!-- SmartShaadi Blog Writer -->
-            <div class="bento-card p-10 flex flex-col justify-between border-b-4 border-yellow-500" data-aos="fade-up" data-aos-delay="100">
-                <div>
-                    <div class="flex justify-between mb-8">
-                        <i class="fas fa-pen-nib text-2xl text-yellow-500"></i>
-                        <span class="text-[9px] bg-purple-500/10 text-purple-500 px-3 py-1 rounded-full uppercase font-bold">Content Agent</span>
+            <div class="gold-border-glow bg-white/[0.01] p-10 rounded-3xl flex flex-col justify-between relative group" data-aos="fade-up" data-aos-delay="100">
+                <div class="space-y-6">
+                    <div class="flex justify-between items-center">
+                        <div class="w-12 h-12 rounded-xl bg-[#C9A84C]/10 flex items-center justify-center text-[#C9A84C] text-xl">
+                            <i class="fas fa-pen-nib"></i>
+                        </div>
+                        <span class="text-[9px] bg-purple-500/10 text-purple-400 px-3 py-1 rounded-full uppercase tracking-widest font-bold">Content Agent</span>
                     </div>
-                    <h3 class="text-3xl font-bold mb-4 italic uppercase">Auto-Blog Writer</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-8">Autonomous content engine generating high-detail blogs with internal linking and Bhopal-specific case studies.</p>
+                    <div>
+                        <h3 class="text-2xl font-bold text-white group-hover:text-[#C9A84C] transition duration-300 font-syncopate uppercase text-xs">Auto-Blog Writer</h3>
+                        <p class="text-gray-400 text-xs mt-3 leading-relaxed font-light">
+                            Generative writer bot executing dynamic formatting structure, strategic semantic keyword seeding, and internal routing maps to scale matrimonial portal index ranks.
+                        </p>
+                    </div>
                 </div>
-                <a href="https://smartshaadi.online" target="_blank" class="btn-premium py-4 rounded-2xl text-center font-bold text-[10px] uppercase tracking-widest shadow-lg shadow-yellow-500/10">View Live Blog</a>
+                <div class="pt-8">
+                    <a href="https://smartshaadi.online" target="_blank" class="w-full text-center block premium-btn text-black font-bold py-4 rounded-xl text-[10px] uppercase tracking-widest transition duration-300">
+                        View Live Blog <i class="fas fa-arrow-up-right-from-square ml-1"></i>
+                    </a>
+                </div>
             </div>
 
-        </div>
-    </section>
+        </section>
+
+        <!-- Dynamic Action CTA -->
+        <section class="mt-20 pt-8" data-aos="fade-up">
+            <div class="gold-border-glow bg-gradient-to-r from-[#0C0C0B] to-[#141413] p-10 md:p-14 rounded-3xl text-center space-y-4">
+                <h2 class="text-2xl md:text-4xl font-black uppercase tracking-tight text-white font-syncopate leading-tight">Need A Tailored Agent For Your Business?</h2>
+                <p class="text-gray-400 text-xs tracking-widest uppercase">We analyze operational friction and script autonomous processes from scratch.</p>
+                <div class="pt-4">
+                    <a href="mailto:muahshi.mubi@gmail.com" class="inline-block premium-btn text-black font-bold px-8 py-3.5 rounded-xl text-[10px] uppercase tracking-widest">
+                        Configure Agent Workflow
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
 
     <!-- Footer -->
-    <footer class="max-w-7xl mx-auto px-8 py-20 text-center">
-        <p class="text-[10px] tracking-[0.5em] text-gray-700 font-bold uppercase">© 2026 MUAHSHI DIGITAL LLP | Bhopal, India</p>
+    <footer class="border-t border-white/[0.03] py-10 bg-[#050505]">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-[#8E8E8E]">
+            <p class="text-[9px] tracking-widest uppercase">© 2026 MUAHSHI DIGITAL LLP | All Rights Reserved.</p>
+            <p class="text-[9px] tracking-widest uppercase">Bhopal, India | Systems Architecture</p>
+        </div>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
