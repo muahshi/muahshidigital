@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta name="google-site-verification" content="QzIovEAmKbFmMIVvLKJvwaIXA_V6_ZGLs62jON9OJ6w" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>Mubashir Hasan | AI Automation & Systems Architect Bhopal</title>
-    <meta name="description" content="Mubashir Hasan is an AI Systems Architect & MBA Strategist helping businesses automate workflows with AI agents, n8n, and Amazon FBA expertise.">
+    <title>Mubashir Hasan | AI Systems Architect & Automation Builder</title>
+    <meta name="description" content="Mubashir Hasan is an AI Systems Architect, MBA graduate, and automation builder scaling operations using AI agents and low-code integrations.">
     <meta name="keywords" content="AI Automation Bhopal, Systems Architect India, Amazon FBA Expert, n8n Automation, Mubashir Hasan, Muahshi Digital">
     <meta name="author" content="Mubashir Hasan">
     
@@ -15,286 +15,839 @@
     <meta property="og:image" content="mubu_logo.webp">
     <meta property="og:url" content="https://muahshi.github.io/muahshidigital/">
 
+    <!-- Tailwind & Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: '#0A0A09',
+                        luxuryGold: '#C9A84C',
+                        charcoal: '#141413',
+                        glass: 'rgba(255, 255, 255, 0.02)',
+                    },
+                    fontFamily: {
+                        space: ['"Space Grotesk"', 'sans-serif'],
+                        syncopate: ['"Syncopate"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Syncopate:wght@700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syncopate:wght@700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
         
-        :root {
-            --gold: #FFD700;
-            --dark-gold: #B8860B;
-            --glass: rgba(255, 255, 255, 0.03);
-        }
-
         body {
-            background: #030303;
-            color: #f3f4f6;
-            font-family: 'Space Grotesk', sans-serif;
-            scroll-behavior: smooth;
+            background-color: #0A0A09;
+            color: #E6E6E5;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
         }
 
-        .syncopate { font-family: 'Syncopate', sans-serif; }
+        .font-syncopate { font-family: 'Syncopate', sans-serif; }
+        .font-space { font-family: 'Space Grotesk', sans-serif; }
 
-        .glass-nav {
-            background: rgba(5, 5, 5, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            z-index: 1000;
-        }
-
-        .gold-gradient {
-            background: linear-gradient(90deg, var(--gold), #FDB931, var(--gold));
-            background-size: 200% auto;
+        /* Premium Gold Gradients & Glows */
+        .gold-text-gradient {
+            background: linear-gradient(135deg, #FFF5D1 0%, #C9A84C 50%, #8A6E24 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: shine 3s linear infinite;
+        }
+        
+        .gold-border-glow {
+            border: 1px solid rgba(201, 168, 76, 0.15);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(12px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        @keyframes shine { to { background-position: 200% center; } }
-
-        .bento-card {
-            background: var(--glass);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            border-radius: 40px;
-            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+        .gold-border-glow:hover {
+            border: 1px solid rgba(201, 168, 76, 0.4);
+            box-shadow: 0 0 30px rgba(201, 168, 76, 0.12);
+            transform: translateY(-4px);
         }
 
-        .bento-card:hover {
-            border-color: rgba(255, 215, 0, 0.3);
-            background: rgba(255, 255, 255, 0.05);
-            transform: translateY(-12px);
-            box-shadow: 0 40px 80px -20px rgba(0,0,0,0.5);
-        }
-
-        .btn-premium {
-            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-gold) 100%);
+        .premium-btn {
+            background: linear-gradient(135deg, #C9A84C 0%, #A38436 100%);
             color: #000;
             font-weight: 700;
-            transition: all 0.4s ease;
-            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.15);
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+        }
+        .premium-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(201, 168, 76, 0.3);
+            filter: brightness(1.1);
         }
 
-        .profile-img {
-            border-radius: 40px;
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            transition: all 0.5s ease;
-        }
-
-        .orb {
+        /* Ambient Glow Circles behind elements */
+        .ambient-glow {
             position: absolute;
-            width: 400px;
-            height: 400px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 215, 0, 0.08) 0%, transparent 70%);
-            z-index: -1;
-            filter: blur(60px);
+            background: radial-gradient(circle, rgba(201, 168, 76, 0.08) 0%, transparent 70%);
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 1;
         }
 
-        .typewriter::after { content: "|"; animation: blink 0.8s infinite; }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #0A0A09; }
+        ::-webkit-scrollbar-thumb { background: #1C1C1B; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #C9A84C; }
+
+        .typewriter::after { content: "|"; animation: blink 0.8s infinite; color: #C9A84C; }
         @keyframes blink { 50% { opacity: 0; } }
 
-        /* Modern AI Chat Box Styles with default display:none layout */
-        #ai-chat-box { 
-            backdrop-filter: blur(30px); 
-            border: 1px solid rgba(255,215,0,0.15); 
-            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
-            z-index: 9999;
-            border-radius: 30px;
-            display: none; /* Force default hidden state on load */
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        /* Timelines lines & dots styling */
+        .timeline-container {
+            display: flex;
+            overflow-x: auto;
+            scrollbar-width: none; /* Firefox */
         }
-        .scrollbar-hide::-webkit-scrollbar { display: none; }
-        .ai-msg { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px 20px 20px 5px; }
-        .user-msg { background: rgba(255,215,0,0.08); border: 1px solid rgba(255,215,0,0.2); border-radius: 20px 20px 5px 20px; }
+        .timeline-container::-webkit-scrollbar { display: none; }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased selection:bg-[#C9A84C] selection:text-black">
 
-    <!-- Navbar -->
-    <nav class="glass-nav fixed top-0 w-full">
-        <div class="max-w-7xl mx-auto px-8 py-5 flex justify-between items-center">
-            <div class="text-2xl font-black syncopate tracking-tighter gold-gradient">MUAHSHI.</div>
-            <div class="hidden md:flex gap-10 text-[10px] uppercase font-bold tracking-[0.3em] text-gray-500">
-                <a href="#work" class="hover:text-white transition">Selection</a>
-                <a href="#expertise" class="hover:text-white transition">Expertise</a>
-                <a href="agents.html" class="hover:text-white transition text-yellow-500">AI Agents Hub</a>
-                <a href="#contact" class="hover:text-white transition">Connect</a>
+    <!-- Top Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-50 bg-[#0A0A09]/80 backdrop-blur-md border-b border-white/[0.03]">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <!-- Left Brand Logo -->
+            <div class="flex items-center gap-3">
+                <span class="text-xl font-bold border border-[#C9A84C]/40 px-2.5 py-0.5 rounded text-[#C9A84C] font-syncopate">MH</span>
+                <span class="text-xs font-bold tracking-[0.3em] text-white font-syncopate hidden sm:inline">MUBASHIR HASAN</span>
             </div>
-            <a href="mailto:muahshi7759@axl" class="text-xs font-bold border border-yellow-500/20 px-6 py-2 rounded-full hover:bg-yellow-500 hover:text-black transition">START PROJECT</a>
+            
+            <!-- Center Navigation Links -->
+            <div class="hidden lg:flex items-center gap-8 text-[11px] font-bold tracking-[0.2em] uppercase text-[#8E8E8E]">
+                <a href="#home" class="text-white hover:text-[#C9A84C] transition duration-300">Home</a>
+                <a href="#about" class="hover:text-white transition duration-300">About</a>
+                <a href="#projects" class="hover:text-white transition duration-300">Projects</a>
+                <a href="#experience" class="hover:text-white transition duration-300">Experience</a>
+                <a href="#certifications" class="hover:text-white transition duration-300">Certifications</a>
+                <a href="#resume" class="hover:text-white transition duration-300">Resume</a>
+                <a href="#insights" class="hover:text-white transition duration-300">Blog</a>
+                <a href="#contact" class="hover:text-white transition duration-300">Contact</a>
+            </div>
+
+            <!-- Right CTA Button -->
+            <a href="#contact" class="text-[10px] font-bold tracking-widest text-[#C9A84C] border border-[#C9A84C]/30 hover:border-[#C9A84C] px-5 py-2.5 rounded-lg transition duration-300 uppercase">
+                Let's Connect <i class="fas fa-arrow-right-long ml-1.5 text-xs"></i>
+            </a>
         </div>
     </nav>
 
-    <!-- Hero Header -->
-    <header class="max-w-7xl mx-auto px-8 pt-48 pb-32 grid md:grid-cols-2 gap-20 items-center relative">
-        <div class="orb" style="top: 0; right: 0;"></div>
-        
-        <div class="order-2 md:order-1 relative" data-aos="fade-right">
-            <img src="mubu_logo.webp" alt="Mubashir Hasan AI Architect" class="profile-img w-full relative z-10" fetchpriority="high">
-        </div>
-        
-        <div class="order-1 md:order-2" data-aos="fade-left">
-            <div class="flex items-center gap-3 mb-8">
-                <span class="w-10 h-[1px] bg-yellow-500/50"></span>
-                <h2 class="text-yellow-500 text-[10px] font-bold uppercase tracking-[0.4em]">AI Architect & Amazon FBA Expert</h2>
-            </div>
-            <h1 class="text-7xl md:text-[110px] font-black leading-[0.8] mb-10 syncopate tracking-tighter">
-                Smarter <br> <span class="gold-gradient typewriter" id="typewriter">Systems.</span>
-            </h1>
-            <p class="text-gray-400 text-xl md:text-2xl mb-12 leading-relaxed max-w-lg font-light">
-                Architecting high-performance automation & scalable e-commerce infrastructure for modern founders.
-            </p>
-            <div class="flex flex-wrap gap-8">
-                <a href="#work" class="btn-premium px-12 py-6 rounded-3xl text-lg uppercase tracking-widest">Selected Works</a>
-                <div class="flex flex-col justify-center">
-                    <span class="text-white font-bold text-lg italic">150+</span>
-                    <span class="text-gray-600 text-[10px] uppercase tracking-widest">Automations Live</span>
-                </div>
-            </div>
-        </div>
-    </header>
+    <!-- Main Container Grid mimicking 1000286636.png -->
+    <main class="max-w-7xl mx-auto px-6 pt-32 pb-24 relative">
+        <div class="ambient-glow w-[500px] h-[500px] -top-20 -left-20"></div>
+        <div class="ambient-glow w-[500px] h-[500px] bottom-1/3 right-10"></div>
 
-    <!-- Stats Section -->
-    <section class="max-w-7xl mx-auto px-8 mb-32" data-aos="fade-up">
-        <div class="bento-card p-12 grid grid-cols-2 md:grid-cols-4 gap-12 text-center border-yellow-500/10">
-            <div>
-                <div class="text-4xl font-bold mb-2">04<span class="text-yellow-500">+</span></div>
-                <div class="text-[10px] uppercase tracking-[0.2em] text-gray-500">Years Industry Exp</div>
-            </div>
-            <div>
-                <div class="text-4xl font-bold mb-2">USA</div>
-                <div class="text-[10px] uppercase tracking-[0.2em] text-gray-500">Amazon Logistics</div>
-            </div>
-            <div>
-                <div class="text-4xl font-bold mb-2">n8n</div>
-                <div class="text-[10px] uppercase tracking-[0.2em] text-gray-500">Certified Logic</div>
-            </div>
-            <div>
-                <div class="text-4xl font-bold mb-2">MBA</div>
-                <div class="text-[10px] uppercase tracking-[0.2em] text-gray-500">Strategic Scale</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Expertise Section -->
-    <section id="expertise" class="max-w-7xl mx-auto px-8 py-24 relative">
-        <div class="orb" style="bottom: 0; left: -100px;"></div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div class="bento-card p-12 group" data-aos="fade-up" data-aos-delay="100">
-                <i class="fas fa-brain text-2xl text-yellow-500 mb-8"></i>
-                <h3 class="text-2xl font-bold mb-6 italic">AI Integration</h3>
-                <p class="text-gray-500 leading-relaxed">Building custom LLM agents and multi-step workflows using n8n and Python for business efficiency.</p>
-            </div>
-            <div class="bento-card p-12 group border-t-2 border-yellow-500" data-aos="fade-up" data-aos-delay="200">
-                <i class="fab fa-amazon text-2xl text-yellow-500 mb-8"></i>
-                <h3 class="text-2xl font-bold mb-6 italic text-yellow-500">Amazon FBA Scale</h3>
-                <p class="text-gray-500 leading-relaxed">International reselling and Amazon USA FBA operations expert since 2022.</p>
-            </div>
-            <div class="bento-card p-12 group" data-aos="fade-up" data-aos-delay="300">
-                <i class="fas fa-layer-group text-2xl text-yellow-500 mb-8"></i>
-                <h3 class="text-2xl font-bold mb-6 italic">MBA Strategy</h3>
-                <p class="text-gray-500 leading-relaxed">Strategic business architecture for operational efficiency and space optimization.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="work" class="max-w-7xl mx-auto px-8 py-24">
-        <h2 class="text-5xl font-black mb-20 syncopate tracking-tighter uppercase" data-aos="fade-right">Selected <span class="gold-gradient">Portfolio.</span></h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bento-card p-12 md:col-span-2 flex flex-col justify-between border-l-8 border-yellow-500 relative overflow-hidden" data-aos="zoom-in">
-                <div>
-                    <h3 class="text-5xl font-black mb-8 italic uppercase leading-none">Vibe Mirror AI</h3>
-                    <p class="text-gray-400 text-xl mb-12 max-w-lg leading-relaxed">AI visual analysis engine for real-time digital content optimization.</p>
-                </div>
-                <a href="https://vibe-mirror-ai.vercel.app/" target="_blank" class="btn-premium px-10 py-5 rounded-2xl text-center self-start text-xs uppercase tracking-widest">Launch Project</a>
-            </div>
-
-            <div class="bento-card p-12 flex flex-col justify-between bg-white/[0.01]" data-aos="zoom-in" data-aos-delay="100">
-                <h3 class="text-3xl font-bold mb-6 gold-gradient">SmartShaadi.online</h3>
-                <p class="text-gray-400 text-sm leading-relaxed mb-10">AI-powered wedding planning ecosystem, locally optimized for Bhopal.</p>
-                <a href="https://smartshaadi.online" target="_blank" class="text-[10px] font-bold tracking-[0.3em] uppercase hover:text-white transition">Visit Ecosystem →</a>
-            </div>
-
-            <div class="bento-card p-12 md:col-span-2 flex items-center justify-between" data-aos="zoom-in">
-                <div>
-                    <h3 class="text-3xl font-bold mb-4 gold-gradient italic uppercase">Unique Hospital</h3>
-                    <p class="text-gray-500 leading-relaxed max-w-sm">Healthcare management systems built for efficiency and optimized space.</p>
-                </div>
-                <a href="https://unique-hospital-bice.vercel.app" target="_blank" class="bg-white/5 p-8 rounded-full hover:bg-yellow-500 hover:text-black transition-all"><i class="fas fa-arrow-right text-3xl"></i></a>
-            </div>
-
-            <div class="bento-card p-12 flex flex-col justify-between border-t-2 border-yellow-500/30" data-aos="zoom-in" data-aos-delay="200">
-                <h3 class="text-3xl font-bold mb-6 italic">AI Agent Hub</h3>
-                <p class="text-gray-500 text-sm leading-relaxed mb-10">24/7 lead capture receptionist system and specialized autonomous agents.</p>
-                <a href="agents.html" class="text-yellow-500 font-bold uppercase tracking-widest text-[10px] border-b border-yellow-500/20 pb-1 w-fit hover:border-yellow-500 transition-all">ENTER HUB →</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="contact" class="max-w-7xl mx-auto px-8 pt-32 pb-20" data-aos="fade-up">
-        <div class="bento-card p-20 text-center relative overflow-hidden border-yellow-500/20">
-            <h2 class="text-6xl md:text-8xl font-black mb-10 syncopate tracking-tighter uppercase leading-none">
-                Let's Build <br> <span class="gold-gradient">The Future.</span>
-            </h2>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 relative z-10">
             
-            <div class="flex justify-center gap-10 mb-20">
-                <a href="https://instagram.com" class="text-4xl text-gray-600 hover:text-pink-500 transition-all"><i class="fab fa-instagram"></i></a>
-                <a href="https://github.com/muahshi" class="text-4xl text-gray-600 hover:text-white transition-all"><i class="fab fa-github"></i></a>
-                <a href="mailto:muahshi7759@axl" class="text-4xl text-gray-600 hover:text-yellow-500 transition-all"><i class="fas fa-envelope"></i></a>
+            <!-- LEFT COLUMN (Hero Headings, Portrait, Metrics, About & Platforms Stack) -->
+            <div class="lg:col-span-6 space-y-12">
+                
+                <!-- Hero Heading Block -->
+                <div class="space-y-6" data-aos="fade-up">
+                    <span class="inline-flex items-center gap-2 border border-[#C9A84C]/20 bg-[#C9A84C]/5 px-3 py-1 rounded-full text-[10px] tracking-widest text-[#C9A84C] uppercase font-bold">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#C9A84C] animate-pulse"></span>
+                        AI Systems Architect
+                    </span>
+                    
+                    <h1 class="text-5xl md:text-7xl font-black leading-[0.9] tracking-tight uppercase font-syncopate text-white">
+                        MUBASHIR <br>
+                        <span class="gold-text-gradient typewriter" id="typewriter">HASAN</span>
+                    </h1>
+
+                    <p class="text-xs font-bold tracking-[0.2em] text-[#8E8E8E] uppercase">
+                        AI Systems Architect | MBA | Automation Builder | Founder
+                    </p>
+                    
+                    <p class="text-[#A1A1A0] text-sm md:text-base font-light leading-relaxed max-w-lg">
+                        Building intelligent systems, AI products, business automation platforms, and scalable digital infrastructure.
+                    </p>
+
+                    <!-- Row Action Buttons -->
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <button onclick="openResumeModal()" class="premium-btn text-[11px] uppercase tracking-widest px-6 py-3.5 rounded-xl flex items-center gap-2">
+                            Download Resume <i class="fas fa-download"></i>
+                        </button>
+                        <a href="#projects" class="border border-white/10 hover:border-[#C9A84C]/40 bg-white/[0.02] text-[11px] uppercase tracking-widest text-white px-6 py-3.5 rounded-xl flex items-center gap-2 transition duration-300">
+                            View Projects <i class="fas fa-arrow-right-long"></i>
+                        </a>
+                        <a href="https://wa.me/919575877758" target="_blank" class="border border-[#25D366]/20 bg-[#25D366]/5 hover:bg-[#25D366]/10 text-[11px] uppercase tracking-widest text-[#25D366] px-6 py-3.5 rounded-xl flex items-center gap-2 transition duration-300">
+                            Chat on WhatsApp <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Metrics Bento Grid (Exactly 4 Cards as seen on image) -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4 gap-4" data-aos="fade-up">
+                    <div class="gold-border-glow bg-white/[0.01] p-5 rounded-2xl text-center">
+                        <h3 class="text-3xl font-bold text-[#C9A84C] tracking-tight">4+</h3>
+                        <p class="text-[9px] uppercase tracking-wider text-[#8E8E8E] mt-1.5 font-medium">Years Experience</p>
+                    </div>
+                    <div class="gold-border-glow bg-white/[0.01] p-5 rounded-2xl text-center">
+                        <h3 class="text-3xl font-bold text-[#C9A84C] tracking-tight">150+</h3>
+                        <p class="text-[9px] uppercase tracking-wider text-[#8E8E8E] mt-1.5 font-medium">Automations Built</p>
+                    </div>
+                    <div class="gold-border-glow bg-white/[0.01] p-5 rounded-2xl text-center">
+                        <h3 class="text-3xl font-bold text-[#C9A84C] tracking-tight">10,000+</h3>
+                        <p class="text-[9px] uppercase tracking-wider text-[#8E8E8E] mt-1.5 font-medium">Records Managed</p>
+                    </div>
+                    <div class="gold-border-glow bg-white/[0.01] p-5 rounded-2xl text-center">
+                        <h3 class="text-3xl font-bold text-[#C9A84C] tracking-tight">4+</h3>
+                        <p class="text-[9px] uppercase tracking-wider text-[#8E8E8E] mt-1.5 font-medium">Active Ventures</p>
+                    </div>
+                </div>
+
+                <!-- Founder Portrait Panel (Middle Left aligned with orbit ring background) -->
+                <div class="relative flex items-center justify-center p-6 bg-white/[0.01] border border-white/[0.03] rounded-3xl overflow-hidden" data-aos="fade-up">
+                    <!-- Glowing circular background ring -->
+                    <div class="absolute w-[320px] h-[320px] rounded-full border border-[#C9A84C]/20 animate-[spin_40s_linear_infinite] pointer-events-none flex items-center justify-center">
+                        <div class="w-full h-full rounded-full border border-[#C9A84C]/10 border-dashed"></div>
+                        <div class="absolute w-3 h-3 bg-[#C9A84C] rounded-full top-10"></div>
+                        <div class="absolute w-2 h-2 bg-white rounded-full bottom-20 left-10"></div>
+                    </div>
+                    <div class="absolute w-[240px] h-[240px] rounded-full border border-white/5 bg-gradient-to-tr from-[#C9A84C]/10 to-transparent blur-xl"></div>
+                    
+                    <div class="relative w-full max-w-[340px] aspect-[4/5] rounded-2xl overflow-hidden border border-[#C9A84C]/25 shadow-2xl z-10">
+                        <img src="mubu_logo.webp" alt="Mubashir Hasan AI Systems Architect" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop';">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A09] via-transparent to-transparent opacity-90"></div>
+                        
+                        <!-- Floating Glass Info Badge inside the image -->
+                        <div class="absolute bottom-4 left-4 right-4 bg-black/60 backdrop-blur-md p-4 rounded-xl border border-white/5 text-center">
+                            <p class="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Founder</p>
+                            <h4 class="text-xs font-bold text-white uppercase tracking-wider mt-0.5">Muahshi Digital</h4>
+                        </div>
+                    </div>
+
+                    <!-- Right floating Roles stack inside the portrait frame -->
+                    <div class="hidden xl:flex absolute right-6 bottom-16 flex-col gap-2.5 z-20">
+                        <div class="bg-black/75 backdrop-blur-md border border-[#C9A84C]/30 rounded-xl px-4 py-2 flex items-center gap-2.5 text-[10px] uppercase font-bold tracking-wider">
+                            <i class="fas fa-robot text-[#C9A84C]"></i> AI Automation
+                        </div>
+                        <div class="bg-black/75 backdrop-blur-md border border-white/5 rounded-xl px-4 py-2 flex items-center gap-2.5 text-[10px] uppercase font-bold tracking-wider">
+                            <i class="fas fa-cubes text-[#C9A84C]"></i> SaaS Development
+                        </div>
+                        <div class="bg-black/75 backdrop-blur-md border border-[#C9A84C]/30 rounded-xl px-4 py-2 flex items-center gap-2.5 text-[10px] uppercase font-bold tracking-wider">
+                            <i class="fas fa-sitemap text-[#C9A84C]"></i> Business Systems
+                        </div>
+                        <div class="bg-black/75 backdrop-blur-md border border-white/5 rounded-xl px-4 py-2 flex items-center gap-2.5 text-[10px] uppercase font-bold tracking-wider">
+                            <i class="fas fa-brain text-[#C9A84C]"></i> Strategic Solutions
+                        </div>
+                    </div>
+                </div>
+
+                <!-- About Me Content Block -->
+                <div id="about" class="gold-border-glow bg-white/[0.01] p-8 rounded-3xl space-y-6" data-aos="fade-up">
+                    <p class="text-[10px] text-[#C9A84C] font-bold uppercase tracking-widest">ABOUT ME</p>
+                    <h2 class="text-2xl font-black uppercase tracking-tight text-white font-syncopate">Building Systems That Scale Businesses & Create Impact</h2>
+                    <p class="text-[#A1A1A0] text-sm leading-relaxed font-light">
+                        MBA graduate with 4+ years of specialized experience in structuring large database operations, optimizing custom low-code architectures, and constructing autonomous AI pipelines to drive commercial impact.
+                    </p>
+                    
+                    <ul class="space-y-4 text-xs font-medium text-gray-300">
+                        <li class="flex items-start gap-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#C9A84C] mt-1.5 shrink-0"></span>
+                            <span>MBA in Marketing & Systems Strategy</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#C9A84C] mt-1.5 shrink-0"></span>
+                            <span>Experience in Data Operations & Management</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#C9A84C] mt-1.5 shrink-0"></span>
+                            <span>Amazon FBA Business & Systems Expertise</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#C9A84C] mt-1.5 shrink-0"></span>
+                            <span>Automation & Workflow Engineering</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#C9A84C] mt-1.5 shrink-0"></span>
+                            <span>AI Products & SaaS Platform Development</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#C9A84C] mt-1.5 shrink-0"></span>
+                            <span>Business Strategy & Growth Systems</span>
+                        </li>
+                    </ul>
+
+                    <button onclick="openResumeModal()" class="text-[10px] uppercase tracking-widest text-[#C9A84C] border-b border-[#C9A84C]/30 pb-1 hover:border-[#C9A84C] font-bold transition">Know More About Me →</button>
+                </div>
+
+                <!-- Trusted Platforms & Tech Stack Logos (As shown on bottom left image) -->
+                <div class="space-y-4" data-aos="fade-up">
+                    <p class="text-[9px] uppercase tracking-[0.25em] text-[#8E8E8E] font-bold">TRUSTED BY PLATFORMS & TOOLS</p>
+                    <div class="flex flex-wrap items-center gap-6 text-2xl text-[#8E8E8E]">
+                        <div class="flex items-center gap-2 hover:text-[#C9A84C] transition"><i class="fab fa-react"></i> <span class="text-xs font-semibold">React</span></div>
+                        <div class="flex items-center gap-2 hover:text-[#C9A84C] transition"><i class="fab fa-python"></i> <span class="text-xs font-semibold">Python</span></div>
+                        <div class="flex items-center gap-2 hover:text-[#C9A84C] transition"><i class="fab fa-aws"></i> <span class="text-xs font-semibold">AWS</span></div>
+                        <div class="flex items-center gap-2 hover:text-[#C9A84C] transition"><i class="fab fa-node-js"></i> <span class="text-xs font-semibold">Next.js</span></div>
+                        <div class="flex items-center gap-2 hover:text-[#C9A84C] transition"><i class="fas fa-fire"></i> <span class="text-xs font-semibold">Firebase</span></div>
+                    </div>
+                </div>
+
             </div>
 
-            <div class="pt-20 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-[10px] tracking-[0.5em] font-black uppercase text-gray-700">
-                <span>© 2026 MUAHSHI DIGITAL LLP</span>
-                <span class="text-gray-500">Bhopal, India | Systems Architect</span>
+            <!-- RIGHT COLUMN (Projects Showcase, Timeline Track, Competency Cards, Blogs) -->
+            <div class="lg:col-span-6 space-y-12">
+                
+                <!-- FEATURED PROJECTS -->
+                <div id="projects" class="space-y-6">
+                    <div class="flex justify-between items-end border-b border-white/[0.03] pb-4">
+                        <div>
+                            <p class="text-[#C9A84C] text-[10px] uppercase tracking-widest font-bold">FEATURED PROJECTS</p>
+                            <h2 class="text-2xl font-black uppercase tracking-tight text-white font-syncopate">Solutions I've Built</h2>
+                        </div>
+                        <a href="#projects" class="text-[10px] uppercase tracking-widest text-[#8E8E8E] hover:text-[#C9A84C] transition font-bold">View All Projects <i class="fas fa-arrow-right-long ml-1"></i></a>
+                    </div>
+
+                    <!-- Projects Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        
+                        <!-- GuestInn AI -->
+                        <div class="gold-border-glow bg-white/[0.01] rounded-2xl overflow-hidden flex flex-col justify-between group">
+                            <div class="p-6 space-y-3">
+                                <div class="flex justify-between items-center text-sm">
+                                    <span class="bg-[#C9A84C]/10 text-[#C9A84C] text-[9px] px-2 py-0.5 rounded uppercase font-bold tracking-wider">Hospitality AI</span>
+                                    <i class="fas fa-hotel text-gray-500 group-hover:text-[#C9A84C] transition"></i>
+                                </div>
+                                <h3 class="text-base font-bold text-white group-hover:text-[#C9A84C] transition">GuestInn AI</h3>
+                                <p class="text-xs text-[#A1A1A0] leading-relaxed">
+                                    AI-powered hotel operations platform with receptionist automation, OTA integrations, and booking workflows.
+                                </p>
+                            </div>
+                            <div class="p-4 bg-white/[0.02] border-t border-white/[0.03]">
+                                <button onclick="openCaseStudy('guestinn')" class="text-[10px] uppercase tracking-widest font-bold text-white hover:text-[#C9A84C] transition">
+                                    View Case Study <i class="fas fa-chevron-right text-[8px] ml-1"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- SmartShaadi.ai -->
+                        <div class="gold-border-glow bg-white/[0.01] rounded-2xl overflow-hidden flex flex-col justify-between group">
+                            <div class="p-6 space-y-3">
+                                <div class="flex justify-between items-center text-sm">
+                                    <span class="bg-[#C9A84C]/10 text-[#C9A84C] text-[9px] px-2 py-0.5 rounded uppercase font-bold tracking-wider">Matrimonial Platform</span>
+                                    <i class="fas fa-ring text-gray-500 group-hover:text-[#C9A84C] transition"></i>
+                                </div>
+                                <h3 class="text-base font-bold text-white group-hover:text-[#C9A84C] transition">SmartShaadi.ai</h3>
+                                <p class="text-xs text-[#A1A1A0] leading-relaxed">
+                                    AI-driven matrimonial platform featuring intelligent matchmaking, profile analysis, and engagement automation.
+                                </p>
+                            </div>
+                            <div class="p-4 bg-white/[0.02] border-t border-white/[0.03]">
+                                <button onclick="openCaseStudy('smartshaadi')" class="text-[10px] uppercase tracking-widest font-bold text-white hover:text-[#C9A84C] transition">
+                                    View Case Study <i class="fas fa-chevron-right text-[8px] ml-1"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Bhaav Bhai -->
+                        <div class="gold-border-glow bg-white/[0.01] rounded-2xl overflow-hidden flex flex-col justify-between group">
+                            <div class="p-6 space-y-3">
+                                <div class="flex justify-between items-center text-sm">
+                                    <span class="bg-[#C9A84C]/10 text-[#C9A84C] text-[9px] px-2 py-0.5 rounded uppercase font-bold tracking-wider">Voice Assistant</span>
+                                    <i class="fas fa-headphones-simple text-gray-500 group-hover:text-[#C9A84C] transition"></i>
+                                </div>
+                                <h3 class="text-base font-bold text-white group-hover:text-[#C9A84C] transition">Bhaav Bhai</h3>
+                                <p class="text-xs text-[#A1A1A0] leading-relaxed">
+                                    Voice-first AI assistant capable of real-time interactions, notifications, automation, and business workflows.
+                                </p>
+                            </div>
+                            <div class="p-4 bg-white/[0.02] border-t border-white/[0.03]">
+                                <button onclick="openCaseStudy('bhaavbhai')" class="text-[10px] uppercase tracking-widest font-bold text-white hover:text-[#C9A84C] transition">
+                                    View Case Study <i class="fas fa-chevron-right text-[8px] ml-1"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Amazon FBA Infrastructure -->
+                        <div class="gold-border-glow bg-white/[0.01] rounded-2xl overflow-hidden flex flex-col justify-between group">
+                            <div class="p-6 space-y-3">
+                                <div class="flex justify-between items-center text-sm">
+                                    <span class="bg-[#C9A84C]/10 text-[#C9A84C] text-[9px] px-2 py-0.5 rounded uppercase font-bold tracking-wider">E-Commerce System</span>
+                                    <i class="fab fa-amazon text-gray-500 group-hover:text-[#C9A84C] transition"></i>
+                                </div>
+                                <h3 class="text-base font-bold text-white group-hover:text-[#C9A84C] transition">Amazon FBA Infrastructure</h3>
+                                <p class="text-xs text-[#A1A1A0] leading-relaxed">
+                                    Inventory systems, reporting automation, product research pipelines, and business intelligence dashboards.
+                                </p>
+                            </div>
+                            <div class="p-4 bg-white/[0.02] border-t border-white/[0.03]">
+                                <button onclick="openCaseStudy('fba')" class="text-[10px] uppercase tracking-widest font-bold text-white hover:text-[#C9A84C] transition">
+                                    View Case Study <i class="fas fa-chevron-right text-[8px] ml-1"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- JOURNEY TIMELINE (Strictly Horizontal Axis as shown in 1000286636.png) -->
+                <div id="experience" class="space-y-6">
+                    <div class="border-b border-white/[0.03] pb-4">
+                        <p class="text-[#C9A84C] text-[10px] uppercase tracking-widest font-bold">JOURNEY TIMELINE</p>
+                        <h2 class="text-2xl font-black uppercase tracking-tight text-white font-syncopate">My Journey Over The Years</h2>
+                    </div>
+
+                    <!-- Horizontal scroll container -->
+                    <div class="relative bg-white/[0.01] border border-white/[0.03] p-8 rounded-3xl overflow-hidden">
+                        <!-- Horizontal center rail line -->
+                        <div class="absolute left-8 right-8 top-[91px] h-0.5 bg-gradient-to-r from-[#C9A84C]/20 via-[#C9A84C] to-[#C9A84C]/20 z-0"></div>
+                        
+                        <div class="timeline-container relative z-10 flex gap-8 pb-4">
+                            
+                            <!-- 2017 -->
+                            <div class="min-w-[140px] text-center space-y-4">
+                                <h4 class="text-sm font-bold text-[#C9A84C] font-syncopate">2017</h4>
+                                <div class="w-3.5 h-3.5 rounded-full bg-[#C9A84C] border-4 border-[#0A0A09] mx-auto z-10 relative shadow-[0_0_10px_#C9A84C]"></div>
+                                <div>
+                                    <h5 class="text-xs font-bold text-white">Laboratory</h5>
+                                    <p class="text-[9px] text-[#8E8E8E] uppercase tracking-widest mt-0.5">Operations</p>
+                                </div>
+                            </div>
+
+                            <!-- 2022 -->
+                            <div class="min-w-[140px] text-center space-y-4">
+                                <h4 class="text-sm font-bold text-white font-syncopate">2022</h4>
+                                <div class="w-3.5 h-3.5 rounded-full bg-[#1C1C1B] border-4 border-[#0A0A09] mx-auto z-10 relative"></div>
+                                <div>
+                                    <h5 class="text-xs font-bold text-white">Muahshi</h5>
+                                    <p class="text-[9px] text-[#8E8E8E] uppercase tracking-widest mt-0.5">Digital</p>
+                                </div>
+                            </div>
+
+                            <!-- 2023 -->
+                            <div class="min-w-[140px] text-center space-y-4">
+                                <h4 class="text-sm font-bold text-white font-syncopate">2023</h4>
+                                <div class="w-3.5 h-3.5 rounded-full bg-[#1C1C1B] border-4 border-[#0A0A09] mx-auto z-10 relative"></div>
+                                <div>
+                                    <h5 class="text-xs font-bold text-white">Amazon</h5>
+                                    <p class="text-[9px] text-[#8E8E8E] uppercase tracking-widest mt-0.5">FBA Systems</p>
+                                </div>
+                            </div>
+
+                            <!-- 2024 -->
+                            <div class="min-w-[140px] text-center space-y-4">
+                                <h4 class="text-sm font-bold text-white font-syncopate">2024</h4>
+                                <div class="w-3.5 h-3.5 rounded-full bg-[#1C1C1B] border-4 border-[#0A0A09] mx-auto z-10 relative"></div>
+                                <div>
+                                    <h5 class="text-xs font-bold text-white">AI Automation</h5>
+                                    <p class="text-[9px] text-[#8E8E8E] uppercase tracking-widest mt-0.5">Projects</p>
+                                </div>
+                            </div>
+
+                            <!-- 2025 -->
+                            <div class="min-w-[140px] text-center space-y-4">
+                                <h4 class="text-sm font-bold text-white font-syncopate">2025</h4>
+                                <div class="w-3.5 h-3.5 rounded-full bg-[#1C1C1B] border-4 border-[#0A0A09] mx-auto z-10 relative"></div>
+                                <div>
+                                    <h5 class="text-xs font-bold text-white">GuestInn</h5>
+                                    <p class="text-[9px] text-[#8E8E8E] uppercase tracking-widest mt-0.5">Platform</p>
+                                </div>
+                            </div>
+
+                            <!-- 2026 -->
+                            <div class="min-w-[140px] text-center space-y-4">
+                                <h4 class="text-sm font-bold text-[#C9A84C] font-syncopate">2026</h4>
+                                <div class="w-3.5 h-3.5 rounded-full bg-[#C9A84C] border-4 border-[#0A0A09] mx-auto z-10 relative shadow-[0_0_10px_#C9A84C]"></div>
+                                <div>
+                                    <h5 class="text-xs font-bold text-white">AI Infrastructure</h5>
+                                    <p class="text-[9px] text-[#8E8E8E] uppercase tracking-widest mt-0.5">& SaaS Growth</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CORE EXPERTISE SKILLS GRID -->
+                <div id="certifications" class="space-y-6">
+                    <div class="border-b border-white/[0.03] pb-4">
+                        <p class="text-[#C9A84C] text-[10px] uppercase tracking-widest font-bold">CORE EXPERTISE</p>
+                        <h2 class="text-2xl font-black uppercase tracking-tight text-white font-syncopate">Skills That Power My Work</h2>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                        
+                        <!-- AI Systems Design -->
+                        <div class="gold-border-glow bg-white/[0.01] p-5 rounded-2xl flex flex-col items-center text-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-[#C9A84C]/10 flex items-center justify-center text-[#C9A84C] text-sm"><i class="fas fa-project-diagram"></i></div>
+                            <h4 class="text-[11px] font-bold uppercase tracking-wider text-white">AI Systems Design</h4>
+                        </div>
+
+                        <!-- Automation & Workflows -->
+                        <div class="gold-border-glow bg-white/[0.01] p-5 rounded-2xl flex flex-col items-center text-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-[#C9A84C]/10 flex items-center justify-center text-[#C9A84C] text-sm"><i class="fas fa-network-wired"></i></div>
+                            <h4 class="text-[11px] font-bold uppercase tracking-wider text-white">Automation & Workflows</h4>
+                        </div>
+
+                        <!-- Web Development -->
+                        <div class="gold-border-glow bg-white/[0.01] p-5 rounded-2xl flex flex-col items-center text-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-[#C9A84C]/10 flex items-center justify-center text-[#C9A84C] text-sm"><i class="fas fa-code"></i></div>
+                            <h4 class="text-[11px] font-bold uppercase tracking-wider text-white">Web Development</h4>
+                        </div>
+
+                        <!-- Data & Database Management -->
+                        <div class="gold-border-glow bg-white/[0.01] p-5 rounded-2xl flex flex-col items-center text-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-[#C9A84C]/10 flex items-center justify-center text-[#C9A84C] text-sm"><i class="fas fa-database"></i></div>
+                            <h4 class="text-[11px] font-bold uppercase tracking-wider text-white">Data & Databases</h4>
+                        </div>
+
+                        <!-- Business Strategy -->
+                        <div class="gold-border-glow bg-white/[0.01] p-5 rounded-2xl flex flex-col items-center text-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-[#C9A84C]/10 flex items-center justify-center text-[#C9A84C] text-sm"><i class="fas fa-chart-line"></i></div>
+                            <h4 class="text-[11px] font-bold uppercase tracking-wider text-white">Business Strategy</h4>
+                        </div>
+
+                        <!-- Marketing Systems -->
+                        <div class="gold-border-glow bg-white/[0.01] p-5 rounded-2xl flex flex-col items-center text-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-[#C9A84C]/10 flex items-center justify-center text-[#C9A84C] text-sm"><i class="fas fa-bullseye"></i></div>
+                            <h4 class="text-[11px] font-bold uppercase tracking-wider text-white">Marketing Systems</h4>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- LATEST INSIGHTS (BLOGS) -->
+                <div id="insights" class="space-y-6">
+                    <div class="flex justify-between items-end border-b border-white/[0.03] pb-4">
+                        <div>
+                            <p class="text-[#C9A84C] text-[10px] uppercase tracking-widest font-bold">LATEST INSIGHTS</p>
+                            <h2 class="text-2xl font-black uppercase tracking-tight text-white font-syncopate">Blog & Articles</h2>
+                        </div>
+                        <a href="#insights" class="text-[10px] uppercase tracking-widest text-[#8E8E8E] hover:text-[#C9A84C] transition font-bold">View All Blogs <i class="fas fa-arrow-right-long ml-1"></i></a>
+                    </div>
+
+                    <div class="space-y-4">
+                        
+                        <!-- Blog 1 -->
+                        <div onclick="openBlogModal('hospitality')" class="gold-border-glow bg-white/[0.01] p-5 rounded-2xl flex justify-between items-center group cursor-pointer">
+                            <div class="space-y-1">
+                                <span class="text-[9px] uppercase tracking-widest text-[#8E8E8E] font-medium">May 22, 2026</span>
+                                <h4 class="text-xs md:text-sm font-bold text-white group-hover:text-[#C9A84C] transition">How AI Is Transforming the Hospitality Industry</h4>
+                            </div>
+                            <i class="fas fa-chevron-right text-gray-500 group-hover:text-[#C9A84C] transition shrink-0 ml-4"></i>
+                        </div>
+
+                        <!-- Blog 2 -->
+                        <div onclick="openBlogModal('automation')" class="gold-border-glow bg-white/[0.01] p-5 rounded-2xl flex justify-between items-center group cursor-pointer">
+                            <div class="space-y-1">
+                                <span class="text-[9px] uppercase tracking-widest text-[#8E8E8E] font-medium">May 10, 2026</span>
+                                <h4 class="text-xs md:text-sm font-bold text-white group-hover:text-[#C9A84C] transition">Building Scalable Automation Systems for Business Growth</h4>
+                            </div>
+                            <i class="fas fa-chevron-right text-gray-500 group-hover:text-[#C9A84C] transition shrink-0 ml-4"></i>
+                        </div>
+
+                        <!-- Blog 3 -->
+                        <div onclick="openBlogModal('fba')" class="gold-border-glow bg-white/[0.01] p-5 rounded-2xl flex justify-between items-center group cursor-pointer">
+                            <div class="space-y-1">
+                                <span class="text-[9px] uppercase tracking-widest text-[#8E8E8E] font-medium">Apr 29, 2026</span>
+                                <h4 class="text-xs md:text-sm font-bold text-white group-hover:text-[#C9A84C] transition">Amazon FBA: Systems, Strategies & Profitability</h4>
+                            </div>
+                            <i class="fas fa-chevron-right text-gray-500 group-hover:text-[#C9A84C] transition shrink-0 ml-4"></i>
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
+
+        </div>
+
+        <!-- FULL-WIDTH INTERACTIVE CTA BLOCK -->
+        <section id="contact" class="mt-20 pt-8" data-aos="fade-up">
+            <div class="gold-border-glow bg-gradient-to-r from-[#0C0C0B] to-[#141413] p-10 md:p-14 rounded-3xl text-center space-y-6 relative overflow-hidden">
+                <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-[#C9A84C]/5 rounded-full blur-3xl"></div>
+                
+                <h2 class="text-3xl md:text-5xl font-black uppercase tracking-tight text-white font-syncopate leading-tight">Let's Build Something <br>Amazing Together</h2>
+                <p class="text-gray-400 text-xs md:text-sm tracking-widest uppercase">Have a project in mind or want to collaborate? Let's connect!</p>
+                
+                <div class="flex flex-wrap justify-center gap-4 pt-4">
+                    <button onclick="openContactModal()" class="premium-btn text-[11px] uppercase tracking-widest px-8 py-3.5 rounded-xl font-bold flex items-center gap-2">
+                        Contact Me <i class="fas fa-envelope"></i>
+                    </button>
+                    <a href="https://wa.me/919575877758" target="_blank" class="border border-[#25D366]/20 bg-[#25D366]/5 hover:bg-[#25D366]/10 text-[11px] uppercase tracking-widest text-[#25D366] px-8 py-3.5 rounded-xl flex items-center gap-2 transition duration-300">
+                        Chat on WhatsApp <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- PREMIUM DETAILED FOOTER (Mimics visual grid in 1000286636.png) -->
+    <footer class="bg-[#050505] border-t border-white/[0.03] pt-16 pb-8 text-xs text-[#8E8E8E]">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-8 mb-12">
+            
+            <!-- Left Info column -->
+            <div class="md:col-span-5 space-y-4">
+                <div class="flex items-center gap-3">
+                    <span class="text-lg font-bold border border-[#C9A84C]/40 px-2 py-0.5 rounded text-[#C9A84C] font-syncopate">MH</span>
+                    <span class="text-xs font-bold tracking-widest text-white font-syncopate uppercase">Mubashir Hasan</span>
+                </div>
+                <p class="text-xs text-gray-500 max-w-sm font-light">
+                    AI Systems Architect | MBA | Automation Builder. Building resilient business logic patterns and custom automated operational pipelines.
+                </p>
+                
+                <!-- Social Rows -->
+                <div class="flex gap-4 text-sm pt-2">
+                    <a href="https://linkedin.com" target="_blank" class="hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/muahshi" target="_blank" class="hover:text-white transition"><i class="fab fa-github"></i></a>
+                    <a href="https://wa.me/919575877758" target="_blank" class="hover:text-green-500 transition"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:muahshi.mubi@gmail.com" class="hover:text-[#C9A84C] transition"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="md:col-span-2 space-y-3">
+                <h4 class="text-[10px] uppercase tracking-widest font-bold text-white">QUICK LINKS</h4>
+                <ul class="space-y-1.5 font-medium">
+                    <li><a href="#home" class="hover:text-white transition">Home</a></li>
+                    <li><a href="#about" class="hover:text-white transition">About</a></li>
+                    <li><a href="#projects" class="hover:text-white transition">Projects</a></li>
+                    <li><a href="#experience" class="hover:text-white transition">Experience</a></li>
+                    <li><a href="#certifications" class="hover:text-white transition">Certifications</a></li>
+                    <li><a href="#resume" class="hover:text-white transition">Resume</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="md:col-span-2 space-y-3">
+                <h4 class="text-[10px] uppercase tracking-widest font-bold text-white">CONTACT INFO</h4>
+                <ul class="space-y-1.5 font-light">
+                    <li class="flex items-center gap-2"><i class="fas fa-phone text-[#C9A84C] text-[10px]"></i> +91-9575877758</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-envelope text-[#C9A84C] text-[10px]"></i> muahshi.mubi@gmail.com</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-map-marker-alt text-[#C9A84C] text-[10px]"></i> Bhopal, M.P. India</li>
+                </ul>
+            </div>
+
+            <!-- Newsletter Signup -->
+            <div class="md:col-span-3 space-y-3">
+                <h4 class="text-[10px] uppercase tracking-widest font-bold text-white">NEWSLETTER</h4>
+                <p class="text-[11px] text-gray-500 font-light">Stay updated with my latest projects and automated strategies.</p>
+                
+                <div class="flex gap-2">
+                    <input type="email" placeholder="Enter your email" class="flex-1 bg-white/[0.03] border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:border-[#C9A84C]">
+                    <button class="bg-[#C9A84C] hover:brightness-110 text-black font-bold px-3 py-1.5 rounded-lg text-[10px] uppercase transition">Join</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 pt-8 border-t border-white/[0.03] flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p class="text-[10px] tracking-widest uppercase">© 2026 MUBASHIR HASAN. ALL RIGHTS RESERVED.</p>
+            <p class="text-[10px] tracking-widest uppercase flex items-center gap-1.5">DESIGNED & DEVELOPED WITH <i class="fas fa-heart text-red-500"></i> BY MUBASHIR HASAN</p>
         </div>
     </footer>
 
-    <!-- AI CHAT CONTAINER (Clean default hidden setup with style override) -->
-    <div id="ai-chat-box" class="fixed bottom-28 right-6 w-[350px] md:w-[400px] h-[550px] bg-[#0A0A0A] flex-col overflow-hidden" style="display: none;">
-        <!-- Header -->
-        <div class="p-6 border-b border-white/5 bg-yellow-500/5 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse shadow-[0_0_10px_#22c55e]"></div>
-                <span class="gold-gradient font-bold text-[10px] uppercase tracking-widest">Assistant Live</span>
+
+    <!-- ================= MODERN FLOATING CHATBOX INTEGRATION ================= -->
+    <div id="aiChatWrapper" class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+        
+        <!-- Premium Groq Llama/Gemini Chat Box -->
+        <div id="aiChatBox" class="hidden w-[350px] sm:w-[380px] h-[480px] bg-[#0A0A09] border border-[#C9A84C]/30 rounded-2xl overflow-hidden flex-col shadow-2xl mb-4 transition-all duration-300">
+            <!-- Header -->
+            <div class="p-4 bg-[#141413] border-b border-white/5 flex justify-between items-center">
+                <div class="flex items-center gap-2.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span>
+                    <div>
+                        <p class="text-[10px] font-bold text-white tracking-widest uppercase">Assistant Engine</p>
+                        <p class="text-[9px] text-gray-500">Llama 3.3 Connected via Groq API</p>
+                    </div>
+                </div>
+                <button onclick="toggleAIChat()" class="text-gray-400 hover:text-white transition-colors text-sm">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
-            <button id="close-chat" class="text-gray-500 hover:text-white transition-colors"><i class="fas fa-times"></i></button>
+
+            <!-- Messages stream -->
+            <div id="chatStream" class="flex-1 overflow-y-auto p-4 space-y-4 text-xs scrollbar-none scroll-smooth">
+                <div class="bg-white/[0.02] border border-white/5 rounded-2xl p-3.5 text-gray-300 leading-relaxed max-w-[85%]">
+                    Assalam-o-Alaikum! Main Mubashir ka AI System Assistant hoon. Main aapke business automations, system strategy, ya Amazon FBA queries me kaise madad kar sakta hoon?
+                </div>
+            </div>
+
+            <!-- Input bar -->
+            <div class="p-3 bg-[#050505] border-t border-white/5 flex gap-2">
+                <input type="text" id="chatInput" placeholder="Ask anything about Mubashir..." class="flex-1 bg-white/[0.03] border border-white/10 rounded-xl px-3.5 py-2 text-xs text-white focus:outline-none focus:border-[#C9A84C]/50" onkeypress="handleInputKey(event)">
+                <button id="voiceBtn" onclick="toggleVoiceInput()" class="w-9 h-9 bg-white/5 hover:bg-white/10 text-gray-400 hover:text-[#C9A84C] rounded-xl flex items-center justify-center transition-all">
+                    <i class="fas fa-microphone" id="voiceIcon"></i>
+                </button>
+                <button onclick="sendChatMessage()" class="w-9 h-9 bg-[#C9A84C] hover:scale-105 active:scale-95 text-black rounded-xl flex items-center justify-center transition-all">
+                    <i class="fas fa-paper-plane text-xs"></i>
+                </button>
+            </div>
         </div>
-        <!-- Messages -->
-        <div id="chat-messages" class="flex-1 overflow-y-auto p-6 space-y-4 scrollbar-hide">
-            <div class="ai-msg p-4 text-[13px] text-gray-300 leading-relaxed shadow-sm">
-                Assalam-o-Alaikum! Main Mubashir ka AI Assistant hoon. Main aapke business ko automate karne ya Amazon FBA scale karne mein kaise madad kar sakta hoon?
-            </div>
-        </div>
-        <!-- Input Group -->
-        <div class="p-5 border-t border-white/5 bg-[#050505] flex gap-2 items-center">
-            <div class="relative flex-1">
-                <input type="text" id="chat-input" placeholder="Ask me anything..." class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-3 text-sm text-white focus:outline-none focus:border-yellow-500/50 transition-all">
-            </div>
-            <button id="voice-trigger" class="w-11 h-11 rounded-2xl bg-white/5 hover:bg-white/10 text-gray-400 hover:text-yellow-500 transition-all flex items-center justify-center">
-                <i class="fas fa-microphone"></i>
+
+        <!-- Trigger Button -->
+        <button onclick="toggleAIChat()" class="w-14 h-14 bg-[#C9A84C] rounded-full shadow-lg shadow-[#C9A84C]/20 flex items-center justify-center text-black hover:scale-110 active:scale-95 transition-all">
+            <i class="fas fa-comment-dots text-xl" id="chatTriggerIcon"></i>
+        </button>
+    </div>
+
+
+    <!-- ================= INTERACTIVE POPUP MODALS ================= -->
+
+    <!-- Case Study Modal -->
+    <div id="caseStudyModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="gold-border-glow bg-[#0A0A09] w-full max-w-xl rounded-3xl max-h-[85vh] overflow-y-auto border border-[#C9A84C]/30 relative p-6 md:p-8">
+            <button onclick="closeModal('caseStudyModal')" class="absolute top-6 right-6 text-gray-400 hover:text-white transition text-lg z-10">
+                <i class="fas fa-times"></i>
             </button>
-            <button id="send-btn" class="w-11 h-11 bg-yellow-500 rounded-2xl text-black flex items-center justify-center hover:scale-105 transition-all shadow-lg shadow-yellow-500/10">
-                <i class="fas fa-paper-plane text-xs"></i>
-            </button>
+            <div class="space-y-6" id="caseStudyContent">
+                <!-- Content injected dynamically -->
+            </div>
         </div>
     </div>
 
-    <!-- Floating Trigger -->
-    <button id="ai-trigger" class="fixed bottom-8 right-8 w-16 h-16 bg-yellow-500 rounded-full shadow-[0_10px_30px_rgba(255,215,0,0.3)] flex items-center justify-center text-black text-2xl z-[10001] hover:scale-110 transition-transform active:scale-95">
-        <i class="fas fa-comment-dots" id="ai-main-icon"></i>
-    </button>
+    <!-- Complete Detailed Resume Modal (Exact Resume Content Included) -->
+    <div id="resumeModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="gold-border-glow bg-[#0A0A09] w-full max-w-3xl rounded-3xl h-[80vh] flex flex-col justify-between border border-[#C9A84C]/30 relative overflow-hidden">
+            <!-- Header -->
+            <div class="p-5 border-b border-white/5 flex justify-between items-center bg-[#141413]">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-white">Mubashir Hasan - Professional CV</h3>
+                <div class="flex items-center gap-3">
+                    <a href="Mubashir_hasan_resume.pdf" download class="bg-[#C9A84C] text-black text-[10px] font-bold px-4 py-2 rounded-lg hover:bg-[#b59541] transition uppercase tracking-wider">
+                        <i class="fas fa-download mr-1.5"></i> Download PDF
+                    </a>
+                    <button onclick="closeModal('resumeModal')" class="text-gray-400 hover:text-white text-lg transition">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Body: Structured preview of uploaded resume -->
+            <div class="flex-1 overflow-y-auto p-6 md:p-8 space-y-8 text-xs leading-relaxed text-[#A1A1A0]">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 border-b border-white/5 pb-6">
+                    <div class="md:col-span-2 space-y-2">
+                        <h2 class="text-xl font-bold uppercase tracking-wide text-white font-syncopate">MUBASHIR HASAN</h2>
+                        <p class="text-xs text-[#C9A84C] font-semibold tracking-wider uppercase">Systems & E-Commerce Infrastructure Architect</p>
+                        <p class="text-xs font-light">
+                            Result-oriented MBA graduate with 4+ years of experience in Data Entry Operations, Database Management, Documentation Control, Inventory Records Management, and Administrative Reporting. Skilled in handling high-volume data processing, record verification, and workflow optimization.
+                        </p>
+                    </div>
+                    <div class="space-y-1.5 text-[11px] text-gray-300 md:border-l md:border-white/5 md:pl-6">
+                        <p><i class="fas fa-phone mr-2 text-[#C9A84C]"></i> +91-9575877758</p>
+                        <p><i class="fas fa-envelope mr-2 text-[#C9A84C]"></i> muahshi.mubi@gmail.com</p>
+                        <p><i class="fas fa-map-marker-alt mr-2 text-[#C9A84C]"></i> Bhopal, M.P. India</p>
+                        <p><i class="fas fa-globe mr-2 text-[#C9A84C]"></i> muahshi.github.io</p>
+                    </div>
+                </div>
 
+                <!-- Career Timeline -->
+                <div class="space-y-4">
+                    <h4 class="text-[10px] font-bold uppercase tracking-widest text-[#C9A84C] border-b border-white/5 pb-1 font-syncopate">Professional Experience</h4>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between items-start flex-wrap gap-1">
+                                <h5 class="text-white font-bold text-xs uppercase">Systems & E-Commerce Infrastructure Architect</h5>
+                                <span class="text-[10px] text-[#C9A84C] font-bold">Jan 2022 - Present</span>
+                            </div>
+                            <p class="text-[10px] text-gray-500 font-medium uppercase mt-0.5">Muahshi Digital</p>
+                            <ul class="list-disc list-inside text-xs text-gray-400 space-y-1 mt-1.5 font-light">
+                                <li>Managed high-volume product databases and inventory records.</li>
+                                <li>Maintained catalog accuracy and shipment tracking documentation.</li>
+                                <li>Built 150+ workflow automations reducing manual effort by 40%.</li>
+                                <li>Administered system access controls and operational records ensuring data integrity.</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between items-start flex-wrap gap-1">
+                                <h5 class="text-white font-bold text-xs uppercase">Data Entry & Operations Executive</h5>
+                                <span class="text-[10px] text-gray-500 font-bold">Jun 2017 - Dec 2022</span>
+                            </div>
+                            <p class="text-[10px] text-gray-500 font-medium uppercase mt-0.5">New Life Laboratories Pvt. Ltd.</p>
+                            <ul class="list-disc list-inside text-xs text-gray-400 space-y-1 mt-1.5 font-light">
+                                <li>Processed and managed 10,000+ laboratory and consumer records with absolute accuracy.</li>
+                                <li>Conducted rigorous data verification and documentation audits.</li>
+                                <li>Generated Excel reports, administrative reporting, and dynamic tracking spreadsheets.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education & Certifications Split -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
+                    <div class="space-y-3">
+                        <h4 class="text-[10px] font-bold uppercase tracking-widest text-[#C9A84C] border-b border-white/5 pb-1 font-syncopate">Education</h4>
+                        <div class="space-y-2">
+                            <div>
+                                <h5 class="text-white font-bold text-xs">MBA in Marketing & Systems Strategy</h5>
+                                <p class="text-[10px] text-gray-500">IPER Bhopal | BU Bhopal | 2017</p>
+                            </div>
+                            <div>
+                                <h5 class="text-white font-bold text-xs">BBA (Bachelor of Business Administration)</h5>
+                                <p class="text-[10px] text-gray-500">BSSS Bhopal | BU Bhopal | 2014</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3">
+                        <h4 class="text-[10px] font-bold uppercase tracking-widest text-[#C9A84C] border-b border-white/5 pb-1 font-syncopate">Certifications & Honors</h4>
+                        <ul class="space-y-1.5 text-xs text-gray-400 font-light">
+                            <li><strong class="text-white">Intel AI For All:</strong> Co-Certified by Intel & CBSE under Digital India Power To Empower Initiative.</li>
+                            <li><strong class="text-white">Odyssey National Fest:</strong> Recognition for management simulations and execution excellence.</li>
+                            <li><strong class="text-white">State Child Art Award:</strong> Merited child art club recognition for architectural precise rendering.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact & Pitch Modal -->
+    <div id="contactModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="gold-border-glow bg-[#0A0A09] w-full max-w-md rounded-3xl overflow-hidden border border-[#C9A84C]/30 relative p-6 md:p-8">
+            <button onclick="closeModal('contactModal')" class="absolute top-6 right-6 text-gray-400 hover:text-white transition text-lg z-10">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-lg font-bold uppercase tracking-wide text-white font-syncopate">Send Secure Message</h3>
+                    <p class="text-gray-400 text-xs mt-1">Ready to automate your operations? Drop a direct note below.</p>
+                </div>
+
+                <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4 text-xs">
+                    <div>
+                        <label class="block text-[10px] uppercase tracking-wider text-gray-400 font-bold mb-1">Your Name</label>
+                        <input type="text" required id="contactName" placeholder="Mubashir" class="w-full bg-white/[0.02] border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-[#C9A84C]">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] uppercase tracking-wider text-gray-400 font-bold mb-1">Your Email</label>
+                        <input type="email" required id="contactEmail" placeholder="mubi@example.com" class="w-full bg-white/[0.02] border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-[#C9A84C]">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] uppercase tracking-wider text-gray-400 font-bold mb-1">Message</label>
+                        <textarea required id="contactMsg" rows="3" placeholder="I want to integrate custom n8n workflows with LLMs..." class="w-full bg-white/[0.02] border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-[#C9A84C]"></textarea>
+                    </div>
+                    <button type="submit" class="w-full py-3 rounded-xl premium-btn text-[10px] uppercase tracking-widest font-bold">
+                        Broadcast System Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ================= JAVASCRIPT LOGIC ================= -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true, offset: 100 });
 
+        // ================= HERO TYPING PHRASES =================
         const text = document.getElementById('typewriter');
-        const phrases = ['Systems.', 'AI Agents.', 'Efficiency.', 'E-Commerce.'];
+        const phrases = ['HASAN', 'SYSTEMS', 'AI AGENTS', 'AUTOMATION', 'MBA LEAD'];
         let i = 0, j = 0, current = '', isDeleting = false;
         function type() {
             current = phrases[i];
@@ -303,12 +856,329 @@
                 if (j < 0) { isDeleting = false; i = (i + 1) % phrases.length; j = 0; }
             } else {
                 text.textContent = current.substring(0, j++);
-                if (j > current.length) { isDeleting = true; setTimeout(type, 2500); return; }
+                if (j > current.length) { isDeleting = true; setTimeout(type, 2000); return; }
             }
             setTimeout(type, isDeleting ? 70 : 150);
         }
         type();
+
+        // ================= CASE STUDY METADATA BUILDER =================
+        const caseStudies = {
+            guestinn: {
+                title: "GuestInn AI Operations",
+                badge: "Hospitality AI Integration",
+                concept: "An autonomous guest hospitality & operations suite designed to handle frontend room allocations, intelligent multi-channel OTA tracking, and fully digital checkout schedules.",
+                stack: ["Next.js", "n8n Cloud Nodes", "FastAPI Python", "Twilio API"],
+                metrics: ["Automated 80% of routine client booking tickets", "Reduced checkout bottlenecks during high seasons", "Synchronized cross-platform OTA status in under 2 seconds"]
+            },
+            smartshaadi: {
+                title: "SmartShaadi.ai Matchmaking",
+                badge: "Cognitive Profile Engineering",
+                concept: "An ecosystem deploying intelligent matching logic rules. It aggregates matrimonial profile data securely, generates automated identity checks, and tracks custom relationship matches.",
+                stack: ["React Native", "Firebase Firestore", "Python Automation Suite", "Tailwind CSS"],
+                metrics: ["Engineered cognitive matching workflows", "Safeguarded sensitive citizen records with custom DB design", "Achieved local optimization targeting Bhopal users"]
+            },
+            bhaavbhai: {
+                title: "Bhaav Bhai Voice Engine",
+                badge: "Latency-Optimized Conversational Voice",
+                concept: "A voice-first software suite enabling seamless business query management. Executes swift webhook logic streams to push real-time WhatsApp or Telegram alerts depending on user request paths.",
+                stack: ["NodeJS", "Google Speech-to-Text API", "Telegram Notification System", "n8n API Hub"],
+                metrics: ["Sub-second processing time for voice streams", "Robust webhook trigger sequences for offsite notifications", "Enabled offline recovery states"]
+            },
+            fba: {
+                title: "Amazon USA Logistics Pipeline",
+                badge: "Inventory Analytics Dashboard",
+                concept: "An enterprise intelligence control layout tracking USA retail reselling operations. Auto-refreshes stock rates, margins, and warehouse transit protocols.",
+                stack: ["Advanced Excel Macro Scripts", "AWS cloud routines", "Google Apps Scripts Engine"],
+                metrics: ["Mapped 10,000+ logistics status lines", "Maintained 100% database tracking efficiency with automatic audits", "Reduced restock cycle delays by 35%"]
+            }
+        };
+
+        function openCaseStudy(key) {
+            const data = caseStudies[key];
+            if (!data) return;
+
+            const content = `
+                <div class="space-y-4 text-xs">
+                    <span class="bg-[#C9A84C]/10 text-[#C9A84C] text-[9px] px-3 py-1 rounded-full uppercase font-bold tracking-wider">${data.badge}</span>
+                    <h3 class="text-base font-black uppercase tracking-tight text-white font-syncopate mt-2">${data.title}</h3>
+                    <p class="text-[#A1A1A0] leading-relaxed">${data.concept}</p>
+                    
+                    <div class="space-y-2 pt-2">
+                        <h4 class="text-[10px] uppercase tracking-wider text-white font-bold">Technology Architecture Stack:</h4>
+                        <div class="flex flex-wrap gap-2">
+                            ${data.stack.map(s => `<span class="bg-white/5 border border-white/10 px-2.5 py-1 rounded text-[11px] text-gray-300">${s}</span>`).join('')}
+                        </div>
+                    </div>
+
+                    <div class="space-y-2 pt-2">
+                        <h4 class="text-[10px] uppercase tracking-wider text-[#C9A84C] font-bold">Performance Deliverables:</h4>
+                        <ul class="space-y-2 text-[#A1A1A0]">
+                            ${data.metrics.map(m => `<li class="flex items-start gap-2"><i class="fas fa-check text-[#C9A84C] mt-0.5"></i> ${m}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+            `;
+            document.getElementById('caseStudyContent').innerHTML = content;
+            document.getElementById('caseStudyModal').classList.remove('hidden');
+            document.getElementById('caseStudyModal').classList.add('flex');
+        }
+
+        // ================= GENERAL MODALS TOGGLES =================
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('flex');
+            document.getElementById(id).classList.add('hidden');
+        }
+
+        function openResumeModal() {
+            document.getElementById('resumeModal').classList.remove('hidden');
+            document.getElementById('resumeModal').classList.add('flex');
+        }
+
+        function openContactModal() {
+            document.getElementById('contactModal').classList.remove('hidden');
+            document.getElementById('contactModal').classList.add('flex');
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('contactName').value;
+            const email = document.getElementById('contactEmail').value;
+            const msg = document.getElementById('contactMsg').value;
+
+            const form = document.getElementById('contactForm');
+            form.innerHTML = `
+                <div class="text-center py-6 space-y-3">
+                    <div class="w-12 h-12 rounded-full bg-green-500/10 text-green-500 flex items-center justify-center mx-auto text-xl">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <p class="text-sm font-bold text-white uppercase">System Message Broadcasted!</p>
+                    <p class="text-xs text-gray-500">Mubashir will respond shortly at ${email}.</p>
+                </div>
+            `;
+
+            // Hit their local serverless function chat API asynchronously to notify Telegram leads
+            fetch('/api/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ type: 'notification', query: `Lead Name: ${name}, Email: ${email}, Msg: ${msg}` })
+            }).catch(() => {});
+        }
+
+
+        // ================= DYNAMIC INSIGHT ARTICLES =================
+        const blogPosts = {
+            hospitality: {
+                title: "How AI Is Transforming hospitality Operations",
+                meta: "May 2026 • 5 min read • By Mubashir Hasan",
+                content: `
+                    The entry of autonomous LLM workflows in frontend hospitality businesses is no longer an experimental luxury—it is an absolute strategic imperative. <br><br>
+                    <strong>The Human Resourcing Dilemma:</strong> Nightly reception desks are characterized by fluctuating ticket volumes. Managing live support 24/7 represents a substantial operation expense. <br><br>
+                    <strong>The Autonomous Agent Remedy:</strong> By deploying a dual-stage routing engine connected directly with modern language models, guest checkouts, room allocation queries, and hotel policy details are solved without staff intervention. GuestInn AI maps these exact parameters, yielding 80% automated resolution on routine bookings.
+                `
+            },
+            automation: {
+                title: "Building Scalable Automations For Enterprise Systems",
+                meta: "May 2026 • 7 min read • By Mubashir Hasan",
+                content: `
+                    Modern workflow architecture requires moving past standard simple linear templates. Enterprises managing high volumes require resilient, multi-branch, and fail-safe pipeline logic.<br><br>
+                    <strong>Key Engineering Paradigms:</strong><br>
+                    1. <em>Sub-second Webhook Processing:</em> Keeping API response times under 200ms ensures third-party endpoints don't timeout.<br>
+                    2. <em>Failover Fallbacks:</em> Implementing exponential retry backoffs preserves operational integrity when central databases disconnect.<br>
+                    3. <em>Logic Separation:</em> Keep formatting tasks on client side and critical transactions secured on optimized serverless nodes.
+                `
+            },
+            fba: {
+                title: "Amazon FBA: Systems, Strategies & Profitability Modeling",
+                meta: "April 2026 • 6 min read • By Mubashir Hasan",
+                content: `
+                    FBA scaling requires exact operational math. Navigating the USA market demands a thorough, structured data layout to ensure constant supply chain rotation.<br><br>
+                    <strong>Database Synchronization:</strong> Managing over 10,000 inventory record lines manually yields catalog errors and costly warehouse delay penalties. <br><br>
+                    <strong>The Solution:</strong> Deploying automated replenishment algorithms, structured Excel metrics, and cloud-driven Apps Script loops reduces stockout scenarios by 35%, ensuring flawless margin tracking.
+                `
+            }
+        };
+
+        function openBlogModal(key) {
+            const data = blogPosts[key];
+            if (!data) return;
+
+            const content = `
+                <div class="space-y-4 text-xs">
+                    <span class="text-[9px] text-[#C9A84C] font-bold uppercase tracking-widest">${data.meta}</span>
+                    <h3 class="text-base font-black uppercase tracking-tight text-white font-syncopate mt-1">${data.title}</h3>
+                    <div class="text-[#A1A1A0] leading-relaxed space-y-3 pt-2">
+                        ${data.content}
+                    </div>
+                </div>
+            `;
+            document.getElementById('caseStudyContent').innerHTML = content;
+            document.getElementById('caseStudyModal').classList.remove('hidden');
+            document.getElementById('caseStudyModal').classList.add('flex');
+        }
+
+
+        // ================= FULLY COMPATIBLE DYNAMIC AI ASSISTANT (CONNECTS TO GROQ API) =================
+        let isChatOpen = false;
+        const history = [];
+
+        // Dynamic offline fallback matching their local javascript logic
+        const fallbackAnswers = {
+            hi: "Assalam-o-Alaikum! Main Mubashir Hasan ka premium AI Assistant hoon. Main aapke business automations, system architecture, ya FBA operations me kaise madad kar sakta hoon?",
+            hello: "Hey! Welcome. Main Mubashir Hasan ka Assistant hoon. Please tell me what systems you need designed today?",
+            metro: "Bhopal MP Metro me Data Entry/Systems role ke liye Mubashir ekdam ideal candidate hain. Unke paas New Life Laboratories me 5 saal (2017-2022) tak 10,000+ records ko securely manage karne ka strong experience hai.",
+            contact: "Aap Mubashir se directly +91 9575877758 par WhatsApp ya muahshi.dev@gmail.com par connect kar sakte hain. Unka professional response rate kaafi fast hai.",
+            n8n: "n8n automation aur custom LLM integrations ka use karke Mubashir ne 150+ robust workflow logics and automated agents build kiye hain.",
+            amazon: "Mubashir 2022 se Amazon USA operations handle kar rahe hain. Inventory tracking, shipping codes management aur profitability analytics spreadsheets unke main expertise areas hain."
+        };
+
+        function toggleAIChat() {
+            const chatBox = document.getElementById('aiChatBox');
+            const icon = document.getElementById('chatTriggerIcon');
+            isChatOpen = !isChatOpen;
+            
+            if (isChatOpen) {
+                chatBox.classList.remove('hidden');
+                chatBox.classList.add('flex');
+                icon.className = "fas fa-chevron-down text-lg";
+            } else {
+                chatBox.classList.remove('flex');
+                chatBox.classList.add('hidden');
+                icon.className = "fas fa-comment-dots text-xl";
+            }
+        }
+
+        function handleInputKey(event) {
+            if (event.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
+
+        async function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const query = input.value.trim();
+            if (!query) return;
+
+            // Append User msg
+            appendMessageBubble('user', query);
+            input.value = "";
+
+            // Thinking msg
+            const thinkingId = appendMessageBubble('ai', '<span class="animate-pulse">Thinking through logic systems...</span>');
+
+            let replyText = "";
+            let success = false;
+
+            try {
+                // Call Vercel serverless Groq LLM API handler at /api/chat
+                const res = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        messages: [...history, { role: 'user', content: query }] 
+                    })
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+                    replyText = data.choices[0].message.content;
+                    success = true;
+                }
+            } catch (e) {
+                // Failover seamlessly to client fallback
+            }
+
+            if (!success) {
+                const lowerQuery = query.toLowerCase();
+                replyText = "Mubashir Hasan ek expert AI Automation & Systems Architect hain. Unki professional automation systems aur case studies ki details side panel par live hain. Direct contact ke liye aap +91 9575877758 ka use kar sakte hain.";
+                
+                for (const k in fallbackAnswers) {
+                    if (lowerQuery.includes(k)) {
+                        replyText = fallbackAnswers[k];
+                        break;
+                    }
+                }
+            }
+
+            // Remove Thinking & render Response
+            document.getElementById(thinkingId).remove();
+            appendMessageBubble('ai', replyText);
+            speak(replyText);
+
+            // Record history state
+            history.push({ role: 'user', content: query }, { role: 'assistant', content: replyText });
+            
+            // Forward commercial request triggers directly to their notification handler
+            if (replyText.includes('sent to Mubashir') || query.toLowerCase().includes('connect') || query.toLowerCase().includes('contact')) {
+                fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ type: 'notification', query: query })
+                }).catch(() => {});
+            }
+        }
+
+        function appendMessageBubble(role, text) {
+            const stream = document.getElementById('chatStream');
+            const id = 'msg-' + Date.now();
+            const div = document.createElement('div');
+            div.id = id;
+            
+            if (role === 'user') {
+                div.className = "bg-[#C9A84C]/10 border border-[#C9A84C]/25 text-white p-3 rounded-xl ml-auto max-w-[85%] text-right self-end";
+            } else {
+                div.className = "bg-white/[0.03] border border-white/5 text-gray-300 p-3 rounded-xl mr-auto max-w-[85%] text-left self-start";
+            }
+            div.innerHTML = text;
+            stream.appendChild(div);
+            stream.scrollTop = stream.scrollHeight;
+            return id;
+        }
+
+        // Speech synthesis (TTS) player
+        let synth = window.speechSynthesis;
+        function speak(text) {
+            if (!synth) return;
+            synth.cancel();
+            const cleanText = text.replace(/<\/?[^>]+(>|$)/g, "");
+            const utterance = new SpeechSynthesisUtterance(cleanText);
+            utterance.lang = 'hi-IN';
+            utterance.rate = 1.1;
+            synth.speak(utterance);
+        }
+
+        // Voice Input STT
+        let isListening = false;
+        let recognition;
+        const Speech = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (Speech) {
+            recognition = new Speech();
+            recognition.lang = 'hi-IN';
+            recognition.onresult = (e) => {
+                document.getElementById('chatInput').value = e.results[0][0].transcript;
+                sendChatMessage();
+            };
+            recognition.onend = () => {
+                isListening = false;
+                document.getElementById('voiceIcon').className = "fas fa-microphone";
+                document.getElementById('voiceBtn').classList.remove('text-red-500', 'animate-pulse');
+            };
+        }
+
+        function toggleVoiceInput() {
+            if (!recognition) {
+                appendMessageBubble('ai', "Speech Recognition non-supported is browser mein.");
+                return;
+            }
+            if (isListening) {
+                recognition.stop();
+            } else {
+                isListening = true;
+                document.getElementById('voiceIcon').className = "fas fa-spinner animate-spin text-[#C9A84C]";
+                document.getElementById('voiceBtn').classList.add('text-red-500', 'animate-pulse');
+                recognition.start();
+            }
+        }
     </script>
-    <script src="ai-assistant.js"></script>
 </body>
 </html>
