@@ -48,6 +48,9 @@ class MuahshiAssistant {
             if (box.style.display === 'none' || box.style.display === '') {
                 box.style.display = 'flex';
                 icon.className = 'fas fa-chevron-down';
+                // Auto Scroll down
+                const msgs = document.getElementById('chat-messages');
+                if (msgs) msgs.scrollTop = msgs.scrollHeight;
             } else {
                 box.style.display = 'none';
                 icon.className = 'fas fa-comment-dots';
@@ -59,7 +62,7 @@ class MuahshiAssistant {
             e.stopPropagation();
             box.style.display = 'none';
             const icon = document.getElementById('ai-main-icon');
-            icon.className = 'fas fa-comment-dots';
+            if (icon) icon.className = 'fas fa-comment-dots';
         };
 
         send.onclick = () => this.handleInput(input.value);
@@ -128,30 +131,32 @@ class MuahshiAssistant {
             const reply = this.getFallbackReply(text);
             this.appendMessage('ai', reply);
             this.speak(reply);
+            
+            this.history.push({ role: 'user', content: text }, { role: 'assistant', content: reply });
         }
     }
 
     // High fidelity conversational Hinglish response bank for fast interaction
     getFallbackReply(input) {
-        const query = input.toLowerCase();
+        const query = input.toLowerCase().trim();
         
-        if (query.includes('hi') || query.includes('hello') || query.includes('assalam')) {
+        if (query.includes('hi') || query.includes('hello') || query.includes('assalam') || query.includes('hey')) {
             return "Assalam-o-Alaikum! Main Mubashir Hasan ka personal AI Assistant hoon. Main aapke business automations, system architecture, ya FBA operations me kaise madad kar sakta hoon?";
         }
-        if (query.includes('metro') || query.includes('bhopal') || query.includes('data entry')) {
-            return "MP Metro and Bhopal local systems optimization ke liye Mubashir ka profile ekdum perfect hai. Unke paas advanced spreadsheets, database handling aur record verification ka 5 saal ka solid corporate experience hai.";
+        if (query.includes('metro') || query.includes('bhopal') || query.includes('data entry') || query.includes('operator')) {
+            return "Bhopal MP Metro me Data Entry/Systems role ke liye Mubashir ekdam ideal candidate hain. Unke paas New Life Laboratories me 5 saal (2017-2022) tak 10,000+ records ko securely manage karne ka strong experience hai. Unhe high-speed verification aur flawless spreadsheets handle karne me mastery hai.";
         }
         if (query.includes('amazon') || query.includes('fba') || query.includes('usa')) {
-            return "Mubashir 2022 se Amazon USA operations handle kar rahe hain. Inventory dashboard, shipping tracking aur profitability analytics sheets unki main strong areas hain.";
+            return "Mubashir 2022 se Amazon USA operations handle kar rahe hain. Inventory tracking, shipping codes management aur profitability analytics spreadsheets unke main expertise areas hain.";
         }
         if (query.includes('n8n') || query.includes('automation') || query.includes('agent')) {
-            return "n8n automation aur custom LLM integration ka use karke Mubashir ne 150+ robust logic loops build kiye hain. Aap detail options ke liye agents.html explore kar sakte hain.";
+            return "n8n automation aur custom LLM integrations ka use karke Mubashir ne 150+ robust workflow logics and automated agents build kiye hain. Details ke liye aap agents.html check kar sakte hain.";
         }
         if (query.includes('contact') || query.includes('number') || query.includes('phone') || query.includes('email') || query.includes('connect')) {
-            return "Aap Mubashir se directly +91 9575877758 par WhatsApp ya muahshi.dev@gmail.com par connect kar sakte hain. Aapka query unke pass log kar diya gaya hai.";
+            return "Aap Mubashir se directly +91 9575877758 par WhatsApp ya muahshi.dev@gmail.com par connect kar sakte hain. Unka professional response rate kaafi fast hai.";
         }
         
-        return "Mubashir ke automatic workflows aur custom SaaS systems ki details portfolio page par live hain. Direct contact karne ke liye aap upar 'Start Project' button click karke mail kar sakte hain.";
+        return "Mubashir Hasan ek expert AI Automation & Systems Architect hain. Unki professional automation systems aur case studies ki pure details portfolio dashboard par live hain. Direct contact ke liye aap +91 9575877758 ka use kar sakte hain.";
     }
 
     appendMessage(role, text) {
