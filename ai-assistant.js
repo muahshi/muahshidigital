@@ -1,6 +1,6 @@
 /**
- * Muahshi Digital - Personal AI Assistant
- * Optimized for Premium Dark/Gold Theme with bulletproof Static Fallback
+ * Muahshi Digital - Personal AI Assistant Logic
+ * Fully optimized for click responsiveness, showing/hiding on trigger, and seamless static fallback
  */
 
 class MuahshiAssistant {
@@ -25,7 +25,10 @@ class MuahshiAssistant {
             this.recognition.onresult = (e) => this.handleInput(e.results[0][0].transcript);
             this.recognition.onend = () => {
                 this.isListening = false;
-                document.getElementById('voice-trigger').classList.remove('text-red-500', 'animate-pulse');
+                const voiceTrigger = document.getElementById('voice-trigger');
+                if (voiceTrigger) {
+                    voiceTrigger.classList.remove('text-red-500', 'animate-pulse');
+                }
             };
         }
     }
@@ -38,40 +41,47 @@ class MuahshiAssistant {
         const input = document.getElementById('chat-input');
         const voice = document.getElementById('voice-trigger');
 
-        // Toggle Open/Close using tailwind class switching (Prevents CSS conflicts)
-        trigger.onclick = () => {
-            const isClosed = box.classList.contains('hidden');
-            if (isClosed) {
-                box.classList.remove('hidden');
-                box.classList.add('flex');
-                trigger.querySelector('i').className = 'fas fa-chevron-down';
+        // Robust Toggle using style.display to completely bypass Tailwind conflicts
+        trigger.onclick = (e) => {
+            e.stopPropagation();
+            const icon = document.getElementById('ai-main-icon');
+            if (box.style.display === 'none' || box.style.display === '') {
+                box.style.display = 'flex';
+                icon.className = 'fas fa-chevron-down';
             } else {
-                box.classList.add('hidden');
-                box.classList.remove('flex');
-                trigger.querySelector('i').className = 'fas fa-comment-dots';
+                box.style.display = 'none';
+                icon.className = 'fas fa-comment-dots';
             }
         };
 
-        // Explicit Close handler (Fixes "Not closing" bug)
-        close.onclick = () => {
-            box.classList.add('hidden');
-            box.classList.remove('flex');
-            trigger.querySelector('i').className = 'fas fa-comment-dots';
+        // Close button click handler
+        close.onclick = (e) => {
+            e.stopPropagation();
+            box.style.display = 'none';
+            const icon = document.getElementById('ai-main-icon');
+            icon.className = 'fas fa-comment-dots';
         };
 
         send.onclick = () => this.handleInput(input.value);
-        input.onkeypress = (e) => { if (e.key === 'Enter') this.handleInput(input.value); };
-
-        voice.onclick = () => {
-            if (!this.recognition) return alert("Browser voice support missing.");
-            if (this.isListening) {
-                this.recognition.stop();
-            } else {
-                this.recognition.start();
-                this.isListening = true;
-                voice.classList.add('text-red-500', 'animate-pulse');
-            }
+        input.onkeypress = (e) => { 
+            if (e.key === 'Enter') this.handleInput(input.value); 
         };
+
+        if (voice) {
+            voice.onclick = () => {
+                if (!this.recognition) {
+                    this.appendMessage('ai', "Voice recognition aapke browser mein supported nahi hai.");
+                    return;
+                }
+                if (this.isListening) {
+                    this.recognition.stop();
+                } else {
+                    this.recognition.start();
+                    this.isListening = true;
+                    voice.classList.add('text-red-500', 'animate-pulse');
+                }
+            };
+        }
     }
 
     async handleInput(text) {
@@ -84,7 +94,7 @@ class MuahshiAssistant {
         const typingId = this.appendMessage('ai', 'Thinking...');
 
         try {
-            // Serverless connection attempt
+            // Attempt to hit serverless endpoint
             const res = await fetch('/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -93,51 +103,55 @@ class MuahshiAssistant {
                 })
             });
 
-            if (!res.ok) throw new Error("Static platform fallback triggered.");
+            if (!res.ok) throw new Error("Fallback to static parser needed.");
 
             const data = await res.json();
             const reply = data.choices[0].message.content;
 
-            document.getElementById(typingId).remove();
+            const typingElem = document.getElementById(typingId);
+            if (typingElem) typingElem.remove();
+
             this.appendMessage('ai', reply);
             this.speak(reply);
             
             this.history.push({ role: 'user', content: text }, { role: 'assistant', content: reply });
 
-            if (reply.includes('Mubashir tak pahuch jayega') || text.toLowerCase().includes('connect') || text.toLowerCase().includes('contact')) {
+            if (reply.includes('Mubashir tak pahuch') || text.toLowerCase().includes('connect') || text.toLowerCase().includes('contact')) {
                 this.sendNotification(text);
             }
 
         } catch (e) {
-            // Local AI Smart Engine (Ensures beautiful replies on static platforms like GitHub Pages!)
-            document.getElementById(typingId).remove();
+            // Instant Client-Side AI Response (No waiting loops!)
+            const typingElem = document.getElementById(typingId);
+            if (typingElem) typingElem.remove();
+
             const reply = this.getFallbackReply(text);
             this.appendMessage('ai', reply);
             this.speak(reply);
         }
     }
 
-    // High-fidelity Local Reply Parser for static deployment
+    // High fidelity conversational Hinglish response bank for fast interaction
     getFallbackReply(input) {
         const query = input.toLowerCase();
         
         if (query.includes('hi') || query.includes('hello') || query.includes('assalam')) {
-            return "Assalam-o-Alaikum! Main Mubashir ka Assistant hoon. Main aapke business and system workflow automations mein kaise help kar sakta hoon?";
+            return "Assalam-o-Alaikum! Main Mubashir Hasan ka personal AI Assistant hoon. Main aapke business automations, system architecture, ya FBA operations me kaise madad kar sakta hoon?";
         }
         if (query.includes('metro') || query.includes('bhopal') || query.includes('data entry')) {
-            return "MP Metro Data Entry aur admin systems handle karne ke liye Mubashir ka profile completely fit hai. Unke paas New Life Labs mein 5 saal se zyada spreadsheets ka solid experience hai.";
+            return "MP Metro and Bhopal local systems optimization ke liye Mubashir ka profile ekdum perfect hai. Unke paas advanced spreadsheets, database handling aur record verification ka 5 saal ka solid experience hai.";
         }
-        if (query.includes('amazon') || query.includes('fba') || query.includes('reselling')) {
-            return "Mubashir 2022 se Amazon USA reselling aur FBA systems manage kar rahe hain. Inventory logging aur automatic profitability sheets unka strong side hain.";
+        if (query.includes('amazon') || query.includes('fba') || query.includes('usa')) {
+            return "Mubashir 2022 se Amazon USA operations handle kar rahe hain. Inventory dashboard, shipping tracking aur profitability analytics sheets unki main strong areas hain.";
         }
-        if (query.includes('n8n') || query.includes('agent') || query.includes('automation')) {
-            return "Mubashir ne n8n and advanced LLMs (OpenAI/Claude) ke tools se 150+ robust automation workflows deploy kiye hain jo processes ko flawless banate hain.";
+        if (query.includes('n8n') || query.includes('automation') || query.includes('agent')) {
+            return "n8n automation aur custom LLM integration ka use karke Mubashir ne 150+ robust logic loops build kiye hain. Aap detail options ke liye agents.html explore kar sakte hain.";
         }
-        if (query.includes('contact') || query.includes('number') || query.includes('phone') || query.includes('email')) {
-            return "Aap Mubashir se +91 9575877758 par WhatsApp ya muahshi.dev@gmail.com par connect kar sakte hain. Custom setups ke liye unka response rate fast hai.";
+        if (query.includes('contact') || query.includes('number') || query.includes('phone') || query.includes('email') || query.includes('connect')) {
+            return "Aap Mubashir se directly +91 9575877758 par WhatsApp ya muahshi.dev@gmail.com par connect kar sakte hain. Aapka query unke pass log kar diya gaya hai.";
         }
         
-        return "Mubashir ke custom SaaS frameworks aur automation standards ko aap upar selection aur dynamic agents hub mein dekh sakte hain. Direct dynamic connection ke liye WhatsApp button use karein!";
+        return "Mubashir ke automatic workflows aur custom SaaS systems ki details portfolio page par live hain. Direct contact karne ke liye aap upar 'Start Project' button click karke mail kar sakte hain.";
     }
 
     appendMessage(role, text) {
@@ -172,7 +186,7 @@ class MuahshiAssistant {
     }
 }
 
-// Global initialization
+// Instantiate on boot
 document.addEventListener('DOMContentLoaded', () => {
     window.assistant = new MuahshiAssistant();
 });
