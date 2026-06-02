@@ -1,7 +1,6 @@
 /**
- * Muahshi Digital - Premium Interactive Personal AI Assistant
- * Designed to work with Vercel serverless Groq `/api/chat` function.
- * Perfectly calibrated with both manual and premium index DOM mappings.
+ * Muahshi Digital - Personal AI Assistant Logic
+ * Optimized lead classification, visual feedback toasts, and persistent history state.
  */
 
 class MuahshiAssistant {
@@ -37,20 +36,22 @@ class MuahshiAssistant {
         }
     }
 
-    // Dynamic suggested queries pitching Mubashir's expertise 
     getSuggestions() {
         return [
-            { label: "Bhopal Metro Job Pitch 🚇", text: "Bhopal Metro ke systems/data role ke liye Mubashir ideal candidate kyun hain?" },
-            { label: "AI & n8n Skills ⚡", text: "Mubashir ne n8n aur AI automations me kya systems build kiye hain?" },
-            { label: "Amazon FBA Scale 📦", text: "Amazon USA Operations aur logistics me Mubashir ki kya expertise hai?" },
-            { label: "Mubashir Se Connect Karein 📲", text: "Mubashir se contact kaise karein aur unka response rate kya hai?" }
+            { label: "Bhopal Metro Job Pitch 🚇", text: "Bhopal Metro systems role ke liye Mubashir ideal candidate kyun hain?" },
+            { label: "AI & n8n Skills ⚡", text: "Mubashir ne n8n aur AI automations me kya build kiya hai?" },
+            { label: "Amazon FBA Scale 📦", text: "Amazon USA Operations me Mubashir ki kya expertise hai?" },
+            { label: "Direct Contact 📲", text: "Mubashir se call ya whatsapp par connect kaise karein?" }
         ];
     }
 
-    // Render suggestion chips inside chat stream on load
     renderSuggestionPills() {
         const stream = document.getElementById('chat-messages') || document.getElementById('chatStream');
         if (!stream) return;
+
+        // Clean previous container if exists
+        const existingContainer = document.getElementById('suggestion-pills-container');
+        if (existingContainer) existingContainer.remove();
 
         const pillsContainer = document.createElement('div');
         pillsContainer.id = "suggestion-pills-container";
@@ -58,7 +59,7 @@ class MuahshiAssistant {
 
         this.getSuggestions().forEach(sug => {
             const pill = document.createElement('button');
-            pill.className = "bg-white/[0.03] hover:bg-[#C9A84C]/10 border border-white/5 hover:border-[#C9A84C]/40 text-[#A1A1A0] hover:text-white text-[10px] px-3 py-1.5 rounded-full transition duration-300 font-medium text-left";
+            pill.className = "bg-white/[0.03] hover:bg-[#C9A84C]/10 border border-white/5 hover:border-[#C9A84C]/40 text-[#A1A1A0] hover:text-white text-[10px] px-3 py-1.5 rounded-xl transition duration-300 font-medium text-left";
             pill.innerText = sug.label;
             pill.onclick = (e) => {
                 e.stopPropagation();
@@ -79,7 +80,6 @@ class MuahshiAssistant {
         const input = document.getElementById('chat-input') || document.getElementById('chatInput');
         const voice = document.getElementById('voice-trigger') || document.getElementById('voiceBtn');
 
-        // Toggle handling
         if (trigger) {
             trigger.onclick = (e) => {
                 e.stopPropagation();
@@ -88,7 +88,6 @@ class MuahshiAssistant {
                     box.style.display = 'flex';
                     box.classList.remove('hidden');
                     if (icon) icon.className = 'fas fa-chevron-down';
-                    
                     const msgs = document.getElementById('chat-messages') || document.getElementById('chatStream');
                     if (msgs) msgs.scrollTop = msgs.scrollHeight;
                 } else {
@@ -99,7 +98,6 @@ class MuahshiAssistant {
             };
         }
 
-        // Close button
         if (close) {
             close.onclick = (e) => {
                 e.stopPropagation();
@@ -146,35 +144,19 @@ class MuahshiAssistant {
         if (inputField) inputField.value = '';
         this.appendMessage('user', text);
 
-        const typingId = this.appendMessage('ai', 'Thinking...');
+        const typingId = this.appendMessage('ai', 'Processing system vectors...');
 
         try {
-            // Attempt serverless API Groq call
+            // Call serverless Groq controller
             const res = await fetch('/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ 
-                    messages: [
-                        {
-                            role: "system",
-                            content: `Aap Mubashir Hasan ke premium strategic AI Assistant hain. 
-                            Personality: High-end, technical, strategic MBA mindset. 
-                            Tone: Professional Hinglish. 
-                            Core Mission: Convert readers into leads. Always pitch Mubashir's work.
-                            Details:
-                            - 5 years data management at New Life Labs (processed 10,000+ laboratory files). Perfect candidate for Bhopal Metro systems or operational documentation roles due to flawless Excel & speed.
-                            - Built 150+ custom operational automations via n8n and API logic.
-                            - Handles active Amazon USA operations since 2022 (replenishment algorithms, dynamic profit calculations).
-                            - WhatsApp directly at +91 9575877758.
-                            Keep replies within 2-3 concise, high-converting sentences.`
-                        },
-                        ...this.history, 
-                        { role: 'user', content: text }
-                    ] 
+                    messages: [...this.history, { role: 'user', content: text }] 
                 })
             });
 
-            if (!res.ok) throw new Error("API call error");
+            if (!res.ok) throw new Error("API Route Fallback triggered.");
 
             const data = await res.json();
             const reply = data.choices[0].message.content;
@@ -187,13 +169,10 @@ class MuahshiAssistant {
             
             this.history.push({ role: 'user', content: text }, { role: 'assistant', content: reply });
 
-            // Send Lead Alerts to Telegram
-            if (reply.includes('message has been sent') || text.toLowerCase().includes('connect') || text.toLowerCase().includes('contact') || text.toLowerCase().includes('hire')) {
-                this.sendNotification(text);
-            }
+            // Smart Lead Classification (Notify only when genuine contact intents are detected)
+            this.evaluateLeadTrigger(text, reply);
 
         } catch (e) {
-            // Instant Client-Side fallback matching user custom logic
             const typingElem = document.getElementById(typingId);
             if (typingElem) typingElem.remove();
 
@@ -202,6 +181,22 @@ class MuahshiAssistant {
             this.speak(reply);
             
             this.history.push({ role: 'user', content: text }, { role: 'assistant', content: reply });
+            this.evaluateLeadTrigger(text, reply);
+        }
+    }
+
+    evaluateLeadTrigger(userInput, aiResponse) {
+        const query = userInput.toLowerCase();
+        
+        // Regex models to detect real email or contact number share, or explicit hiring words
+        const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
+        const phoneRegex = /(\+?\d{1,4}[\s-])?(?!0000000000)\d{10}/g;
+        
+        const hasContact = emailRegex.test(query) || phoneRegex.test(query);
+        const hasExplicitIntent = query.includes('hire') || query.includes('connect') || query.includes('contact') || query.includes('phone') || query.includes('call back') || query.includes('website banwani');
+
+        if (hasContact || hasExplicitIntent) {
+            this.sendNotification(userInput);
         }
     }
 
@@ -221,7 +216,7 @@ class MuahshiAssistant {
             return "n8n automation aur custom LLM integrations ka use karke Mubashir ne 150+ robust workflow logics and automated agents build kiye hain. Details ke liye aap agents.html check kar sakte hain.";
         }
         if (query.includes('contact') || query.includes('number') || query.includes('phone') || query.includes('email') || query.includes('connect')) {
-            return "Aap Mubashir se directly +91 9575877758 par WhatsApp ya muahshi.dev@gmail.com par connect kar sakte hain. Unka professional response rate kaafi fast hai.";
+            return "Aap Mubashir se directly +91 9575877758 par WhatsApp ya muahshi.mubi@gmail.com par connect kar sakte hain. Unka professional response rate kaafi fast hai.";
         }
         
         return "Mubashir Hasan ek expert AI Automation & Systems Architect hain. Unki professional automation systems aur case studies ki details portfolio dashboard par live hain. Direct contact ke liye aap +91 9575877758 ka use kar sakte hain.";
@@ -243,6 +238,10 @@ class MuahshiAssistant {
         div.innerText = text;
         
         container.appendChild(div);
+        
+        // Always place the dynamic recommendation pills under the latest assistant response
+        this.renderSuggestionPills();
+        
         container.scrollTop = container.scrollHeight;
         return id;
     }
@@ -253,18 +252,34 @@ class MuahshiAssistant {
         const cleanText = text.replace(/<\/?[^>]+(>|$)/g, "");
         const ut = new SpeechSynthesisUtterance(cleanText);
         ut.lang = 'hi-IN';
-        ut.rate = 1.05;
+        ut.rate = 1.1;
         this.synth.speak(ut);
     }
 
     async sendNotification(query) {
         try {
-            await fetch('/api/chat', {
+            const res = await fetch('/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ type: 'notification', query: query })
             });
+            if (res.ok) {
+                // Render a beautiful sleek system toast bubble only when notification is dispatched successfully
+                this.renderSystemToast("⚡ System Lead successfully dispatched to Mubashir.");
+            }
         } catch(e) {}
+    }
+
+    renderSystemToast(msgText) {
+        const container = document.getElementById('chat-messages') || document.getElementById('chatStream');
+        if (!container) return;
+
+        const toast = document.createElement('div');
+        toast.className = "w-fit mx-auto bg-[#C9A84C]/10 border border-[#C9A84C]/35 text-[#C9A84C] text-[10px] font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-lg text-center animate-pulse my-2";
+        toast.innerText = msgText;
+
+        container.appendChild(toast);
+        container.scrollTop = container.scrollHeight;
     }
 }
 
