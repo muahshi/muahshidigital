@@ -207,23 +207,24 @@
                 </div>
 
                 <!-- Founder Portrait Panel (Middle Left aligned with orbit ring background) -->
-                <div class="relative flex items-center justify-center p-6 bg-white/[0.01] border border-white/[0.03] rounded-3xl overflow-hidden" data-aos="fade-up">
+                <div class="relative flex items-center justify-center p-4 bg-white/[0.01] border border-white/[0.03] rounded-3xl overflow-hidden" data-aos="fade-up">
                     <!-- Glowing circular background ring -->
-                    <div class="absolute w-[320px] h-[320px] rounded-full border border-[#C9A84C]/20 animate-[spin_40s_linear_infinite] pointer-events-none flex items-center justify-center">
-                        <div class="w-full h-full rounded-full border border-[#C9A84C]/10 border-dashed"></div>
-                        <div class="absolute w-3 h-3 bg-[#C9A84C] rounded-full top-10"></div>
-                        <div class="absolute w-2 h-2 bg-white rounded-full bottom-20 left-10"></div>
+                    <div class="absolute w-[450px] h-[450px] rounded-full border border-[#C9A84C]/10 animate-[spin_60s_linear_infinite] pointer-events-none flex items-center justify-center">
+                        <div class="w-full h-full rounded-full border border-[#C9A84C]/5 border-dashed"></div>
+                        <div class="absolute w-3 h-3 bg-[#C9A84C]/60 rounded-full top-10"></div>
+                        <div class="absolute w-2 h-2 bg-white/40 rounded-full bottom-20 left-10"></div>
                     </div>
-                    <div class="absolute w-[240px] h-[240px] rounded-full border border-white/5 bg-gradient-to-tr from-[#C9A84C]/10 to-transparent blur-xl"></div>
+                    <div class="absolute w-[350px] h-[350px] rounded-full border border-white/5 bg-gradient-to-tr from-[#C9A84C]/5 to-transparent blur-2xl"></div>
                     
-                    <div class="relative w-full max-w-[340px] aspect-[4/5] rounded-2xl overflow-hidden border border-[#C9A84C]/25 shadow-2xl z-10">
+                    <!-- Modified container aspect-ratio to be wide/landscape matching the actual webp dimensions -->
+                    <div class="relative w-full rounded-2xl overflow-hidden border border-[#C9A84C]/25 shadow-2xl z-10 aspect-[3/2] sm:aspect-[1.47]">
                         <img src="mubu_logo.webp" alt="Mubashir Hasan AI Systems Architect" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop';">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A09] via-transparent to-transparent opacity-90"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0A0A09]/75 via-transparent to-transparent opacity-90"></div>
                         
                         <!-- Floating Glass Info Badge inside the image -->
-                        <div class="absolute bottom-4 left-4 right-4 bg-black/60 backdrop-blur-md p-4 rounded-xl border border-white/5 text-center">
+                        <div class="absolute bottom-4 left-4 right-4 bg-black/75 backdrop-blur-md p-3 rounded-xl border border-white/5 text-center">
                             <p class="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Founder</p>
-                            <h4 class="text-xs font-bold text-white uppercase tracking-wider mt-0.5">Muahshi Digital</h4>
+                            <h4 class="text-xs font-bold text-[#C9A84C] uppercase tracking-wider mt-0.5">Muahshi Digital</h4>
                         </div>
                     </div>
 
@@ -324,10 +325,13 @@
                                     AI-powered hotel operations platform with receptionist automation, OTA integrations, and booking workflows.
                                 </p>
                             </div>
-                            <div class="p-4 bg-white/[0.02] border-t border-white/[0.03]">
-                                <button onclick="openCaseStudy('guestinn')" class="text-[10px] uppercase tracking-widest font-bold text-white hover:text-[#C9A84C] transition">
+                            <div class="p-4 bg-white/[0.02] border-t border-white/[0.03] flex justify-between items-center">
+                                <button onclick="openCaseStudy('guestinn')" class="text-[10px] uppercase tracking-widest font-bold text-[#8E8E8E] hover:text-[#C9A84C] transition">
                                     View Case Study <i class="fas fa-chevron-right text-[8px] ml-1"></i>
                                 </button>
+                                <a href="https://ai-receptionist-sandy-six.vercel.app/" target="_blank" class="text-[10px] uppercase tracking-widest font-bold text-[#C9A84C] hover:underline transition flex items-center gap-1.5">
+                                    Live Link <i class="fas fa-arrow-up-right-from-square text-[8px]"></i>
+                                </a>
                             </div>
                         </div>
 
@@ -343,10 +347,13 @@
                                     AI-driven matrimonial platform featuring intelligent matchmaking, profile analysis, and engagement automation.
                                 </p>
                             </div>
-                            <div class="p-4 bg-white/[0.02] border-t border-white/[0.03]">
-                                <button onclick="openCaseStudy('smartshaadi')" class="text-[10px] uppercase tracking-widest font-bold text-white hover:text-[#C9A84C] transition">
+                            <div class="p-4 bg-white/[0.02] border-t border-white/[0.03] flex justify-between items-center">
+                                <button onclick="openCaseStudy('smartshaadi')" class="text-[10px] uppercase tracking-widest font-bold text-[#8E8E8E] hover:text-[#C9A84C] transition">
                                     View Case Study <i class="fas fa-chevron-right text-[8px] ml-1"></i>
                                 </button>
+                                <a href="https://smartshaadi.online" target="_blank" class="text-[10px] uppercase tracking-widest font-bold text-[#C9A84C] hover:underline transition flex items-center gap-1.5">
+                                    Live Link <i class="fas fa-arrow-up-right-from-square text-[8px]"></i>
+                                </a>
                             </div>
                         </div>
 
@@ -362,10 +369,13 @@
                                     Voice-first AI assistant capable of real-time interactions, notifications, automation, and business workflows.
                                 </p>
                             </div>
-                            <div class="p-4 bg-white/[0.02] border-t border-white/[0.03]">
-                                <button onclick="openCaseStudy('bhaavbhai')" class="text-[10px] uppercase tracking-widest font-bold text-white hover:text-[#C9A84C] transition">
+                            <div class="p-4 bg-white/[0.02] border-t border-white/[0.03] flex justify-between items-center">
+                                <button onclick="openCaseStudy('bhaavbhai')" class="text-[10px] uppercase tracking-widest font-bold text-[#8E8E8E] hover:text-[#C9A84C] transition">
                                     View Case Study <i class="fas fa-chevron-right text-[8px] ml-1"></i>
                                 </button>
+                                <a href="https://vibe-mirror-ai.vercel.app/" target="_blank" class="text-[10px] uppercase tracking-widest font-bold text-[#C9A84C] hover:underline transition flex items-center gap-1.5">
+                                    Live Link <i class="fas fa-arrow-up-right-from-square text-[8px]"></i>
+                                </a>
                             </div>
                         </div>
 
@@ -381,10 +391,13 @@
                                     Inventory systems, reporting automation, product research pipelines, and business intelligence dashboards.
                                 </p>
                             </div>
-                            <div class="p-4 bg-white/[0.02] border-t border-white/[0.03]">
-                                <button onclick="openCaseStudy('fba')" class="text-[10px] uppercase tracking-widest font-bold text-white hover:text-[#C9A84C] transition">
+                            <div class="p-4 bg-white/[0.02] border-t border-white/[0.03] flex justify-between items-center">
+                                <button onclick="openCaseStudy('fba')" class="text-[10px] uppercase tracking-widest font-bold text-[#8E8E8E] hover:text-[#C9A84C] transition">
                                     View Case Study <i class="fas fa-chevron-right text-[8px] ml-1"></i>
                                 </button>
+                                <a href="https://capital-medical-agency-khaki.vercel.app/" target="_blank" class="text-[10px] uppercase tracking-widest font-bold text-[#C9A84C] hover:underline transition flex items-center gap-1.5">
+                                    Live Link <i class="fas fa-arrow-up-right-from-square text-[8px]"></i>
+                                </a>
                             </div>
                         </div>
 
@@ -784,11 +797,11 @@
                         <div class="space-y-2">
                             <div>
                                 <h5 class="text-white font-bold text-xs">MBA in Marketing & Systems Strategy</h5>
-                                <p class="text-[10px] text-gray-500">IPER Bhopal | BU Bhopal | 2017</p>
+                                <p class="text-[10px] text-gray-500">IPER Bhopal | Barkatullah University | 2017</p>
                             </div>
                             <div>
                                 <h5 class="text-white font-bold text-xs">BBA (Bachelor of Business Administration)</h5>
-                                <p class="text-[10px] text-gray-500">BSSS Bhopal | BU Bhopal | 2014</p>
+                                <p class="text-[10px] text-gray-500">BSSS Bhopal | Barkatullah University | 2014</p>
                             </div>
                         </div>
                     </div>
