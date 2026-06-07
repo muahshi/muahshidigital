@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Muashi AI — Decentralized Compute Network</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#060608;--surface:#0E0E12;--card:#13131A;--border:#1C1C26;
+  --gold:#F2A30F;--gold2:#FFD166;--goldfaint:rgba(242,163,15,.08);
+  --white:#F0F0F4;--dim:#5A5A6E;--dim2:#3A3A4A;
+  --green:#16A34A;--green2:#22C55E;--blue:#2563EB;--blue2:#60A5FA;
+  --purple:#7C3AED;--purple2:#A78BFA;
+  --syne:'Syne',sans-serif;--body:'Instrument Sans',sans-serif;--mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:var(--body);overflow-x:hidden;cursor:default}
+
+/* ══ NAV ══ */
+#nav{position:fixed;top:0;left:0;right:0;z-index:500;height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;border-bottom:1px solid var(--border);background:rgba(6,6,8,.88);backdrop-filter:blur(16px)}
+.nav-logo{font-family:var(--syne);font-size:17px;font-weight:800;letter-spacing:.5px;color:var(--white)}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:28px}
+.nav-links a{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:.2s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:8px 20px;border:1px solid var(--gold);color:var(--gold);text-decoration:none;transition:.2s}
+.nav-cta:hover{background:var(--gold);color:var(--bg)}
+
+/* ══ PROGRESS ══ */
+#dots{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:400;display:flex;flex-direction:column;gap:8px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--border);border:1px solid var(--dim2);cursor:pointer;transition:.35s}
+.dot.on{background:var(--gold);box-shadow:0 0 10px var(--gold);height:20px;border-radius:3px}
+
+/* ══ SECTION BASE ══ */
+section{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:80px 48px;position:relative;overflow:hidden}
+.inner{max-width:1160px;width:100%;position:relative;z-index:2}
+.s-tag{font-family:var(--mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.s-tag::before{content:'';width:24px;height:1px;background:var(--gold)}
+.s-h{font-family:var(--syne);font-weight:800;line-height:.93;letter-spacing:-1px}
+.s-p{font-size:15px;color:var(--dim);line-height:1.85;max-width:580px}
+
+/* ══ NOISE TEXTURE ══ */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:.028;pointer-events:none;z-index:1000}
+
+/* ══════════ S1 HERO ══════════ */
+#s1{background:var(--bg);padding-top:52px}
+.hero-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.h1-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(242,163,15,.25);padding:5px 14px;display:inline-block;margin-bottom:28px}
+.h1-title{font-family:var(--syne);font-size:clamp(52px,6.5vw,92px);line-height:.9;font-weight:800;letter-spacing:-2px;margin-bottom:20px}
+.h1-title .g{color:var(--gold)}
+.h1-sub{font-size:15px;color:var(--dim);line-height:1.85;max-width:440px;margin-bottom:36px}
+.h1-badges{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px}
+.hbadge{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border:1px solid}
+.hb-gold{border-color:rgba(242,163,15,.4);color:var(--gold)}
+.hb-dim{border-color:var(--border);color:var(--dim)}
+.h1-cta{display:inline-block;background:var(--gold);color:var(--bg);font-family:var(--syne);font-size:15px;font-weight:800;letter-spacing:1px;padding:14px 36px;text-decoration:none;transition:.2s}
+.h1-cta:hover{background:var(--gold2);transform:translateY(-2px)}
+
+/* NETWORK VIZ */
+.net-viz{position:relative;width:100%;aspect-ratio:1;max-width:440px;margin:0 auto}
+.net-ring{position:absolute;border-radius:50%;border:1px solid;animation:ringPulse 4s ease-in-out infinite}
+.nr1{inset:20%;border-color:rgba(242,163,15,.25);animation-delay:0s}
+.nr2{inset:5%;border-color:rgba(242,163,15,.1);animation-delay:.8s}
+.nr3{inset:-10%;border-color:rgba(242,163,15,.05);animation-delay:1.6s}
+@keyframes ringPulse{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:.8;transform:scale(1.02)}}
+.net-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:120px;height:120px;background:var(--card);border:1px solid rgba(242,163,15,.3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.nc-val{font-family:var(--syne);font-size:28px;font-weight:800;color:var(--gold)}
+.nc-lbl{font-family:var(--mono);font-size:8px;letter-spacing:2px;color:var(--dim);text-transform:uppercase}
+.net-node{position:absolute;transform:translate(-50%,-50%)}
+.nnode-dot{width:44px;height:44px;background:var(--card);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;transition:.3s}
+.nnode-dot:hover{border-color:var(--gold)}
+.nnode-ico{font-size:16px}
+.nnode-lbl{font-family:var(--mono);font-size:6px;letter-spacing:1px;color:var(--dim);text-transform:uppercase}
+.nnode-status{width:5px;height:5px;border-radius:50%;margin-top:1px}
+.ns-on{background:var(--green2);animation:blink 2s ease-in-out infinite}
+.ns-stg{background:var(--gold);animation:blink 3s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* SVG lines */
+.net-svg{position:absolute;inset:0;width:100%;height:100%}
+.netline{stroke:rgba(242,163,15,.15);stroke-width:1;stroke-dasharray:4 4;animation:dashFlow 8s linear infinite}
+@keyframes dashFlow{to{stroke-dashoffset:-40}}
+
+/* metric strip */
+.mstrip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:56px}
+.mbox{background:var(--surface);padding:24px 28px}
+.mval{font-family:var(--syne);font-size:36px;font-weight:800;color:var(--gold);line-height:1}
+.mlbl{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-top:6px}
+
+/* ══════════ S2 ANALOGY ══════════ */
+#s2{background:#08080B}
+.analogy-wrap{width:100%}
+.analogy-grid{display:grid;grid-template-columns:1fr 60px 1fr;gap:0;border:1px solid var(--border);margin-top:48px}
+.a-side{padding:44px 40px}
+.a-old{background:var(--surface)}
+.a-new{background:#0A0E0A}
+.a-mid{background:var(--bg);display:flex;align-items:center;justify-content:center;border-left:1px solid var(--border);border-right:1px solid var(--border)}
+.a-mid-arrow{font-family:var(--syne);font-size:28px;color:var(--gold);writing-mode:vertical-rl;transform:rotate(180deg);letter-spacing:4px}
+.a-year{font-family:var(--mono);font-size:10px;letter-spacing:2px;color:var(--dim);text-transform:uppercase;margin-bottom:10px}
+.a-title{font-family:var(--syne);font-size:32px;font-weight:800;margin-bottom:24px}
+.a-old .a-title{color:#3A3A4A}
+.a-new .a-title{color:var(--gold)}
+
+/* big illustration inside analogy */
+.a-illustration{margin:20px 0;padding:20px;background:rgba(0,0,0,.3);border:1px solid var(--border)}
+
+/* cyber cafe SVG */
+.a-points{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:20px}
+.a-points li{font-size:13px;line-height:1.6;padding:10px 14px;display:flex;align-items:flex-start;gap:10px}
+.a-old .a-points li{background:rgba(255,255,255,.02);color:#444}
+.a-new .a-points li{background:rgba(22,163,74,.04);color:#888}
+.a-pt{flex-shrink:0;font-size:15px}
+.a-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:48px}
+.a-stat{background:var(--card);padding:28px 24px;text-align:center}
+.a-stat-val{font-family:var(--syne);font-size:44px;font-weight:800;color:var(--gold)}
+.a-stat-lbl{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-top:6px}
+.a-stat-note{font-size:12px;color:var(--dim2);margin-top:8px;line-height:1.5}
+
+/* ══════════ S3 HOW IT WORKS ══════════ */
+#s3{background:var(--bg)}
+.flow-wrap{margin-top:48px;width:100%}
+.flow-steps{display:flex;flex-direction:column;gap:2px}
+.fstep{display:grid;grid-template-columns:72px 1fr auto;gap:0;background:var(--surface);border:1px solid var(--border);transition:.3s;position:relative;overflow:hidden}
+.fstep::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--border);transition:.3s}
+.fstep:hover{border-color:rgba(242,163,15,.3)}
+.fstep:hover::before{background:var(--gold)}
+.fstep-num{padding:28px 0;display:flex;align-items:center;justify-content:center;border-right:1px solid var(--border)}
+.fstep-n{font-family:var(--syne);font-size:40px;font-weight:800;color:var(--border);line-height:1;transition:.3s}
+.fstep:hover .fstep-n{color:var(--gold)}
+.fstep-body{padding:28px 32px}
+.fstep-ico{font-size:24px;margin-bottom:10px}
+.fstep-title{font-family:var(--syne);font-size:20px;font-weight:700;margin-bottom:6px;color:var(--white)}
+.fstep-desc{font-size:13px;color:var(--dim);line-height:1.75}
+.fstep-aside{padding:28px 32px;border-left:1px solid var(--border);display:flex;flex-direction:column;align-items:flex-end;justify-content:center;min-width:160px}
+.fstep-val{font-family:var(--syne);font-size:28px;font-weight:800;color:var(--green2);text-align:right}
+.fstep-vunit{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--dim);text-align:right;margin-top:2px}
+
+/* partnership ratio */
+.ratio-box{margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);border:1px solid var(--border)}
+.ratio-cell{padding:32px;background:var(--surface)}
+.ratio-label{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:12px}
+.ratio-num{font-family:var(--syne);font-size:64px;font-weight:800;line-height:1}
+.ratio-cell:first-child .ratio-num{color:var(--gold)}
+.ratio-cell:last-child .ratio-num{color:var(--blue2)}
+.ratio-desc{font-size:13px;color:var(--dim);margin-top:12px;line-height:1.6}
+
+/* ══════════ S4 RACK VISUAL ══════════ */
+#s4{background:#07070A}
+.rack-section{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.rack-left h2{font-family:var(--syne);font-size:clamp(38px,4.5vw,64px);font-weight:800;line-height:1;margin-bottom:20px}
+.rack-left p{font-size:15px;color:var(--dim);line-height:1.85;margin-bottom:32px}
+.spec-cards{display:flex;flex-direction:column;gap:8px}
+.spec-c{display:flex;align-items:flex-start;gap:16px;padding:16px 20px;background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--gold);transition:.2s}
+.spec-c:hover{border-color:rgba(242,163,15,.3);background:var(--card)}
+.spec-ico{font-size:20px;flex-shrink:0;margin-top:2px}
+.spec-t strong{font-size:14px;color:var(--white);display:block;margin-bottom:3px}
+.spec-t span{font-size:12px;color:var(--dim);line-height:1.5}
+
+/* ANIMATED SVG RACK */
+.rack-right{display:flex;justify-content:center;align-items:center}
+
+/* ══════════ S5 NETWORK SCALE ══════════ */
+#s5{background:var(--bg)}
+.chart-section{width:100%}
+.chart-top{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px;flex-wrap:wrap;gap:16px}
+.chart-top h2{font-family:var(--syne);font-size:clamp(36px,4.5vw,60px);font-weight:800;line-height:1}
+.chart-top h2 span{color:var(--gold)}
+.clegend{display:flex;gap:20px;flex-wrap:wrap}
+.cleg{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:9px;letter-spacing:1px;color:var(--dim);text-transform:uppercase}
+.cleg-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0}
+
+/* bar chart */
+.bchart{height:280px;display:flex;align-items:flex-end;gap:16px;border-left:1px solid var(--border);border-bottom:1px solid var(--border);padding-left:52px;position:relative;margin-bottom:12px}
+.y-axis{position:absolute;left:0;top:0;bottom:0;display:flex;flex-direction:column;justify-content:space-between;padding-bottom:0}
+.y-lbl{font-family:var(--mono);font-size:8px;color:var(--dim);letter-spacing:1px}
+.bgroup{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:0}
+.bars-wrap{display:flex;gap:3px;align-items:flex-end;width:100%;justify-content:center;height:100%}
+.b{border-radius:2px 2px 0 0;transition:height 1.2s cubic-bezier(.4,0,.2,1);min-width:0;flex:1;max-width:32px;cursor:default;position:relative}
+.b:hover::after{content:attr(data-t);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:var(--card);border:1px solid var(--gold);padding:4px 10px;font-family:var(--mono);font-size:9px;color:var(--gold);white-space:nowrap;z-index:10;pointer-events:none}
+.b-g{background:linear-gradient(180deg,var(--gold2),var(--gold))}
+.b-n{background:linear-gradient(180deg,#34D399,var(--green))}
+.b-e{background:var(--card);border:1px solid var(--border)}
+.blbl{margin-top:10px;text-align:center}
+.blbl-yr{font-family:var(--mono);font-size:9px;color:var(--dim)}
+.blbl-sub{font-family:var(--mono);font-size:8px;color:var(--dim2);margin-top:2px}
+.bphase{display:inline-block;font-family:var(--mono);font-size:7px;letter-spacing:1px;text-transform:uppercase;padding:2px 6px;border-radius:2px;margin-top:3px}
+.bp1{background:rgba(242,163,15,.12);color:var(--gold)}
+.bp2{background:rgba(37,99,235,.12);color:var(--blue2)}
+.bp3{background:rgba(124,58,237,.12);color:var(--purple2)}
+
+/* node table */
+.node-table{width:100%;border-collapse:collapse;margin-top:32px}
+.node-table th{font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);border-bottom:1px solid var(--border);padding:10px 14px;text-align:right}
+.node-table th:first-child{text-align:left}
+.node-table td{font-family:var(--mono);font-size:11px;padding:12px 14px;border-bottom:1px solid #111;text-align:right;color:#555}
+.node-table td:first-child{text-align:left;color:var(--dim)}
+.node-table .hl td{color:var(--gold);font-size:12px}
+.node-table .net td{color:var(--green2)}
+.node-table .ph td{background:#0D0D0D;font-size:8px;letter-spacing:2px;color:var(--dim2);text-transform:uppercase}
+
+/* ══════════ S6 PARTNERSHIP TRACKS ══════════ */
+#s6{background:#07070A}
+.tracks-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);margin-top:48px}
+.track{padding:44px 36px;position:relative;overflow:hidden}
+.track::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.track-a{background:var(--surface)}.track-a::before{background:var(--gold)}
+.track-b{background:#080D14}.track-b::before{background:var(--blue2)}
+.t-badge{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border:1px solid;display:inline-block;margin-bottom:20px}
+.track-a .t-badge{border-color:rgba(242,163,15,.3);color:var(--gold)}
+.track-b .t-badge{border-color:rgba(96,165,250,.3);color:var(--blue2)}
+.t-title{font-family:var(--syne);font-size:30px;font-weight:800;margin-bottom:6px}
+.track-a .t-title{color:var(--gold)}
+.track-b .t-title{color:var(--blue2)}
+.t-sub{font-size:13px;color:var(--dim);margin-bottom:28px;line-height:1.5}
+.t-items{list-style:none;display:flex;flex-direction:column;gap:0}
+.t-items li{font-size:13px;color:#666;padding:12px 0;border-bottom:1px solid var(--border);line-height:1.6;display:flex;gap:10px;align-items:flex-start}
+.track-a .t-items li::before{content:'◆';color:var(--gold);font-size:8px;flex-shrink:0;margin-top:4px}
+.track-b .t-items li::before{content:'◆';color:var(--blue2);font-size:8px;flex-shrink:0;margin-top:4px}
+.t-cta{margin-top:28px;padding:14px 24px;display:inline-block;font-family:var(--syne);font-size:14px;font-weight:800;letter-spacing:1px;text-decoration:none;transition:.2s}
+.track-a .t-cta{background:var(--gold);color:var(--bg)}.track-a .t-cta:hover{background:var(--gold2)}
+.track-b .t-cta{border:1px solid var(--blue2);color:var(--blue2)}.track-b .t-cta:hover{background:var(--blue2);color:var(--bg)}
+
+/* ══════════ S7 TIMELINE ══════════ */
+#s7{background:var(--bg)}
+.timeline-wrap{margin-top:48px;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.tl-phases{display:flex;flex-direction:column;gap:2px}
+.tl-phase{border:1px solid var(--border);overflow:hidden}
+.tl-phase-hdr{padding:16px 24px;display:flex;align-items:center;gap:16px;background:var(--surface)}
+.tl-ph-tag{font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border:1px solid;flex-shrink:0}
+.ph-reg .tl-ph-tag{border-color:rgba(242,163,15,.3);color:var(--gold)}
+.ph-dep .tl-ph-tag{border-color:rgba(96,165,250,.3);color:var(--blue2)}
+.ph-mon .tl-ph-tag{border-color:rgba(34,197,94,.3);color:var(--green2)}
+.tl-ph-title{font-family:var(--syne);font-size:16px;font-weight:800}
+.ph-reg .tl-ph-title{color:var(--gold)}.ph-dep .tl-ph-title{color:var(--blue2)}.ph-mon .tl-ph-title{color:var(--green2)}
+.tl-ph-period{font-family:var(--mono);font-size:9px;color:var(--dim);margin-left:auto;flex-shrink:0}
+.tl-rows{display:flex;flex-direction:column;gap:0}
+.tl-row{display:grid;grid-template-columns:80px 1fr;gap:0;border-top:1px solid var(--border)}
+.tl-day{padding:14px 16px;background:var(--card);display:flex;align-items:center;justify-content:center;border-right:1px solid var(--border)}
+.tl-day span{font-family:var(--mono);font-size:9px;letter-spacing:1px;color:var(--dim);text-align:center;line-height:1.4}
+.tl-task{padding:14px 20px;font-size:12px;color:#666;line-height:1.6}
+
+/* kpi stack */
+.kpi-wrap{display:flex;flex-direction:column;gap:12px}
+.kpi{padding:24px 22px;border:1px solid var(--border);position:relative;overflow:hidden;background:var(--surface)}
+.kpi::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px}
+.kg::before{background:var(--gold)}.kb::before{background:var(--blue2)}.kgr::before{background:var(--green2)}
+.kpi-lbl{font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:10px}
+.kpi-val{font-family:var(--syne);font-size:22px;font-weight:800;line-height:1.2}
+.kg .kpi-val{color:var(--gold)}.kb .kpi-val{color:var(--blue2)}.kgr .kpi-val{color:var(--green2)}
+.kpi-note{font-size:11px;color:var(--dim2);margin-top:6px;line-height:1.6}
+
+/* ══════════ S8 RISK MITIGATION ══════════ */
+#s8{background:#07070A}
+.risk-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);border:1px solid var(--border);margin-top:48px}
+.risk-cell{padding:40px 36px;background:var(--surface)}
+.risk-ico{font-size:32px;margin-bottom:16px}
+.risk-title{font-family:var(--syne);font-size:22px;font-weight:800;color:var(--gold);margin-bottom:20px;letter-spacing:.5px}
+.risk-pts{list-style:none;display:flex;flex-direction:column;gap:10px}
+.risk-pts li{font-size:13px;color:#666;line-height:1.65;padding-left:16px;position:relative}
+.risk-pts li::before{content:'✔';position:absolute;left:0;color:var(--green2);font-size:10px;top:2px}
+
+.tech-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-top:2px}
+.tech-box{background:var(--card);padding:24px 20px;text-align:center}
+.tech-ico{font-size:28px;margin-bottom:10px}
+.tech-lbl{font-family:var(--mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);margin-bottom:4px}
+.tech-val{font-family:var(--syne);font-size:20px;font-weight:800;color:var(--green2)}
+
+/* ══════════ S9 CTA ══════════ */
+#s9{background:linear-gradient(160deg,#060608,#0A0D06)}
+.cta-wrap{text-align:center;max-width:880px;margin:0 auto;position:relative;z-index:2}
+.cta-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(242,163,15,.06),transparent 70%);pointer-events:none}
+.cta-big{font-family:var(--syne);font-size:clamp(48px,7vw,100px);font-weight:800;line-height:.88;letter-spacing:-2px;margin-bottom:20px}
+.cta-big .l1{color:var(--white)}.cta-big .l2{color:var(--gold)}
+.cta-sub{font-size:16px;color:var(--dim);max-width:560px;margin:0 auto 48px;line-height:1.9}
+.cta-boxes{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);max-width:720px;margin:0 auto 48px}
+.cta-b{background:var(--surface);padding:28px 20px;text-align:center}
+.cta-b-val{font-family:var(--syne);font-size:38px;font-weight:800;color:var(--gold)}
+.cta-b-lbl{font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-top:6px}
+.cta-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:48px}
+.cta-btn-pri{background:var(--gold);color:var(--bg);font-family:var(--syne);font-size:15px;font-weight:800;letter-spacing:1px;padding:16px 40px;text-decoration:none;transition:.2s;display:inline-block}
+.cta-btn-pri:hover{background:var(--gold2);transform:translateY(-2px)}
+.cta-btn-sec{border:1px solid var(--border);color:var(--dim);font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:16px 32px;text-decoration:none;transition:.2s;display:inline-block}
+.cta-btn-sec:hover{border-color:var(--gold);color:var(--gold)}
+.cta-footer{font-family:var(--mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim2)}
+.cta-footer span{color:var(--gold)}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:900px){
+  section{padding:72px 24px}
+  #nav{padding:0 24px}
+  .nav-links{display:none}
+  .hero-wrap,.rack-section,.analogy-grid,.tracks-grid,.timeline-wrap,.risk-grid{grid-template-columns:1fr}
+  .a-mid{display:none}
+  .analogy-grid{grid-template-columns:1fr}
+  .mstrip,.a-row,.cta-boxes,.tech-strip{grid-template-columns:1fr 1fr}
+  .fstep{grid-template-columns:52px 1fr}
+  .fstep-aside{display:none}
+  #dots{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-logo">MUASHI<span>AI</span></div>
+  <div class="nav-links">
+    <a href="#s2">Concept</a>
+    <a href="#s3">How It Works</a>
+    <a href="#s5">Network Scale</a>
+    <a href="#s6">Partnership</a>
+    <a href="#s7">Timeline</a>
+    <a href="#s9">Apply</a>
+  </div>
+  <a href="#s9" class="nav-cta">Get Started</a>
+</nav>
+
+<!-- DOTS -->
+<div id="dots">
+  <div class="dot on" data-s="s1"></div>
+  <div class="dot" data-s="s2"></div>
+  <div class="dot" data-s="s3"></div>
+  <div class="dot" data-s="s4"></div>
+  <div class="dot" data-s="s5"></div>
+  <div class="dot" data-s="s6"></div>
+  <div class="dot" data-s="s7"></div>
+  <div class="dot" data-s="s8"></div>
+  <div class="dot" data-s="s9"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     S1 · HERO
+═══════════════════════════════════════════════════════ -->
+<section id="s1">
+<div class="inner">
+<div class="hero-wrap">
+  <div>
+    <div class="h1-eyebrow">DePIN · Bhopal, M.P. · PMEGP Service Sector</div>
+    <h1 class="h1-title">TURN IDLE<br/>ROOMS INTO<br/><span class="g">AI GOLDMINES</span></h1>
+    <p class="h1-sub">India ka pehla decentralized GPU compute network — jo khali kamron ko 24×7 automated data centers mein convert karta hai. Sirf ek baar setup, hamesha kamaai.</p>
+    <div class="h1-badges">
+      <span class="hbadge hb-gold">DePIN Infrastructure</span>
+      <span class="hbadge hb-dim">PMEGP Eligible</span>
+      <span class="hbadge hb-dim">Up to 35% Subsidy</span>
+      <span class="hbadge hb-dim">Zero Sales Effort</span>
+    </div>
+    <a href="#s6" class="h1-cta">Explore Partnership →</a>
+  </div>
+
+  <!-- NETWORK VIZ -->
+  <div class="net-viz">
+    <div class="net-ring nr3"></div>
+    <div class="net-ring nr2"></div>
+    <div class="net-ring nr1"></div>
+    <svg class="net-svg" viewBox="0 0 440 440">
+      <!-- lines from center to nodes -->
+      <line class="netline" x1="220" y1="220" x2="220" y2="80" style="animation-delay:0s"/>
+      <line class="netline" x1="220" y1="220" x2="360" y2="155" style="animation-delay:.5s"/>
+      <line class="netline" x1="220" y1="220" x2="360" y2="295" style="animation-delay:1s"/>
+      <line class="netline" x1="220" y1="220" x2="220" y2="360" style="animation-delay:1.5s"/>
+      <line class="netline" x1="220" y1="220" x2="80" y2="295" style="animation-delay:2s"/>
+      <line class="netline" x1="220" y1="220" x2="80" y2="155" style="animation-delay:2.5s"/>
+    </svg>
+    <div class="net-center">
+      <div class="nc-val">32K</div>
+      <div class="nc-lbl">TFLOPs</div>
+    </div>
+    <!-- Nodes at clock positions -->
+    <div class="net-node" style="top:18%;left:50%">
+      <div class="nnode-dot"><div class="nnode-ico">🖥️</div><div class="nnode-lbl">NODE 011</div><div class="nnode-status ns-on"></div></div>
+    </div>
+    <div class="net-node" style="top:35%;left:82%">
+      <div class="nnode-dot"><div class="nnode-ico">🖥️</div><div class="nnode-lbl">NODE 012</div><div class="nnode-status ns-stg"></div></div>
+    </div>
+    <div class="net-node" style="top:65%;left:82%">
+      <div class="nnode-dot"><div class="nnode-ico">🖥️</div><div class="nnode-lbl">NODE 013</div><div class="nnode-status ns-on"></div></div>
+    </div>
+    <div class="net-node" style="top:82%;left:50%">
+      <div class="nnode-dot"><div class="nnode-ico">🌐</div><div class="nnode-lbl">io.net</div><div class="nnode-status ns-on"></div></div>
+    </div>
+    <div class="net-node" style="top:65%;left:18%">
+      <div class="nnode-dot"><div class="nnode-ico">🌐</div><div class="nnode-lbl">Vast.ai</div><div class="nnode-status ns-on"></div></div>
+    </div>
+    <div class="net-node" style="top:35%;left:18%">
+      <div class="nnode-dot"><div class="nnode-ico">💵</div><div class="nnode-lbl">Payouts</div><div class="nnode-status ns-on"></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="mstrip">
+  <div class="mbox"><div class="mval">₹1.5L</div><div class="mlbl">Partner Capital Required</div></div>
+  <div class="mbox"><div class="mval">35%</div><div class="mlbl">Max Govt Subsidy (Rural)</div></div>
+  <div class="mbox"><div class="mval">₹74K</div><div class="mlbl">Avg Monthly Node Profit</div></div>
+  <div class="mbox"><div class="mval">99.8%</div><div class="mlbl">Network Uptime Score</div></div>
+</div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     S2 · THE CONCEPT
+═══════════════════════════════════════════════════════ -->
+<section id="s2">
+<div class="inner">
+  <div class="s-tag">The Digital Rental Revolution</div>
+  <h2 class="s-h" style="font-size:clamp(40px,5vw,72px);margin-bottom:14px">YEH BUSINESS<br/><span style="color:var(--gold)">KYA HAI?</span></h2>
+  <p class="s-p" style="margin-bottom:0">Samajhna bohot simple hai — Cyber Cafe ka 2026 version, bas farq yeh hai ki customers dukan par nahi aate, internet se aate hain.</p>
+
+  <div class="analogy-grid">
+    <div class="a-side a-old">
+      <div class="a-year">📅 2005 Model</div>
+      <div class="a-title">CYBER CAFE</div>
+      <!-- Old building -->
+      <div class="a-illustration">
+        <svg viewBox="0 0 340 160" fill="none" width="100%">
+          <rect x="60" y="40" width="220" height="110" fill="#111" stroke="#222"/>
+          <rect x="60" y="20" width="220" height="28" fill="#0D0D0D" stroke="#1A1A1A"/>
+          <text x="130" y="39" font-size="11" fill="#333" font-family="monospace" font-weight="bold">CYBER CAFE</text>
+          <rect x="80" y="58" width="42" height="34" fill="#161616" stroke="#222"/>
+          <rect x="138" y="58" width="42" height="34" fill="#161616" stroke="#222"/>
+          <rect x="196" y="58" width="42" height="34" fill="#161616" stroke="#222"/>
+          <rect x="80" y="104" width="42" height="34" fill="#161616" stroke="#222"/>
+          <rect x="138" y="104" width="42" height="34" fill="#161616" stroke="#222"/>
+          <rect x="196" y="104" width="42" height="34" fill="#161616" stroke="#222"/>
+          <rect x="152" y="116" width="38" height="34" fill="#111" stroke="#1A1A1A"/>
+          <!-- people arrows -->
+          <text x="14" y="78" font-size="18" fill="#2A2A2A">→</text>
+          <text x="14" y="100" font-size="18" fill="#2A2A2A">→</text>
+          <text x="6" y="64" font-size="7" fill="#333" font-family="monospace">Customers</text>
+          <text x="6" y="114" font-size="7" fill="#333" font-family="monospace">Walk In</text>
+          <!-- cross for closed at night -->
+          <text x="290" y="38" font-size="16" fill="#3A0000">✕</text>
+          <text x="276" y="30" font-size="7" fill="#3A1A1A" font-family="monospace">closed 10pm</text>
+          <!-- opening hours sign -->
+          <rect x="85" y="150" width="170" height="8" fill="#111"/>
+          <text x="100" y="157" font-size="6" fill="#2A2A2A" font-family="monospace">OPEN 9AM–10PM ONLY · SUN CLOSED</text>
+        </svg>
+      </div>
+      <ul class="a-points">
+        <li><span class="a-pt">❌</span>Customers physically chalkar aane chahiye</li>
+        <li><span class="a-pt">❌</span>Raat 10 baje ke baad earning zero</li>
+        <li><span class="a-pt">❌</span>Ek computer = sirf 1 customer at a time</li>
+        <li><span class="a-pt">❌</span>Sirf local city tak limited market</li>
+        <li><span class="a-pt">❌</span>Staff, rent, furniture — high overhead</li>
+      </ul>
+    </div>
+
+    <div class="a-mid"><div class="a-mid-arrow">EVOLUTION →</div></div>
+
+    <div class="a-side a-new">
+      <div class="a-year">🚀 2026 Model</div>
+      <div class="a-title">MUASHI AI CLOUD</div>
+      <!-- New building -->
+      <div class="a-illustration">
+        <svg viewBox="0 0 340 160" fill="none" width="100%">
+          <!-- Server rack in center -->
+          <rect x="120" y="30" width="100" height="120" rx="3" fill="#0C0F0A" stroke="rgba(242,163,15,.3)" stroke-width="1.5"/>
+          <rect x="130" y="44" width="80" height="18" rx="2" fill="#141610" stroke="rgba(242,163,15,.2)"/>
+          <rect x="130" y="68" width="80" height="18" rx="2" fill="#141610" stroke="rgba(242,163,15,.2)"/>
+          <rect x="130" y="92" width="80" height="18" rx="2" fill="#141610" stroke="rgba(242,163,15,.2)"/>
+          <rect x="130" y="116" width="80" height="18" rx="2" fill="#141610" stroke="rgba(242,163,15,.2)"/>
+          <!-- LED dots on rack -->
+          <circle cx="202" cy="53" r="3.5" fill="#22C55E"><animate attributeName="opacity" values="1;.2;1" dur="1.6s" repeatCount="indefinite"/></circle>
+          <circle cx="202" cy="77" r="3.5" fill="#F2A30F"><animate attributeName="opacity" values="1;.2;1" dur="2.1s" repeatCount="indefinite"/></circle>
+          <circle cx="202" cy="101" r="3.5" fill="#22C55E"><animate attributeName="opacity" values="1;.2;1" dur="1.9s" repeatCount="indefinite"/></circle>
+          <circle cx="202" cy="125" r="3.5" fill="#22C55E"><animate attributeName="opacity" values="1;.2;1" dur="2.4s" repeatCount="indefinite"/></circle>
+          <!-- Connection lines to world -->
+          <line x1="120" y1="70" x2="56" y2="40" stroke="rgba(242,163,15,.3)" stroke-dasharray="4 3"/>
+          <line x1="120" y1="90" x2="30" y2="90" stroke="rgba(242,163,15,.3)" stroke-dasharray="4 3"/>
+          <line x1="120" y1="110" x2="56" y2="135" stroke="rgba(242,163,15,.3)" stroke-dasharray="4 3"/>
+          <line x1="220" y1="70" x2="284" y2="40" stroke="rgba(242,163,15,.3)" stroke-dasharray="4 3"/>
+          <line x1="220" y1="90" x2="310" y2="90" stroke="rgba(242,163,15,.3)" stroke-dasharray="4 3"/>
+          <line x1="220" y1="110" x2="284" y2="135" stroke="rgba(242,163,15,.3)" stroke-dasharray="4 3"/>
+          <!-- Globe nodes -->
+          <circle cx="50" cy="40" r="14" fill="none" stroke="rgba(242,163,15,.3)"/>
+          <text x="44" y="44" font-size="11">🇺🇸</text>
+          <circle cx="22" cy="90" r="14" fill="none" stroke="rgba(242,163,15,.3)"/>
+          <text x="16" y="94" font-size="11">🇩🇪</text>
+          <circle cx="50" cy="140" r="14" fill="none" stroke="rgba(242,163,15,.3)"/>
+          <text x="44" y="144" font-size="11">🇯🇵</text>
+          <circle cx="290" cy="40" r="14" fill="none" stroke="rgba(242,163,15,.3)"/>
+          <text x="284" y="44" font-size="11">🇨🇦</text>
+          <circle cx="318" cy="90" r="14" fill="none" stroke="rgba(242,163,15,.3)"/>
+          <text x="312" y="94" font-size="11">🇸🇬</text>
+          <circle cx="290" cy="140" r="14" fill="none" stroke="rgba(242,163,15,.3)"/>
+          <text x="284" y="144" font-size="11">🇬🇧</text>
+          <!-- 24/7 label -->
+          <text x="138" y="156" font-size="8" fill="#F2A30F" font-family="monospace" font-weight="bold">24×7 · NEVER STOPS</text>
+        </svg>
+      </div>
+      <ul class="a-points">
+        <li><span class="a-pt">✅</span>Duniya bhar se customers internet se aate hain</li>
+        <li><span class="a-pt">✅</span>Raat 3 baje bhi earning — machine soti nahi</li>
+        <li><span class="a-pt">✅</span>1 GPU = multiple jobs ek saath parallel</li>
+        <li><span class="a-pt">✅</span>USA, Japan, Germany — sab ek saath clients</li>
+        <li><span class="a-pt">✅</span>Zero staff, zero dukan, zero inventory needed</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="a-row">
+    <div class="a-stat"><div class="a-stat-val">70%+</div><div class="a-stat-lbl">Profit Margin</div><div class="a-stat-note">₹12L revenue mein sirf ₹3.6L jaata hai expenses pe — baaki pure profit</div></div>
+    <div class="a-stat"><div class="a-stat-val">₹50/hr</div><div class="a-stat-lbl">Per GPU Rate</div><div class="a-stat-note">Conservative DePIN market benchmark — high-demand nodes achieve premium rates</div></div>
+    <div class="a-stat"><div class="a-stat-val">24×7</div><div class="a-stat-lbl">Auto Earning</div><div class="a-stat-note">Weekends, holidays, raat — automated platforms never pause job assignments</div></div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     S3 · HOW IT WORKS — MONEY FLOW
+═══════════════════════════════════════════════════════ -->
+<section id="s3">
+<div class="inner">
+  <div class="s-tag">Automated Income Architecture</div>
+  <h2 class="s-h" style="font-size:clamp(40px,5vw,68px);margin-bottom:14px">PAISE KAISE<br/><span style="color:var(--gold)">AATE HAIN?</span></h2>
+  <p class="s-p" style="margin-bottom:48px">5 simple steps — ek baar setup ke baad sab kuch automatic. Aap sirf power bill dete hain, machine baaki sab karti hai.</p>
+
+  <div class="flow-wrap">
+    <div class="flow-steps">
+      <div class="fstep">
+        <div class="fstep-num"><div class="fstep-n">01</div></div>
+        <div class="fstep-body">
+          <div class="fstep-ico">🏢</div>
+          <div class="fstep-title">Aap Space aur Power Dete Ho</div>
+          <div class="fstep-desc">Sirf ek 10×10 ka kamra chahiye — clean, AC wala, 3-phase commercial power ke saath. Muashi baaki sab handle karta hai. Aapka koi technical kaam nahi.</div>
+        </div>
+        <div class="fstep-aside"><div class="fstep-val" style="color:var(--dim)">Input</div><div class="fstep-vunit">Space + Power</div></div>
+      </div>
+      <div class="fstep">
+        <div class="fstep-num"><div class="fstep-n">02</div></div>
+        <div class="fstep-body">
+          <div class="fstep-ico">💼</div>
+          <div class="fstep-title">PMEGP Loan + Government Subsidy</div>
+          <div class="fstep-desc">PMEGP scheme ke through ₹13.5L bank loan milta hai — aur uspe 15% (General) ya 35% (Rural/Special) seedha waiver milta hai. Matlab aapko ₹1.5L se ₹2.25L tak ka hardware actually free milta hai.</div>
+        </div>
+        <div class="fstep-aside"><div class="fstep-val">35%</div><div class="fstep-vunit">Govt Subsidy</div></div>
+      </div>
+      <div class="fstep">
+        <div class="fstep-num"><div class="fstep-n">03</div></div>
+        <div class="fstep-body">
+          <div class="fstep-ico">⚙️</div>
+          <div class="fstep-title">Muashi Hardware Deploy Karta Hai</div>
+          <div class="fstep-desc">Muashi ke engineers 4× NVIDIA RTX 4090 GPU server racks install karte hain — pre-configured, pre-tested, plug-and-play. Aapko kuch nahi karna. Server ON karo, kaam shuru.</div>
+        </div>
+        <div class="fstep-aside"><div class="fstep-val" style="color:var(--blue2)">Zero</div><div class="fstep-vunit">Tech Effort</div></div>
+      </div>
+      <div class="fstep">
+        <div class="fstep-num"><div class="fstep-n">04</div></div>
+        <div class="fstep-body">
+          <div class="fstep-ico">🌐</div>
+          <div class="fstep-title">DePIN Platforms Jobs Assign Karti Hain</div>
+          <div class="fstep-desc">io.net, Vast.ai, Salad.com — yeh global marketplaces AI companies ke training jobs, rendering tasks, aur inference requests automatically hamare GPU pe route karti hain. Amazon seller ki tarah — aap product dete ho, platform sale karta hai.</div>
+        </div>
+        <div class="fstep-aside"><div class="fstep-val">₹50/hr</div><div class="fstep-vunit">Per GPU</div></div>
+      </div>
+      <div class="fstep">
+        <div class="fstep-num"><div class="fstep-n">05</div></div>
+        <div class="fstep-body">
+          <div class="fstep-ico">💰</div>
+          <div class="fstep-title">USD Mein Earn — Bank Mein Credit</div>
+          <div class="fstep-desc">Earnings USD mein generate hoti hain, RBI-compliant forex channels (IT Services purpose code) ke zariye directly Indian bank current account mein aati hain. 100% white money, fully auditable, CA-friendly income structure.</div>
+        </div>
+        <div class="fstep-aside"><div class="fstep-val" style="color:var(--green2)">₹1L+</div><div class="fstep-vunit">Per Month</div></div>
+      </div>
+    </div>
+
+    <div class="ratio-box">
+      <div class="ratio-cell">
+        <div class="ratio-label">Partner Revenue Share</div>
+        <div class="ratio-num">70%</div>
+        <div class="ratio-desc">Gross revenue ka 70% seedha partner ke bank account mein — automated, har mahine, bina kisi manual collection ke.</div>
+      </div>
+      <div class="ratio-cell">
+        <div class="ratio-label">Muashi Management Fee</div>
+        <div class="ratio-num">30%</div>
+        <div class="ratio-desc">Muashi 30% mein full technical management, software updates, platform routing, security patches, aur 24×7 monitoring cover karta hai. Aapko kuch nahi karna.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     S4 · THE RACK — HARDWARE VISUAL
+═══════════════════════════════════════════════════════ -->
+<section id="s4">
+<div class="inner">
+  <div class="rack-section">
+    <div class="rack-left">
+      <div class="s-tag">Hardware Infrastructure</div>
+      <h2 style="font-family:var(--syne);font-size:clamp(36px,4vw,58px);font-weight:800;line-height:1;margin-bottom:16px">HAMARE<br/>SERVER <span style="color:var(--gold)">RACK</span><br/>KA ANATOMY</h2>
+      <p style="font-size:15px;color:var(--dim);line-height:1.85;margin-bottom:32px">Yeh aapki asli "shop" hai — ek baar lagao, hamesha kamao. Jaise ATM machine — deploy karo, cash milta rahe.</p>
+      <div class="spec-cards">
+        <div class="spec-c">
+          <div class="spec-ico">🎮</div>
+          <div class="spec-t"><strong>4× NVIDIA RTX 4090 (24 GB VRAM each)</strong><span>Duniya ka sabse powerful consumer GPU. AI training, 3D rendering, LLM inference — sab handle karta hai. DePIN marketplaces par sabse zyada demand isi model ki hai.</span></div>
+        </div>
+        <div class="spec-c">
+          <div class="spec-ico">🧠</div>
+          <div class="spec-t"><strong>256 GB RAM + AMD EPYC Server CPU + NVMe SSD</strong><span>Industrial-grade server motherboard — 24×7 non-stop heavy load ke liye designed. Consumer parts nahi, pure enterprise hardware.</span></div>
+        </div>
+        <div class="spec-c">
+          <div class="spec-ico">🔋</div>
+          <div class="spec-t"><strong>10 KVA Online UPS + Heavy Battery Bank</strong><span>MPEB power cut? Zero impact. UPS instantly switch karta hai — GPU ko pata bhi nahi chalta. Job complete hoti hai, earning safe rehti hai.</span></div>
+        </div>
+        <div class="spec-c">
+          <div class="spec-ico">❄️</div>
+          <div class="spec-t"><strong>2× 2-Ton Dedicated Inverter ACs (Smart Cooling)</strong><span>4 RTX 4090s bohot heat generate karti hain. Dedicated dual cooling ensures &lt;65°C temperature — even in Bhopal's peak summer. Hardware warranty protected.</span></div>
+        </div>
+        <div class="spec-c">
+          <div class="spec-ico">🌐</div>
+          <div class="spec-t"><strong>1 Gbps Dedicated Leased Line (Not Shared)</strong><span>Airtel / BSNL leased fibre — dedicated, uncontested bandwidth. Global platforms pe latency zero. Job assignments uninterrupted.</span></div>
+        </div>
+      </div>
+    </div>
+    <!-- ANIMATED GPU RACK SVG -->
+    <div class="rack-right">
+      <svg viewBox="0 0 320 500" fill="none" width="320" style="max-width:100%">
+        <!-- Rack body -->
+        <rect x="16" y="16" width="288" height="468" rx="4" fill="#0A0A0E" stroke="#1C1C28" stroke-width="1.5"/>
+        <defs>
+          <linearGradient id="rg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F2A30F" stop-opacity=".04"/><stop offset="100%" stop-color="#F2A30F" stop-opacity="0"/></linearGradient>
+          <linearGradient id="sg" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="transparent"/><stop offset="50%" stop-color="#F2A30F"/><stop offset="100%" stop-color="transparent"/></linearGradient>
+        </defs>
+        <rect x="16" y="16" width="288" height="468" rx="4" fill="url(#rg)"/>
+        <!-- Rails -->
+        <rect x="16" y="16" width="18" height="468" fill="#080808" stroke="#161620"/>
+        <rect x="286" y="16" width="18" height="468" fill="#080808" stroke="#161620"/>
+        <!-- Rail holes -->
+        <rect x="21" y="56" width="8" height="4" rx="1" fill="#1A1A24"/>
+        <rect x="21" y="120" width="8" height="4" rx="1" fill="#1A1A24"/>
+        <rect x="21" y="184" width="8" height="4" rx="1" fill="#1A1A24"/>
+        <rect x="21" y="248" width="8" height="4" rx="1" fill="#1A1A24"/>
+        <rect x="291" y="56" width="8" height="4" rx="1" fill="#1A1A24"/>
+        <rect x="291" y="120" width="8" height="4" rx="1" fill="#1A1A24"/>
+        <rect x="291" y="184" width="8" height="4" rx="1" fill="#1A1A24"/>
+        <rect x="291" y="248" width="8" height="4" rx="1" fill="#1A1A24"/>
+        <!-- GPU 1 -->
+        <rect x="42" y="40" width="236" height="84" rx="3" fill="#111118" stroke="#1C1C28"/>
+        <rect x="42" y="40" width="4" height="84" fill="#F2A30F"/>
+        <rect x="54" y="54" width="88" height="12" rx="2" fill="#161620"/>
+        <text x="60" y="64" font-family="JetBrains Mono,monospace" font-size="8" fill="#666">RTX 4090 · GPU #1</text>
+        <rect x="54" y="72" width="140" height="6" rx="1" fill="#161620"/>
+        <text x="60" y="78" font-family="JetBrains Mono,monospace" font-size="6" fill="#333">io.net marketplace · ACTIVE</text>
+        <rect x="54" y="84" width="140" height="5" rx="2" fill="#111"/>
+        <rect x="54" y="84" width="98" height="5" rx="2" fill="#F2A30F" opacity=".8"/>
+        <text x="200" y="60" font-family="JetBrains Mono,monospace" font-size="7" fill="#444">68°C</text>
+        <text x="200" y="72" font-family="JetBrains Mono,monospace" font-size="7" fill="#333">70% util</text>
+        <circle cx="256" cy="75" r="7" fill="#F2A30F"><animate attributeName="opacity" values="1;.25;1" dur="1.8s" repeatCount="indefinite"/></circle>
+        <circle cx="256" cy="75" r="12" fill="#F2A30F" opacity=".06"><animate attributeName="opacity" values=".15;0;.15" dur="1.8s" repeatCount="indefinite"/></circle>
+        <!-- GPU 2 -->
+        <rect x="42" y="136" width="236" height="84" rx="3" fill="#111118" stroke="#1C1C28"/>
+        <rect x="42" y="136" width="4" height="84" fill="#F2A30F"/>
+        <rect x="54" y="150" width="88" height="12" rx="2" fill="#161620"/>
+        <text x="60" y="160" font-family="JetBrains Mono,monospace" font-size="8" fill="#666">RTX 4090 · GPU #2</text>
+        <rect x="54" y="168" width="140" height="6" rx="1" fill="#161620"/>
+        <text x="60" y="174" font-family="JetBrains Mono,monospace" font-size="6" fill="#333">Vast.ai · LLM Training · ACTIVE</text>
+        <rect x="54" y="180" width="140" height="5" rx="2" fill="#111"/>
+        <rect x="54" y="180" width="112" height="5" rx="2" fill="#22C55E" opacity=".8"/>
+        <text x="200" y="156" font-family="JetBrains Mono,monospace" font-size="7" fill="#444">71°C</text>
+        <text x="200" y="168" font-family="JetBrains Mono,monospace" font-size="7" fill="#333">80% util</text>
+        <circle cx="256" cy="171" r="7" fill="#22C55E"><animate attributeName="opacity" values="1;.25;1" dur="2.3s" repeatCount="indefinite"/></circle>
+        <circle cx="256" cy="171" r="12" fill="#22C55E" opacity=".06"><animate attributeName="opacity" values=".15;0;.15" dur="2.3s" repeatCount="indefinite"/></circle>
+        <!-- GPU 3 -->
+        <rect x="42" y="232" width="236" height="84" rx="3" fill="#111118" stroke="#1C1C28"/>
+        <rect x="42" y="232" width="4" height="84" fill="#F2A30F"/>
+        <rect x="54" y="246" width="88" height="12" rx="2" fill="#161620"/>
+        <text x="60" y="256" font-family="JetBrains Mono,monospace" font-size="8" fill="#666">RTX 4090 · GPU #3</text>
+        <rect x="54" y="264" width="140" height="6" rx="1" fill="#161620"/>
+        <text x="60" y="270" font-family="JetBrains Mono,monospace" font-size="6" fill="#333">Salad.com · 3D Render · ACTIVE</text>
+        <rect x="54" y="276" width="140" height="5" rx="2" fill="#111"/>
+        <rect x="54" y="276" width="84" height="5" rx="2" fill="#F2A30F" opacity=".8"/>
+        <text x="200" y="252" font-family="JetBrains Mono,monospace" font-size="7" fill="#444">64°C</text>
+        <text x="200" y="264" font-family="JetBrains Mono,monospace" font-size="7" fill="#333">60% util</text>
+        <circle cx="256" cy="267" r="7" fill="#F2A30F"><animate attributeName="opacity" values="1;.25;1" dur="1.5s" repeatCount="indefinite"/></circle>
+        <circle cx="256" cy="267" r="12" fill="#F2A30F" opacity=".06"><animate attributeName="opacity" values=".15;0;.15" dur="1.5s" repeatCount="indefinite"/></circle>
+        <!-- GPU 4 -->
+        <rect x="42" y="328" width="236" height="84" rx="3" fill="#111118" stroke="#1C1C28"/>
+        <rect x="42" y="328" width="4" height="84" fill="#F2A30F"/>
+        <rect x="54" y="342" width="88" height="12" rx="2" fill="#161620"/>
+        <text x="60" y="352" font-family="JetBrains Mono,monospace" font-size="8" fill="#666">RTX 4090 · GPU #4</text>
+        <rect x="54" y="360" width="140" height="6" rx="1" fill="#161620"/>
+        <text x="60" y="366" font-family="JetBrains Mono,monospace" font-size="6" fill="#333">RunPod · Inference · ACTIVE</text>
+        <rect x="54" y="372" width="140" height="5" rx="2" fill="#111"/>
+        <rect x="54" y="372" width="126" height="5" rx="2" fill="#22C55E" opacity=".8"/>
+        <text x="200" y="348" font-family="JetBrains Mono,monospace" font-size="7" fill="#444">69°C</text>
+        <text x="200" y="360" font-family="JetBrains Mono,monospace" font-size="7" fill="#333">90% util</text>
+        <circle cx="256" cy="363" r="7" fill="#22C55E"><animate attributeName="opacity" values="1;.25;1" dur="2.7s" repeatCount="indefinite"/></circle>
+        <circle cx="256" cy="363" r="12" fill="#22C55E" opacity=".06"><animate attributeName="opacity" values=".15;0;.15" dur="2.7s" repeatCount="indefinite"/></circle>
+        <!-- Status footer -->
+        <rect x="42" y="424" width="236" height="44" rx="2" fill="#080810" stroke="#161620"/>
+        <text x="54" y="441" font-family="JetBrains Mono,monospace" font-size="8" fill="#2A2A3A">NETWORK STATUS</text>
+        <text x="54" y="457" font-family="JetBrains Mono,monospace" font-size="10" fill="#F2A30F" font-weight="bold">UPTIME 99.8% · 4/4 ACTIVE</text>
+        <circle cx="258" cy="440" r="5" fill="#22C55E"><animate attributeName="r" values="5;7;5" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;.5;1" dur="2s" repeatCount="indefinite"/></circle>
+        <!-- Scan line -->
+        <rect x="42" width="236" height="2" fill="url(#sg)" opacity=".4">
+          <animateTransform attributeName="transform" type="translate" from="0,40" to="0,464" dur="4s" repeatCount="indefinite"/>
+        </rect>
+      </svg>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     S5 · NETWORK SCALE — REVENUE CHART
+═══════════════════════════════════════════════════════ -->
+<section id="s5">
+<div class="inner">
+  <div class="chart-section">
+    <div class="chart-top">
+      <div>
+        <div class="s-tag">Network Capacity & Yield</div>
+        <h2 style="font-family:var(--syne);font-size:clamp(36px,4.5vw,60px);font-weight:800;line-height:1">NODE COUNT<br/><span style="color:var(--gold)">= EARNINGS</span></h2>
+      </div>
+      <div class="clegend">
+        <div class="cleg"><div class="cleg-dot" style="background:var(--gold)"></div>Monthly Revenue</div>
+        <div class="cleg"><div class="cleg-dot" style="background:var(--green2)"></div>Net Partner Profit</div>
+        <div class="cleg"><div class="cleg-dot" style="background:var(--border)"></div>Expenses</div>
+      </div>
+    </div>
+
+    <div class="bchart" id="barChart">
+      <div class="y-axis">
+        <span class="y-lbl">₹12L</span>
+        <span class="y-lbl">₹9L</span>
+        <span class="y-lbl">₹6L</span>
+        <span class="y-lbl">₹3L</span>
+        <span class="y-lbl">₹0</span>
+      </div>
+      <!-- 1 node -->
+      <div class="bgroup">
+        <div class="bars-wrap">
+          <div class="b b-e" style="height:0" data-h="19%" data-t="Expenses ₹23K"></div>
+          <div class="b b-n" style="height:0" data-h="61.7%" data-t="Net Profit ₹74K"></div>
+          <div class="b b-g" style="height:0" data-h="85%" data-t="Revenue ₹1.02L"></div>
+        </div>
+        <div class="blbl"><div class="blbl-yr">1 Node</div><div class="blbl-sub">4 GPUs</div><span class="bphase bp1">₹1.02L/mo</span></div>
+      </div>
+      <!-- 2 nodes -->
+      <div class="bgroup">
+        <div class="bars-wrap">
+          <div class="b b-e" style="height:0" data-h="34%" data-t="Expenses ₹41K"></div>
+          <div class="b b-n" style="height:0" data-h="100%" data-t="Net Profit ₹1.55L"></div><!-- actually maps to ₹1.7L -->
+          <div class="b b-g" style="height:0" data-h="100%" data-t="Revenue ₹2.04L"></div>
+        </div>
+        <div class="blbl"><div class="blbl-yr">2 Nodes</div><div class="blbl-sub">8 GPUs</div><span class="bphase bp1">₹2.04L/mo</span></div>
+      </div>
+      <!-- 4 nodes -->
+      <div class="bgroup">
+        <div class="bars-wrap">
+          <div class="b b-e" style="height:0" data-h="60%" data-t="Expenses ₹82K"></div>
+          <div class="b b-n" style="height:0" data-h="100%" data-t="Net Profit ₹3.1L"></div>
+          <div class="b b-g" style="height:0" data-h="100%" data-t="Revenue ₹4.08L"></div>
+        </div>
+        <div class="blbl"><div class="blbl-yr">4 Nodes</div><div class="blbl-sub">16 GPUs</div><span class="bphase bp2">₹4.08L/mo</span></div>
+      </div>
+      <!-- 6 nodes -->
+      <div class="bgroup">
+        <div class="bars-wrap">
+          <div class="b b-e" style="height:0" data-h="82%" data-t="Expenses ₹1.2L"></div>
+          <div class="b b-n" style="height:0" data-h="100%" data-t="Net Profit ₹4.65L"></div>
+          <div class="b b-g" style="height:0" data-h="100%" data-t="Revenue ₹6.12L"></div>
+        </div>
+        <div class="blbl"><div class="blbl-yr">6 Nodes</div><div class="blbl-sub">24 GPUs</div><span class="bphase bp2">₹6.12L/mo</span></div>
+      </div>
+      <!-- 10 nodes -->
+      <div class="bgroup">
+        <div class="bars-wrap">
+          <div class="b b-e" style="height:0" data-h="100%" data-t="Expenses ₹2L"></div>
+          <div class="b b-n" style="height:0" data-h="100%" data-t="Net Profit ₹7.8L"></div>
+          <div class="b b-g" style="height:0" data-h="100%" data-t="Revenue ₹10.2L"></div>
+        </div>
+        <div class="blbl"><div class="blbl-yr">10 Nodes</div><div class="blbl-sub">40 GPUs</div><span class="bphase bp3">₹10.2L/mo</span></div>
+      </div>
+    </div>
+
+    <table class="node-table">
+      <tr><th>Setup Configuration</th><th>Total GPUs</th><th>Gross Monthly</th><th>Power Bill</th><th>Net Partner Share (70%)</th></tr>
+      <tr class="ph"><td colspan="5">── MICRO NODE (Single Proprietor — PMEGP Eligible) ─────────────────────</td></tr>
+      <tr class="hl"><td>Single Micro Node</td><td>4× RTX 4090</td><td>₹1,02,000</td><td>₹23,000</td><td>₹74,000 / mo</td></tr>
+      <tr class="ph"><td colspan="5">── CLUSTER NODES (Expanded from Profits) ───────────────────────────────</td></tr>
+      <tr><td>Dual Cluster Node</td><td>8× RTX 4090</td><td>₹2,04,000</td><td>₹41,000</td><td>₹1,55,400 / mo</td></tr>
+      <tr><td>4-Node Hub</td><td>16× RTX 4090</td><td>₹4,08,000</td><td>₹82,000</td><td>₹3,10,800 / mo</td></tr>
+      <tr class="net"><td>Enterprise Node Hub</td><td>24× RTX 4090</td><td>₹6,12,000</td><td>₹1,20,000</td><td>₹4,65,000 / mo</td></tr>
+      <tr class="net"><td>10-Node Network Cluster</td><td>40× RTX 4090</td><td>₹10,20,000</td><td>₹2,00,000</td><td>₹7,84,000 / mo</td></tr>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     S6 · PARTNERSHIP TRACKS
+═══════════════════════════════════════════════════════ -->
+<section id="s6">
+<div class="inner">
+  <div class="s-tag">Flexible Collaboration Protocols</div>
+  <h2 class="s-h" style="font-size:clamp(40px,5vw,68px);margin-bottom:12px">DON TARIKE SE<br/><span style="color:var(--gold)">JUDNA</span></h2>
+  <p class="s-p" style="margin-bottom:0">Aapke resources aur situation ke hisaab se, ek model chuniye. Dono mein Muashi poori technical responsibility leta hai.</p>
+  <div class="tracks-grid">
+    <div class="track track-a">
+      <div class="t-badge">Track A · Active Owner</div>
+      <div class="t-title">PROPRIETORSHIP MODEL</div>
+      <div class="t-sub">Best For: Local entrepreneurs jo PMEGP ke through loan aur subsidy lena chahte hain</div>
+      <ul class="t-items">
+        <li>Loan aur firm 100% aapke naam pe registered hoti hai — aap malik ho</li>
+        <li>Maximum government subsidy protection milti hai — 15% General ya 35% Rural/Special Category</li>
+        <li>Muashi Technical Management &amp; Operator Agreement sign karta hai — long-term commitment</li>
+        <li>Software patching, optimization, routing updates, security — sab Muashi ke zimme</li>
+        <li>Revenue automated split hota hai directly aapke official current bank account mein</li>
+        <li>Apni khud ki registered business identity banti hai — future credit ke liye faydemand</li>
+      </ul>
+      <a href="mailto:partner@muashiai.com" class="t-cta">Apply for Track A →</a>
+    </div>
+    <div class="track track-b">
+      <div class="t-badge">Track B · Strategic Partner</div>
+      <div class="t-title">MANAGED LANDLORD MODEL</div>
+      <div class="t-sub">Best For: Property owners jinka paas 150+ sq.ft. secured commercial space hai</div>
+      <ul class="t-items">
+        <li>Aap sirf ek clean, secured 150+ sq.ft. room provide karo — 3-phase MPEB connection ke saath</li>
+        <li>Muashi server logistics, deployment, cooling infrastructure, aur full networking coordinate karta hai</li>
+        <li>Fixed-lease infrastructure payout ya direct revenue-share distribution — aapki choice</li>
+        <li>100% passive income — aapko kuch karna hi nahi hai, machine khud kamaati hai</li>
+        <li>Premium physical high-tech machinery asset aapki property mein — value add</li>
+        <li>No technical knowledge required — just provide power and space</li>
+      </ul>
+      <a href="mailto:partner@muashiai.com" class="t-cta">Apply for Track B →</a>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     S7 · 60-DAY TIMELINE
+═══════════════════════════════════════════════════════ -->
+<section id="s7">
+<div class="inner">
+  <div class="s-tag">Sequential Onboarding Process</div>
+  <h2 class="s-h" style="font-size:clamp(36px,4vw,60px);margin-bottom:12px">60 DIN MEIN<br/><span style="color:var(--gold)">PEHLI EARNING</span></h2>
+  <p class="s-p" style="margin-bottom:0">Pehle day se leke pehli payout tak — step by step, koi confusion nahi.</p>
+  <div class="timeline-wrap">
+    <div class="tl-phases">
+      <!-- Phase 1 -->
+      <div class="tl-phase ph-reg">
+        <div class="tl-phase-hdr">
+          <div class="tl-ph-tag">Phase 1</div>
+          <div class="tl-ph-title">Regulatory &amp; Financing</div>
+          <div class="tl-ph-period">Days 1–30</div>
+        </div>
+        <div class="tl-rows">
+          <div class="tl-row">
+            <div class="tl-day"><span>Days<br/>1–7</span></div>
+            <div class="tl-task">Document pooling — Aadhaar, PAN, Rural Certificate, School Marksheets. Muashi checklist provide karta hai, koi guess-work nahi.</div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-day"><span>Days<br/>8–20</span></div>
+            <div class="tl-task">CA assignment. Official DPR &amp; Financial Projections compile hoti hain UDIN seal ke saath. Humari taraf se DPR already ready hai — CA bas verify aur sign karta hai.</div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-day"><span>Days<br/>21–30</span></div>
+            <div class="tl-task">DIC portal upload. Bank branch matching, manager interview, aur official loan sanction. Muashi bank liaison support karta hai.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Phase 2 -->
+      <div class="tl-phase ph-dep">
+        <div class="tl-phase-hdr">
+          <div class="tl-ph-tag">Phase 2</div>
+          <div class="tl-ph-title">Deployment &amp; Logistics</div>
+          <div class="tl-ph-period">Days 31–55</div>
+        </div>
+        <div class="tl-rows">
+          <div class="tl-row">
+            <div class="tl-day"><span>Days<br/>31–40</span></div>
+            <div class="tl-task">Government EDP training clearance (online). 10% partner margin deposit verification. Subsidy paperwork finalise.</div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-day"><span>Days<br/>41–50</span></div>
+            <div class="tl-task">Commercial fund disbursal to certified enterprise GPU server builders. Hardware manufacturing aur delivery tracking.</div>
+          </div>
+          <div class="tl-row">
+            <div class="tl-day"><span>Days<br/>51–55</span></div>
+            <div class="tl-task">Site physical prep — dual AC mounting, 10 KVA Online UPS deployment, 1Gbps dedicated fibre splicing. Muashi engineers on-site.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Phase 3 -->
+      <div class="tl-phase ph-mon">
+        <div class="tl-phase-hdr">
+          <div class="tl-ph-tag">Phase 3</div>
+          <div class="tl-ph-title">Spin-Up &amp; First Payout</div>
+          <div class="tl-ph-period">Days 56–60</div>
+        </div>
+        <div class="tl-rows">
+          <div class="tl-row">
+            <div class="tl-day"><span>Days<br/>56–60</span></div>
+            <div class="tl-task"><strong style="color:var(--green2)">🚀 GO LIVE!</strong> Plug-and-play network spin-up. DePIN script integration. Live cloud dashboard tracking activated. First jobs start arriving within hours.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="kpi-wrap">
+      <div style="font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:8px">Operational Guardrails</div>
+      <div class="kpi kg">
+        <div class="kpi-lbl">Hardware Guardrail</div>
+        <div class="kpi-val">Zero Tech Knowledge</div>
+        <div class="kpi-note">Muashi pre-configured, pre-tested server boxes deliver karta hai. Aapka kaam sirf power switch manage karna hai. Koi IT background zaruri nahi.</div>
+      </div>
+      <div class="kpi kb">
+        <div class="kpi-lbl">Financial Guardrail</div>
+        <div class="kpi-val">100% White Money</div>
+        <div class="kpi-note">All international remittance RBI-compliant forex channels se aata hai — IT Enabled Services purpose code ke saath. Fully audit-friendly, CA-ready income.</div>
+      </div>
+      <div class="kpi kgr">
+        <div class="kpi-lbl">Physical Guardrail</div>
+        <div class="kpi-val">Continuous Cooling</div>
+        <div class="kpi-note">Dual smart AC system ensures &lt;65°C even in peak Bhopal summer. Hardware warranty fully intact. Zero overheating risk.</div>
+      </div>
+      <div class="kpi kg">
+        <div class="kpi-lbl">Legal Guardrail</div>
+        <div class="kpi-val">3-Year OEM Warranty</div>
+        <div class="kpi-note">Enterprise-grade GPU components original brand 3-year warranty ke saath aate hain. Aapka hardware investment protected hai.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     S8 · RISK MITIGATION
+═══════════════════════════════════════════════════════ -->
+<section id="s8">
+<div class="inner">
+  <div class="s-tag">Digital &amp; Physical Integrity</div>
+  <h2 class="s-h" style="font-size:clamp(36px,4vw,60px);margin-bottom:12px">RISK KA<br/><span style="color:var(--gold)">KOI DARR NAHI</span></h2>
+  <p class="s-p" style="margin-bottom:48px">Har possible risk — technical, financial, legal, physical — ke liye humne pehle se safeguards lagaye hain.</p>
+
+  <div class="risk-grid">
+    <div class="risk-cell">
+      <div class="risk-ico">🔒</div>
+      <div class="risk-title">1. DATA PRIVACY &amp; ISOLATION</div>
+      <ul class="risk-pts">
+        <li>Saare incoming client compute jobs secure Docker &amp; Kubernetes virtualization layers ke andar run hote hain — completely isolated</li>
+        <li>Node hosts ko client ke database rows ya deep learning matrices ka koi access nahi hota — ever</li>
+        <li>System scripts unauthorized tracking, data replication, ya payload tampering prevent karte hain automatically</li>
+      </ul>
+    </div>
+    <div class="risk-cell">
+      <div class="risk-ico">⚡</div>
+      <div class="risk-title">2. VOLTAGE &amp; HARDWARE PROTECTION</div>
+      <ul class="risk-pts">
+        <li>Industrial double-conversion Online UPS configuration local grid voltage sags aur brownout surges fully absorb karta hai</li>
+        <li>High-grade automated circuit breakers individual server component rails pe thermal spikes prevent karte hain</li>
+        <li>Enterprise GPU components 3-year original brand warranty ke saath aate hain — replacement cost covered</li>
+      </ul>
+    </div>
+    <div class="risk-cell">
+      <div class="risk-ico">💱</div>
+      <div class="risk-title">3. FOREX &amp; PAYMENT SECURITY</div>
+      <ul class="risk-pts">
+        <li>Saari international payments RBI-authorized forex gateways se process hoti hain — Wise Business ya PayPal Business</li>
+        <li>IT Enabled Services ka legal Purpose Code lagta hai — income fully compliant aur taxable structure mein</li>
+        <li>Dollar rate ka fayda milta hai — ₹83+ per USD at current rates earnings ko further boost karta hai</li>
+      </ul>
+    </div>
+    <div class="risk-cell">
+      <div class="risk-ico">📈</div>
+      <div class="risk-title">4. MARKET &amp; DEMAND RISK</div>
+      <ul class="risk-pts">
+        <li>GPU compute demand AI model explosion ke saath 35%+ CAGR pe grow kar rahi hai — structural demand, temporary trend nahi</li>
+        <li>Multi-platform presence (io.net + Vast.ai + Salad.com + RunPod) ensures single platform dependency nahi hai</li>
+        <li>Hardware ageing ke liye: RTX 4090 ki DePIN market value 4-5 saal strong rehti hai — adequate ROI window</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="tech-strip">
+    <div class="tech-box"><div class="tech-ico">🛡️</div><div class="tech-lbl">Uptime SLA</div><div class="tech-val">99.8%</div></div>
+    <div class="tech-box"><div class="tech-ico">🌡️</div><div class="tech-lbl">Max Operating Temp</div><div class="tech-val">&lt;65°C</div></div>
+    <div class="tech-box"><div class="tech-ico">⚙️</div><div class="tech-lbl">GPU Warranty</div><div class="tech-val">3 Years</div></div>
+    <div class="tech-box"><div class="tech-ico">💰</div><div class="tech-lbl">Payout Frequency</div><div class="tech-val">Monthly</div></div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     S9 · CTA
+═══════════════════════════════════════════════════════ -->
+<section id="s9">
+<div class="inner">
+  <div class="cta-glow"></div>
+  <div class="cta-wrap">
+    <div style="font-family:var(--mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--dim2);margin-bottom:20px">The AI Rental Era Is Here</div>
+    <div class="cta-big">
+      <div class="l1">APNA NODE</div>
+      <div class="l2">SECURE KARO.</div>
+    </div>
+    <p class="cta-sub">Centralized clouds supply-bottlenecked ho rahe hain. Madhya Pradesh mein DePIN infrastructure ka window actively open hai. Muashi AI ke saath partner bankar idle regional space ko global AI data center mein convert karo — aaj hi.</p>
+    <div class="cta-boxes">
+      <div class="cta-b"><div class="cta-b-val">₹15L</div><div class="cta-b-lbl">Standard Node Capex</div></div>
+      <div class="cta-b"><div class="cta-b-val">35%</div><div class="cta-b-lbl">Max Govt Subsidy</div></div>
+      <div class="cta-b"><div class="cta-b-val">60 Days</div><div class="cta-b-lbl">Setup to First Payout</div></div>
+    </div>
+    <div class="cta-actions">
+      <a href="mailto:partner@muashiai.com" class="cta-btn-pri">Apply for Partnership →</a>
+      <a href="#s2" class="cta-btn-sec">Learn More ↑</a>
+    </div>
+    <div style="display:flex;gap:40px;justify-content:center;margin-bottom:40px;flex-wrap:wrap">
+      <div style="text-align:center"><div style="font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--dim2);margin-bottom:6px">Network HQ</div><div style="font-size:13px;color:#555">Bhopal, Madhya Pradesh</div></div>
+      <div style="width:1px;background:var(--border)"></div>
+      <div style="text-align:center"><div style="font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--dim2);margin-bottom:6px">Scheme</div><div style="font-size:13px;color:#555">PMEGP · DIC Bhopal</div></div>
+      <div style="width:1px;background:var(--border)"></div>
+      <div style="text-align:center"><div style="font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--dim2);margin-bottom:6px">Sector</div><div style="font-size:13px;color:#555">Service · AI Infrastructure</div></div>
+      <div style="width:1px;background:var(--border)"></div>
+      <div style="text-align:center"><div style="font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--dim2);margin-bottom:6px">Contact</div><div style="font-size:13px;color:var(--gold)">partner@muashiai.com</div></div>
+    </div>
+    <div class="cta-footer">MUASHI <span>AI</span> CLOUD COMPUTE · CENTRAL NETWORK OFFICE · BHOPAL, MP · INDIA</div>
+  </div>
+</div>
+</section>
+
+<script>
+// ── Particle canvas bg ──
+const cvs = document.createElement('canvas');
+cvs.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.3';
+document.body.insertBefore(cvs, document.body.firstChild);
+const ctx2 = cvs.getContext('2d');
+let pts = [];
+function rsz(){cvs.width=innerWidth;cvs.height=innerHeight}
+rsz();addEventListener('resize',rsz);
+for(let i=0;i<55;i++)pts.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,r:Math.random()*1.2+.4,a:Math.random()*.3+.05});
+(function draw(){
+  ctx2.clearRect(0,0,cvs.width,cvs.height);
+  pts.forEach(p=>{
+    p.x+=p.vx;p.y+=p.vy;
+    if(p.x<0)p.x=cvs.width;if(p.x>cvs.width)p.x=0;
+    if(p.y<0)p.y=cvs.height;if(p.y>cvs.height)p.y=0;
+    ctx2.beginPath();ctx2.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx2.fillStyle=`rgba(242,163,15,${p.a})`;ctx2.fill();
+  });
+  requestAnimationFrame(draw);
+})();
+
+// ── Dot progress ──
+const secs = document.querySelectorAll('section');
+const dots2 = document.querySelectorAll('.dot');
+const obs = new IntersectionObserver(en=>{
+  en.forEach(e=>{
+    if(e.isIntersecting){
+      const i=[...secs].indexOf(e.target);
+      dots2.forEach((d,j)=>d.classList.toggle('on',i===j));
+    }
+  });
+},{threshold:.4});
+secs.forEach(s=>obs.observe(s));
+dots2.forEach((d,i)=>d.addEventListener('click',()=>secs[i].scrollIntoView({behavior:'smooth'})));
+
+// ── Smooth nav scroll ──
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}
+  });
+});
+
+// ── Bar chart animate on scroll ──
+const bObs = new IntersectionObserver(en=>{
+  if(en[0].isIntersecting){
+    document.querySelectorAll('.b[data-h]').forEach((b,i)=>{
+      setTimeout(()=>{b.style.height=b.dataset.h},i*60+200);
+    });
+    bObs.disconnect();
+  }
+},{threshold:.25});
+bObs.observe(document.getElementById('barChart'));
+
+// ── Fade in sections ──
+document.querySelectorAll('section').forEach(s=>{
+  s.style.opacity='0';s.style.transform='translateY(20px)';s.style.transition='opacity .7s ease,transform .7s ease';
+});
+const fObs=new IntersectionObserver(en=>{
+  en.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='none'}});
+},{threshold:.05});
+document.querySelectorAll('section').forEach(s=>fObs.observe(s));
+</script>
+</body>
+</html>
